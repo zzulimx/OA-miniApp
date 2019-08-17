@@ -1,0 +1,132 @@
+/**index.wxss**/
+
+page {
+  height: 100%;
+  width: 100%;
+}
+
+.container {
+  height: 100%;
+}
+
+.weui-search-bar__box {
+  text-align: center;
+}
+
+.weui-icon-search_in-box {
+  left: calc(50% - 40px);
+}
+
+.my-message {
+  width: calc(100% - 20px);
+  margin: 0px 10px;
+  min-height: 60px;
+  border-bottom: 1px solid #1235;
+  float: left;
+}
+
+.my-message .message-left {
+  width: 40px;
+  height: 40px;
+  float: left;
+  padding: 5px 10px;
+}
+
+.my-message .message-left image {
+  max-height: 100%;
+  max-width: 100%;
+  border-radius: 50px;
+}
+
+.my-message .message-right {
+  width: calc(100% - 90px);
+  height: calc(100% - 20px);
+  padding: 5px 10px;
+  float: left;
+}
+
+.my-message .message-right .message-right-top {
+  width: 100%;
+  height: 50%;
+  float: left;
+  font-size: 14px;
+}
+
+.my-message .message-right .message-right-bottom {
+  width: 100%;
+  float: left;
+}
+
+.my-message .message-right .message-right-bottom .message-item {
+  width: auto;
+  height: 25px;
+  float: left;
+  font-size: 12px;
+  padding-right: 8px;
+  line-height: 25px;
+}
+
+.my-message .message-right .message-right-bottom .message-item .item-type-name {
+  width: auto;
+  height: 100%;
+}
+
+.my-message .message-right .message-right-bottom .message-item .item-type-num {
+  width: auto;
+  height: 100%;
+  color: rgba(247, 10, 10, 0.733);
+}
+
+.msg-list {
+}
+
+.msg-list .msg-item {
+  width: calc(100% - 20px);
+  margin: 0px 10px;
+  min-height: 55px;
+  border-bottom: 1px solid #1235;
+  float: left;
+}
+
+.msg-list .msg-item .msg-left {
+  width: 40px;
+  height: 40px;
+  float: left;
+  padding: 5px 10px;
+}
+
+.msg-list .msg-item .msg-left image {
+  max-height: 100%;
+  max-width: 100%;
+  border-radius: 50px;
+}
+
+.msg-list .msg-item .msg-right {
+  width: calc(100% - 90px);
+  height: calc(100% - 20px);
+  padding: 5px 10px;
+  float: left;
+}
+
+.msg-list .msg-item .msg-right .msg-right-top {
+  width: 100%;
+  height: 50%;
+  float: left;
+  font-size: 32rpx;
+}
+
+.msg-list .msg-item .msg-right .msg-right-bottom {
+  width: 100%;
+  float: left;
+}
+
+.msg-list .msg-item .msg-right .msg-right-bottom text {
+  width: 100%;
+  height: 25px;
+  font-size: 26rpx;
+  line-height: 25px;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  float: left;
+}

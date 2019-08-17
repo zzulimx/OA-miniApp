@@ -1,0 +1,62 @@
+{
+  "pages": [
+    "pages/index/index",
+    "pages/logs/logs",
+    "pages/mine/mine",
+    "pages/forum/forum",
+    "pages/workbench/workbench",
+    "pages/contact/contact",
+    "pages/schedule/schedule",
+    "pages/journal/journal",
+    "pages/authorization/authorization",
+    "pages/myagent/myagent",
+    "pages/login/login",
+    "pages/conference/conference",
+    "pages/conferencedetail/conferencedetail"
+  ],
+  "window": {
+    "backgroundTextStyle": "light",
+    "navigationBarBackgroundColor": "#fff",
+    "navigationBarTitleText": "skyeye企业版OA",
+    "navigationBarTextStyle": "black"
+  },
+  "tabBar": {
+    "color": "#bfbfbf",
+    "selectedColor": "#f93608",
+    "borderStyle": "black",
+    "backgroundColor": "#ffffff",
+    "list": [
+      {
+        "selectedIconPath": "images/icon_message_press.png",
+        "iconPath": "images/icon_message.png",
+        "pagePath": "pages/index/index",
+        "text": "消息"
+      },
+      {
+        "selectedIconPath": "images/icon_index_press.png",
+        "iconPath": "images/icon_index.png",
+        "pagePath": "pages/contact/contact",
+        "text": "通讯录"
+      },
+      {
+        "selectedIconPath": "images/icon_forum_press.png",
+        "iconPath": "images/icon_forum.png",
+        "pagePath": "pages/forum/forum",
+        "text": "论坛"
+      },
+      {
+        "selectedIconPath": "images/icon_forum_press.png",
+        "iconPath": "images/icon_forum.png",
+        "pagePath": "pages/workbench/workbench",
+        "text": "工作台"
+      },
+      {
+        "selectedIconPath": "images/icon_mine_press.png",
+        "iconPath": "images/icon_mine.png",
+        "pagePath": "pages/mine/mine",
+        "text": "我的"
+      }
+    ]
+  },
+  "sitemapLocation": "sitemap.json"
+}

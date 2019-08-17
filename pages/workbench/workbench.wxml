@@ -1,0 +1,17 @@
+<view class="container">
+  <block wx:for="{{menuList}}" wx:for-item="bean">
+    <view class="service">
+      <view class="service-title">{{bean.name}}</view>
+      <view class="icons">
+        <block wx:for="{{bean.list}}" wx:for-item="item">
+          <view class="user-item" bindtap="toMyMore" data-url="{{item.url}}">
+            <button open-type="{{item.url}}" class="button">
+              <image src="{{item.img}}" class="list-icon"></image>
+              <view class="list-title">{{item.title}}</view>
+            </button>
+          </view>
+        </block>
+      </view>
+    </view>
+  </block>
+</view>

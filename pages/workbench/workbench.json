@@ -1,0 +1,6 @@
+{
+  "usingComponents": {},
+  "navigationBarBackgroundColor": "#62c9f8",
+  "navigationBarTitleText": "工作台",
+  "enablePullDownRefresh": true
+}

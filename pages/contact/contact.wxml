@@ -1,0 +1,113 @@
+<view class="container">
+
+  <view class="weui-search-bar">
+    <view class="weui-search-bar__form" bindtap="searchMation">
+      <view class="weui-search-bar__box">
+        <icon class="weui-icon-search_in-box" type="search" size="14"></icon>
+        <input type="text" class="weui-search-bar__input" placeholder="搜索" />
+      </view>
+    </view>
+  </view>
+
+  <view class="message__list">
+    <block wx:for="{{messages}}" wx:for-index="idx">
+      <view class="item-tree" bindtap="groupClick" data-id='{{item.id}}' data-index='{{idx}}'>
+        <image src="{{item.icon}}" class="tree_image" />
+        <text class="title">{{item.groupName}}</text>
+        <text class="time">{{item.number}}</text>
+      </view>
+      <view class="msg-list" wx:if="{{item.showList==1}}">
+        <view class="msg-item">
+          <view class="msg-left">
+            <image src='../../images/icon_attendance.png'></image>
+          </view>
+          <view class="msg-right">
+            <view class="msg-right-top">小明</view>
+            <view class="msg-right-bottom">
+              <text>去问我去饿我去饿王企鹅王企鹅完全额为全额我 </text>
+            </view>
+          </view>
+        </view>
+        <view class="msg-item">
+          <view class="msg-left">
+            <image src='../../images/icon_attendance.png'></image>
+          </view>
+          <view class="msg-right">
+            <view class="msg-right-top">小明</view>
+            <view class="msg-right-bottom">
+              <text>1232132132112321312321qwewqewewqe </text>
+            </view>
+          </view>
+        </view>
+        <view class="msg-item">
+          <view class="msg-left">
+            <image src='../../images/icon_attendance.png'></image>
+          </view>
+          <view class="msg-right">
+            <view class="msg-right-top">小明</view>
+            <view class="msg-right-bottom">
+              <text>1232132132112321312321qwewqewewqe </text>
+            </view>
+          </view>
+        </view>
+        <view class="msg-item">
+          <view class="msg-left">
+            <image src='../../images/icon_attendance.png'></image>
+          </view>
+          <view class="msg-right">
+            <view class="msg-right-top">小明</view>
+            <view class="msg-right-bottom">
+              <text>1232132132112321312321qwewqewewqe </text>
+            </view>
+          </view>
+        </view>
+        <view class="msg-item">
+          <view class="msg-left">
+            <image src='../../images/icon_attendance.png'></image>
+          </view>
+          <view class="msg-right">
+            <view class="msg-right-top">小明</view>
+            <view class="msg-right-bottom">
+              <text>1232132132112321312321qwewqewewqe </text>
+            </view>
+          </view>
+        </view>
+        <view class="msg-item">
+          <view class="msg-left">
+            <image src='../../images/icon_attendance.png'></image>
+          </view>
+          <view class="msg-right">
+            <view class="msg-right-top">小明</view>
+            <view class="msg-right-bottom">
+              <text>1232132132112321312321qwewqewewqe </text>
+            </view>
+          </view>
+        </view>
+        <view class="msg-item">
+          <view class="msg-left">
+            <image src='../../images/icon_attendance.png'></image>
+          </view>
+          <view class="msg-right">
+            <view class="msg-right-top">小明</view>
+            <view class="msg-right-bottom">
+              <text>1232132132112321312321qwewqewewqe </text>
+            </view>
+          </view>
+        </view>
+        <view class="msg-item">
+          <view class="msg-left">
+            <image src='../../images/icon_attendance.png'></image>
+          </view>
+          <view class="msg-right">
+            <view class="msg-right-top">小明</view>
+            <view class="msg-right-bottom">
+              <text>1232132132112321312321qwewqewewqe </text>
+            </view>
+          </view>
+        </view>
+      </view>
+      <view class="line-narrow"></view>
+    </block>
+  </view>
+
+</view>

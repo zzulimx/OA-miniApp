@@ -1,0 +1,20 @@
+<view class="container">
+  <view class="mine">
+    <image bindtap="bindViewTap" class="userinfo-avatar" src="{{userInfo.avatarUrl}}" mode="cover"></image>
+    <text class="userinfo-nickname">{{userInfo.nickName}}</text>
+  </view>
+
+  <view class="service">
+    <view class="service-title">我的服务</view>
+    <view class="icons">
+      <block wx:for="{{list}}" wx:key="{{index}}">
+        <view class="user-item" bindtap="toMyMore" data-url="{{item.url}}">
+          <button open-type="{{item.url}}" class="button">
+            <image src="{{item.img}}" class="list-icon"></image>
+            <view class="list-title">{{item.title}}</view>
+          </button>
+        </view>
+      </block>
+    </view>
+  </view>
+</view>

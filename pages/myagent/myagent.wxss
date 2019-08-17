@@ -1,0 +1,32 @@
+page {
+  height: 100%;
+  width: 100%;
+}
+
+.container {
+  height: 100%;
+  background-color: #fcfbfb;
+}
+
+page, .page, .page__bd {
+  height: 100%;
+}
+
+.page__bd {
+  padding-bottom: 0;
+}
+
+.weui-navbar {
+  position: fixed;
+  background-color: #fff;
+}
+
+.weui-tab__panel {
+  height: calc(100% - 51px);
+  margin-top: 51px;
+  padding-top: 0px;
+}
+
+.weui-tab__content {
+  text-align: center;
+}

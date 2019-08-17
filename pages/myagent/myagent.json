@@ -1,0 +1,6 @@
+{
+  "usingComponents": {},
+  "navigationBarBackgroundColor": "#62c9f8",
+  "navigationBarTitleText": "我的代办",
+  "enablePullDownRefresh": true
+}
