@@ -10,9 +10,9 @@
     "pages/journal/journal",
     "pages/authorization/authorization",
     "pages/myagent/myagent",
-    "pages/login/login",
     "pages/conference/conference",
-    "pages/conferencedetail/conferencedetail"
+    "pages/conferencedetail/conferencedetail",
+    "pages/binglogin/binglogin"
   ],
   "window": {
     "backgroundTextStyle": "light",

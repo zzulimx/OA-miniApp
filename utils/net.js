@@ -26,14 +26,15 @@ function request(method, requestHandler) {
     var params = requestHandler.params || {};
     var userToken = wx.getStorageSync('userToken');
     wx.request({
-      url: `http://localhost:8081/${API_URL}`,
+      url: `http://localhost:8888/${API_URL}`,
       data: params,
       method: method,
       header: {
-        'content-type': 'application/json',
+        'content-type': 'application/x-www-form-urlencoded;charset=UTF-8',
         'userToken': userToken
       }, // 设置请求的 header  
       success: function (res) {
+        console.log(res);
         var SESSIONSTATUS = res.header.SESSIONSTATUS;
         if (SESSIONSTATUS != '' && SESSIONSTATUS != null && SESSIONSTATUS != 'undefined') {
           if (SESSIONSTATUS == "TIMEOUT") { //超时跳转
