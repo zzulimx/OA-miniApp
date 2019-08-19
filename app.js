@@ -33,7 +33,7 @@ App({
                 obj.openid = mation.data.openid;
                 obj.expires_in = Date.now() + mation.data.expires_in;
                 wx.setStorageSync(that.userKey, obj); //存储openid  
-                that.judgeUser();
+                // that.judgeUser();
               }
             });
           } else {
