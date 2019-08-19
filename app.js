@@ -14,6 +14,7 @@ App({
       wx.reLaunch({
         url: "pages/authorization/authorization"
       });
+      return;
     }
     //获取微信用户在缓存中存储的openid信息，判断是否正确的获取微信用户的信息
     var user = wx.getStorageSync(that.userKey) || {};

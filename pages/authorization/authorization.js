@@ -8,7 +8,7 @@ Page({
   },
 
   onLoad: function () {
-    
+    console.log(app)
   },
 
   getUserInfo: function (e) {
