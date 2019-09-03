@@ -127,6 +127,7 @@ Page({
   // 上拉加载
   loadRecord:function(){
     //  console.log("top");
+    // 向后台请求数据，有则加载，无则不显示
       this.setData({
         isload:true
       })

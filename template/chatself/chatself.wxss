@@ -41,4 +41,5 @@
 }
 .item_right .chat_box{
   overflow: hidden;
+  padding-top: 0;
 }
