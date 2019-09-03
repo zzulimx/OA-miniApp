@@ -1,4 +1,5 @@
 <!--index.wxml-->
+<import src="../../template/msglist/msglist.wxml" />
 <view class="container">
   <view class="weui-search-bar">
     <view class="weui-search-bar__form" bindtap="searchMation">
@@ -8,7 +9,6 @@
       </view>
     </view>
   </view>
-
   <view class="my-message" bindtap="myAgent">
     <view class="message-left">
       <image src='../../images/icon_attendance.png'></image>
@@ -27,94 +27,9 @@
   </view>
 
   <view class="msg-list">
-    <view class="msg-item" catchtap="toChat">
-      <view class="msg-left">
-        <image src='../../images/icon_attendance.png'></image>
-      </view>
-      <view class="msg-right">
-        <view class="msg-right-top">小明</view>
-        <view class="msg-right-bottom">
-          <text>去问我去饿我去饿王企鹅王企鹅完全额为全额我 </text>
-        </view>
-      </view>
-    </view>
-     <view class="msg-item" catchtap="toChat">
-      <view class="msg-left">
-        <image src='../../images/icon_attendance.png'></image>
-      </view>
-      <view class="msg-right">
-        <view class="msg-right-top">小明</view>
-        <view class="msg-right-bottom">
-          <text>1232132132112321312321qwewqewewqe </text>
-        </view>
-      </view>
-    </view>
-     <view class="msg-item" catchtap="toChat">
-      <view class="msg-left">
-        <image src='../../images/icon_attendance.png'></image>
-      </view>
-      <view class="msg-right">
-        <view class="msg-right-top">小明</view>
-        <view class="msg-right-bottom">
-          <text>1232132132112321312321qwewqewewqe </text>
-        </view>
-      </view>
-    </view>
-     <view class="msg-item" catchtap="toChat">
-      <view class="msg-left">
-        <image src='../../images/icon_attendance.png'></image>
-      </view>
-      <view class="msg-right">
-        <view class="msg-right-top">小明</view>
-        <view class="msg-right-bottom">
-          <text>1232132132112321312321qwewqewewqe </text>
-        </view>
-      </view>
-    </view>
-     <view class="msg-item" catchtap="toChat">
-      <view class="msg-left">
-        <image src='../../images/icon_attendance.png'></image>
-      </view>
-      <view class="msg-right">
-        <view class="msg-right-top">小明</view>
-        <view class="msg-right-bottom">
-          <text>1232132132112321312321qwewqewewqe </text>
-        </view>
-      </view>
-    </view>
-    <view class="msg-item" catchtap="toChat">
-      <view class="msg-left">
-        <image src='../../images/icon_attendance.png'></image>
-      </view>
-      <view class="msg-right">
-        <view class="msg-right-top">小明</view>
-        <view class="msg-right-bottom">
-          <text>1232132132112321312321qwewqewewqe </text>
-        </view>
-      </view>
-    </view>
-     <view class="msg-item" catchtap="toChat">
-      <view class="msg-left">
-        <image src='../../images/icon_attendance.png'></image>
-      </view>
-      <view class="msg-right">
-        <view class="msg-right-top">小明</view>
-        <view class="msg-right-bottom">
-          <text>1232132132112321312321qwewqewewqe </text>
-        </view>
-      </view>
-    </view>
-     <view class="msg-item" catchtap="toChat">
-      <view class="msg-left">
-        <image src='../../images/icon_attendance.png'></image>
-      </view>
-      <view class="msg-right">
-        <view class="msg-right-top">小明</view>
-        <view class="msg-right-bottom">
-          <text>1232132132112321312321qwewqewewqe </text>
-        </view>
-      </view>
-    </view>
+    <block wx:for="{{msglist}}" wx:for-index="idx" >
+      <template is="msgitem"  data="{{item:item,idx:idx}}"></template>
+    </block>
   </view>
 
 </view>

@@ -93,6 +93,8 @@ Page({
 
   onLoad: function(options) {
     // 页面初始化 options为页面跳转所带来的参数
+    // 初次打开 导航栏加载 
+    wx.showNavigationBarLoading() 
   },
 
   //搜索
@@ -129,7 +131,42 @@ Page({
     wx.navigateTo({
       url: '../chat/chat',
     })
-  }
-  
+  },
+  // 监听用户下拉动作
+  onPullDownRefresh: function () {
+    var that = this;
+    wx.showNavigationBarLoading() //在标题栏中显示加载
 
+    //模拟加载
+    setTimeout(function () {
+      // complete
+      wx.hideNavigationBarLoading() //完成停止加载
+      wx.stopPullDownRefresh() //停止下拉刷新
+      let newlist = [{
+        id: that.data.messages.length+1,
+        groupName: "三年情" + that.data.messages.length +1,
+        icon: "/images/close.png",
+        number: "0/10",
+        showList: 0,
+      }];
+         that.setData({
+           messages:that.data.messages.concat(newlist)
+         })
+      wx.showToast({
+        title: '加载完成',
+        icon: 'success',
+        duration: 1500
+      });
+    }, 1000);
+  },
+  
+  /**
+     * 生命周期函数--监听页面初次渲染完成
+     */
+  onReady: function () {
+    // 渲染完成 停止加载
+    setTimeout(function () {
+      wx.hideNavigationBarLoading()
+    }, 1000)
+  } 
 })

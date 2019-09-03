@@ -1,4 +1,7 @@
 {
   "navigationBarTitleText": "通讯录",
-  "navigationBarBackgroundColor": "#62c9f8"
+  "navigationBarBackgroundColor": "#62c9f8",
+  "enablePullDownRefresh":true,
+  "backgroundColor":"#fff",
+  "backgroundTextStyle":"dark"
 }

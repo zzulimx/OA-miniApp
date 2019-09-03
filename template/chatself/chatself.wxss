@@ -5,6 +5,8 @@
   width: 100%;
   top: 10px;
   bottom: 10px;
+  padding-bottom: 20px;
+  padding-top: 0;
   overflow: hidden;
 }
 .item_right  .avatar_box{

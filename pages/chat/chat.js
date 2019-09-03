@@ -5,16 +5,15 @@ Page({
    * 页面的初始数据
    */
   data: {
-    waitSend:false,
-    voiceBtn:true,
-    inp_width:'64%',
-    icon_width: '20%',
-    voiceText:"按住 说话",
-    voiceBg:"#fff",
-    scrollto:0,
-    // scrollHeight:"1200px",
-    windowHeight:"600px",
-    isload:false,
+    waitSend:false,  //发送按钮显示/隐藏
+    voiceBtn:true,   //语音按钮
+    inp_width:'64%',  //输入框样式变化
+    icon_width: '20%',  //输入框右侧图标
+    voiceText:"按住 说话",  //语音标题
+    voiceBg:"#fff",   //语音按钮颜色
+    scrollto:0,   //聊天界面滑动
+    windowHeight:"600px",   //聊天界面高度
+    isload:false,  //加载按钮显示/隐藏
     chatContent:[
       {
         identity:"other",
@@ -130,7 +129,27 @@ Page({
     // 向后台请求数据，有则加载，无则不显示
       this.setData({
         isload:true
-      })
+      });
+     
+      // 测试代码
+      if(this.data.chatContent.length<21){
+        this.setData({
+          isload: true
+        });
+        var that = this;
+        setTimeout(function(){
+          let chatContentArr = that.data.chatContent;
+          let newlist = [...chatContentArr];
+          that.setData({
+            chatContent: that.data.chatContent.concat(newlist)
+          });
+
+        },800)
+      }else{
+        this.setData({
+          isload: false
+        });
+      }
   },
   // 语音
   switchVoice:function(){

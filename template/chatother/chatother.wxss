@@ -1,6 +1,6 @@
 /* 对方 */
 .chat_box{
-  padding-top: 10px;
+  /* padding-top: 10px; */
 }
 .chatItem.item_left{
   display: relative;

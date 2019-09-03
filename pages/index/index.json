@@ -1,5 +1,8 @@
 {
   "usingComponents": {},
   "navigationBarBackgroundColor": "#62c9f8",
-  "navigationBarTitleText": "主页"
+  "navigationBarTitleText": "主页",
+  "enablePullDownRefresh":true,
+  "backgroundColor": "#fff",
+  "backgroundTextStyle": "dark"
 }

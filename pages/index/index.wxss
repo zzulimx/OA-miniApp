@@ -77,56 +77,5 @@ page {
   color: rgba(247, 10, 10, 0.733);
 }
 
-.msg-list {
-}
+@import '../../template/msglist/msglist.wxss'
 
-.msg-list .msg-item {
-  width: calc(100% - 20px);
-  margin: 0px 10px;
-  min-height: 55px;
-  border-bottom: 1px solid #1235;
-  float: left;
-}
-
-.msg-list .msg-item .msg-left {
-  width: 40px;
-  height: 40px;
-  float: left;
-  padding: 5px 10px;
-}
-
-.msg-list .msg-item .msg-left image {
-  max-height: 100%;
-  max-width: 100%;
-  border-radius: 50px;
-}
-
-.msg-list .msg-item .msg-right {
-  width: calc(100% - 90px);
-  height: calc(100% - 20px);
-  padding: 5px 10px;
-  float: left;
-}
-
-.msg-list .msg-item .msg-right .msg-right-top {
-  width: 100%;
-  height: 50%;
-  float: left;
-  font-size: 32rpx;
-}
-
-.msg-list .msg-item .msg-right .msg-right-bottom {
-  width: 100%;
-  float: left;
-}
-
-.msg-list .msg-item .msg-right .msg-right-bottom text {
-  width: 100%;
-  height: 25px;
-  font-size: 26rpx;
-  line-height: 25px;
-  overflow: hidden;
-  text-overflow: ellipsis;
-  white-space: nowrap;
-  float: left;
-}

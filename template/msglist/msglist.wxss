@@ -1,0 +1,75 @@
+.msg-list .msg-item {
+  width: calc(100% - 20px);
+  margin: 0px 10px;
+  min-height: 55px;
+  border-bottom: 1px solid #1235;
+  float: left;
+}
+
+.msg-list .msg-item .msg-left {
+  width: 40px;
+  height: 40px;
+  float: left;
+  padding: 5px 10px;
+}
+
+.msg-list .msg-item .msg-left image {
+  max-height: 100%;
+  max-width: 100%;
+  border-radius: 50px;
+}
+
+.msg-list .msg-item .msg-right {
+  width: calc(100% - 90px);
+  height: calc(100% - 20px);
+  padding: 5px 10px;
+  float: left;
+}
+
+.msg-list .msg-item .msg-right .msg-right-top {
+  width: 100%;
+  height: 50%;
+  float: left;
+  font-size: 32rpx;
+}
+
+.msg-list .msg-item .msg-right .msg-right-top text.msg_time{
+   float: right;
+   margin-right: 0;
+   font-size:26rpx; 
+   color: gray;
+}
+.msg-list .msg-item .msg-right .msg-right-bottom {
+  width: 100%;
+  float: left;
+}
+
+.msg-list .msg-item .msg-right .msg-right-bottom text {
+  width: 90%;
+  height: 25px;
+  color: gray;
+  font-size: 26rpx;
+  line-height: 25px;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  float: left;
+}
+.msg-list .msg-item .msg-right .msg-right-bottom text.weui-badge{
+  width: unset;
+  height: unset;
+display: inline-block;
+padding: .15em .4em;
+min-width: 8px;
+border-radius: 18px;
+background-color: #fa5151;
+color: #fff;
+line-height: 1.2;
+text-align: center;
+font-size: 12px;
+vertical-align: middle;
+margin-right: 0;
+float: right;
+margin-top: 1.5px;
+}
+
