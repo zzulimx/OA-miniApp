@@ -11,7 +11,98 @@ Page({
     icon_width: '20%',
     voiceText:"按住 说话",
     voiceBg:"#fff",
-    currtime:"9月2号 下午3:00"
+    scrollto:0,
+    // scrollHeight:"1200px",
+    windowHeight:"600px",
+    isload:false,
+    chatContent:[
+      {
+        identity:"other",
+        currtime: "9月2号 下午3:00",
+        istime:true,
+        contentType:"text",
+        content:"你好！"
+      },{
+        identity: "self",
+        currtime: "9月2号 下午3:00",
+        istime: false,
+        contentType: "text",
+        content: "你好!"
+      },{
+        identity: "other",
+        currtime: "9月2号 下午3:00",
+        istime: false,
+        contentType: "text",
+        content: "你叫什么名字"
+      },{
+        identity: "self",
+        currtime: "9月2号 下午3:00",
+        istime: false,
+        contentType: "text",
+        content: "我是张三，你呢？"
+      },{
+        identity: "other",
+        currtime: "9月2号 下午3:00",
+        istime: false,
+        contentType: "text",
+        content: "我是李四"
+      },{
+        identity: "self",
+        currtime: "9月2号 下午3:00",
+        istime: false,
+        contentType: "text",
+        content: "很高兴认识你！"
+      },{
+        identity: "other",
+        currtime: "9月2号 下午3:00",
+        istime: false,
+        contentType: "text",
+        content: "我也是"
+      },
+      {
+        identity: "other",
+        currtime: "9月2号 下午3:00",
+        istime: false,
+        contentType: "text",
+        content: "你好！"
+      }, {
+        identity: "self",
+        currtime: "9月2号 下午3:00",
+        istime: false,
+        contentType: "text",
+        content: "你好!"
+      }, {
+        identity: "other",
+        currtime: "9月2号 下午3:00",
+        istime: false,
+        contentType: "text",
+        content: "你叫什么名字"
+      }, {
+        identity: "self",
+        currtime: "9月2号 下午3:00",
+        istime: false,
+        contentType: "text",
+        content: "我是张三，你呢？"
+      }, {
+        identity: "other",
+        currtime: "9月2号 下午3:00",
+        istime: false,
+        contentType: "text",
+        content: "我是李四"
+      }, {
+        identity: "self",
+        currtime: "9月2号 下午3:00",
+        istime: false,
+        contentType: "text",
+        content: "很高兴认识你！"
+      }, {
+        identity: "other",
+        currtime: "9月2号 下午3:00",
+        istime: false,
+        contentType: "text",
+        content: "我也是"
+      }
+    ]
     // keyboardHeight:0
   },
   // 切换按钮
@@ -32,6 +123,13 @@ Page({
         icon_width: '20%'
       })
      }
+  },
+  // 上拉加载
+  loadRecord:function(){
+    //  console.log("top");
+      this.setData({
+        isload:true
+      })
   },
   // 语音
   switchVoice:function(){
@@ -83,9 +181,16 @@ Page({
       let name = "小明"
       wx.setNavigationBarTitle({
         title:name,
-      })
-  },
+      });
 
+      // 获取当前窗口高度
+    let windowHeight = wx.getSystemInfoSync().windowHeight;
+    // 聊天记录滚动到底部
+    this.setData({
+      windowHeight:windowHeight-55+'px',
+      scrollto: windowHeight
+    })
+  },
   /**
    * 生命周期函数--监听页面初次渲染完成
    */
@@ -118,7 +223,7 @@ Page({
    * 页面相关事件处理函数--监听用户下拉动作
    */
   onPullDownRefresh: function () {
-
+   
   },
 
   /**

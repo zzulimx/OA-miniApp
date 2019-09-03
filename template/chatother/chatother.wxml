@@ -1,0 +1,13 @@
+<template name="chatother">
+   <view class="chatItem item_left " bindtap="touserinfo">
+     <block wx:if="{{item.istime}}">
+       <view class="timeTip"><text class="sendTime">{{item.currtime}}</text></view>
+     </block>
+     <view class="chat_box">
+       <view class="avatar_box"><image class="chat_avatar" src="../../images/avatar/avatar.jpg" ></image></view>
+      <view class="content_box">
+        <text class="chat_content">{{item.content}}</text>
+      </view>
+     </view>
+   </view>
+</template>  

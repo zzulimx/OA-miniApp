@@ -1,100 +1,29 @@
 <!--pages/chat/chat.wxml-->
-
+<import src="../../template/chatother/chatother.wxml" />
+<import src="../../template/chatself/chatself.wxml" />
 <!-- 聊天内容 -->
+<scroll-view scroll-y="true" class="chat_scroll" scroll-top="{{scrollto}}" style="height:{{windowHeight}}" bindscrolltoupper="loadRecord">
 <view class="chatContent">
-<!-- 一条记录 -->
-   <view class="chatItem item_left" bindtap="touserinfo">
-     <block wx:if="{{true}}">
-       <view class="timeTip"><text class="sendTime">{{currtime}}</text></view>
-     </block>
-     <view class="avatar_box"><image class="chat_avatar" src="../../images/avatar/avatar.jpg" ></image></view>
-      <view class="content_box">
-        <text class="chat_content">你好！</text>
+<!-- load recording -->
+<view class="load_icon">
+   <block wx:if="{{isload}}">
+        <view class="weui-loading__wrp">
+          <view class="weui-loading"></view>
       </view>
-   </view>
-   <view class="chatItem item_right"  bindtap="touserinfo">
-     <view class="avatar_box"><image class="chat_avatar" src="../../images/avatar/avatar2.jpg" ></image></view>
-      <view class="content_box">
-        <text class="chat_content">你好！</text>
-      </view>
-   </view>
-    <view class="chatItem item_left" bindtap="touserinfo">
-     <view class="avatar_box"><image class="chat_avatar" src="../../images/avatar/avatar.jpg" ></image></view>
-      <view class="content_box">
-        <text class="chat_content">你叫什么名字？</text>
-      </view>
-   </view>
-   <view class="chatItem item_right"  bindtap="touserinfo">
-     <view class="avatar_box"><image class="chat_avatar" src="../../images/avatar/avatar2.jpg" ></image></view>
-      <view class="content_box">
-        <text class="chat_content">我是张三</text>
-      </view>
-   </view>
-   
-
-     <view class="chatItem item_left" bindtap="touserinfo">
-     <view class="avatar_box"><image class="chat_avatar" src="../../images/avatar/avatar.jpg" ></image></view>
-      <view class="content_box">
-        <text class="chat_content">我是李四</text>
-      </view>
-   </view>
-   <view class="chatItem item_right"  bindtap="touserinfo">
-     <view class="avatar_box"><image class="chat_avatar" src="../../images/avatar/avatar2.jpg" ></image></view>
-      <view class="content_box">
-        <text class="chat_content">原来如此，幸会幸会！</text>
-      </view>
-   </view>
-
-     <view class="chatItem item_left" bindtap="touserinfo">
-     <view class="avatar_box"><image class="chat_avatar" src="../../images/avatar/avatar.jpg" ></image></view>
-      <view class="content_box">
-        <text class="chat_content">哈哈哈</text>
-      </view>
-   </view>
-   <view class="chatItem item_right">
-     <view class="avatar_box"><image class="chat_avatar" src="../../images/avatar/avatar2.jpg" ></image></view>
-      <view class="content_box">
-        <text class="chat_content">认识你我也很开心</text>
-      </view>
-   </view>
-    <view class="chatItem item_left" bindtap="touserinfo">
-     <view class="avatar_box"><image class="chat_avatar" src="../../images/avatar/avatar.jpg" ></image></view>
-      <view class="content_box">
-        <text class="chat_content">你好！</text>
-      </view>
-   </view>
-  <view class="chatItem item_right"  bindtap="touserinfo">
-     <view class="avatar_box"><image class="chat_avatar" src="../../images/avatar/avatar2.jpg" ></image></view>
-      <view class="content_box">
-        <text class="chat_content">你好！</text>
-      </view>
-   </view>
-
-    <view class="chatItem item_left" bindtap="touserinfo">
-     <view class="avatar_box"><image class="chat_avatar" src="../../images/avatar/avatar.jpg" ></image></view>
-      <view class="content_box">
-        <text class="chat_content">你好！</text>
-      </view>
-   </view>
-   <view class="chatItem item_right">
-     <view class="avatar_box"><image class="chat_avatar" src="../../images/avatar/avatar2.jpg" ></image></view>
-      <view class="content_box">
-        <text class="chat_content">你好！</text>
-      </view>
-   </view>
-    <view class="chatItem item_left" bindtap="touserinfo">
-     <view class="avatar_box"><image class="chat_avatar" src="../../images/avatar/avatar.jpg" ></image></view>
-      <view class="content_box">
-        <text class="chat_content">你好！</text>
-      </view>
-   </view>
-    <view class="chatItem item_right"  bindtap="touserinfo">
-     <view class="avatar_box"><image class="chat_avatar" src="../../images/avatar/avatar2.jpg" ></image></view>
-      <view class="content_box">
-        <text class="chat_content">你好！</text>
-      </view>
-   </view>
+   </block>
 </view>
+ <block wx:for="{{chatContent}}">
+   <block wx:if="{{item.identity==='other'}}">
+     <template is="chatother" data="{{item}}">
+      </template>
+   </block>
+  <block wx:else>
+       <template is="chatself" data="{{item}}">
+      </template>
+     </block>
+ </block> 
+</view>
+</scroll-view>
 <!-- 输入框 -->
 <view class="chatInpWrapper">
   <view class="inputBar">

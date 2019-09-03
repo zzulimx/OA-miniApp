@@ -1,0 +1,44 @@
+/* 自己 */
+
+.chatItem.item_right{
+  position: relative;
+  width: 100%;
+  top: 10px;
+  bottom: 10px;
+  overflow: hidden;
+}
+.item_right  .avatar_box{
+   float: right; 
+   display: inline-block;
+   margin-right: 10px;
+}
+.item_right  .chat_avatar{
+  display: inline-block;
+  width: 35px;
+  height: 35px;
+  border-radius: 3px;
+}
+.item_right .content_box{
+  float: right;
+  margin-right: 10px;
+  display: inline-block;
+  padding: 5px;
+  min-height: 25px;
+  border-radius: 5px;
+  font-size: 14px;
+  line-height: 25px;
+  vertical-align: top;
+  background-color: #62c9f8;
+  max-width: 250px;
+}
+/* 时间 */
+.timeTip{
+  width: 100%;
+  padding-bottom:10px;
+  text-align: center;
+  font-size: 14px;
+  color: gray;
+}
+.item_right .chat_box{
+  overflow: hidden;
+}

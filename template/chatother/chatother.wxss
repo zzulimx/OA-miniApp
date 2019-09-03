@@ -1,0 +1,41 @@
+/* 对方 */
+.chat_box{
+  padding-top: 10px;
+}
+.chatItem.item_left{
+  display: relative;
+  width: 100%;
+  top: 10px;
+  bottom: 10px;
+  height: auto;
+}
+.item_left  .avatar_box{
+  display: inline-block;
+  margin-left: 10px;
+}
+.item_left  .chat_avatar{
+  width: 35px;
+  height: 35px;
+  border-radius: 3px;
+}
+.item_left .content_box{
+  margin-left: 10px;
+  display: inline-block;
+  padding: 5px;
+  min-height: 25px;
+  border-radius: 5px;
+  font-size: 14px;
+  line-height: 25px;
+  vertical-align: top;
+  background-color: #62c9f8;
+  max-width: 250px;
+}
+/* 时间 */
+.timeTip{
+  width: 100%;
+  padding-top: 10px;
+  padding-bottom:10px;
+  text-align: center;
+  font-size: 14px;
+  color: gray;
+}

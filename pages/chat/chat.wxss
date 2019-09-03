@@ -92,82 +92,19 @@ page{
 } */
 /* 聊天界面 */
 .chatContent{
-  padding-bottom: 55px;
   position: relative;
   width: 100%;
   z-index: 1;
-  padding-top: 10px;
 }
-/* 对方 */
 .chatItem{
   padding: 10px 0; 
 }
-.chatItem.item_left{
-  display: relative;
-  width: 100%;
-  min-height: 35px;
-  top: 10px;
-  bottom: 10px;
+.chat_scroll{
+    padding-bottom: 55px;
 }
-.item_left  .avatar_box{
-  display: inline-block;
-  position: absolute;
-  left: 10px;
+.weui-loading__wrp{
+  text-align:center;
 }
-.item_left  .chat_avatar{
-  width: 35px;
-  height: 35px;
-  border-radius: 3px;
-}
-.item_left .content_box{
-  position: absolute;
-  left: 55px;
-display: inline-block;
-padding: 5px;
-min-height: 25px;
-border-radius: 5px;
-font-size: 14px;
-line-height: 25px;
-vertical-align: top;
-background-color: #62c9f8;
-max-width: 250px;
-}
-/* 自己 */
-.chatItem.item_right{
-  position: relative;
-  width: 100%;
-  top: 10px;
-  bottom: 10px;
-  min-height: 55px;
-}
-.item_right  .avatar_box{
-  position: absolute;
-  right: 10px;
-  display: inline-block;
-}
-.item_right  .chat_avatar{
-  width: 35px;
-  height: 35px;
-  border-radius: 3px;
-}
-.item_right .content_box{
-  position: absolute;
-  right: 55px;
-display: inline-block;
-padding: 5px;
-min-height: 25px;
-border-radius: 5px;
-font-size: 14px;
-line-height: 25px;
-vertical-align: top;
-background-color: #62c9f8;
-max-width: 250px;
-}
-/* 时间 */
-.timeTip{
-  width: 100%;
-  padding-bottom:10px;
-  text-align: center;
-  font-size: 14px;
-  color: gray;
-}
+
+@import '../../template/chatother/chatother.wxss';
+@import '../../template/chatself/chatself.wxss'
