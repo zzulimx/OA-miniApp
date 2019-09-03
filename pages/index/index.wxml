@@ -27,7 +27,7 @@
   </view>
 
   <view class="msg-list">
-    <view class="msg-item">
+    <view class="msg-item" catchtap="toChat">
       <view class="msg-left">
         <image src='../../images/icon_attendance.png'></image>
       </view>
@@ -38,7 +38,7 @@
         </view>
       </view>
     </view>
-    <view class="msg-item">
+     <view class="msg-item" catchtap="toChat">
       <view class="msg-left">
         <image src='../../images/icon_attendance.png'></image>
       </view>
@@ -49,7 +49,7 @@
         </view>
       </view>
     </view>
-    <view class="msg-item">
+     <view class="msg-item" catchtap="toChat">
       <view class="msg-left">
         <image src='../../images/icon_attendance.png'></image>
       </view>
@@ -60,7 +60,7 @@
         </view>
       </view>
     </view>
-    <view class="msg-item">
+     <view class="msg-item" catchtap="toChat">
       <view class="msg-left">
         <image src='../../images/icon_attendance.png'></image>
       </view>
@@ -71,7 +71,7 @@
         </view>
       </view>
     </view>
-    <view class="msg-item">
+     <view class="msg-item" catchtap="toChat">
       <view class="msg-left">
         <image src='../../images/icon_attendance.png'></image>
       </view>
@@ -82,7 +82,7 @@
         </view>
       </view>
     </view>
-    <view class="msg-item">
+    <view class="msg-item" catchtap="toChat">
       <view class="msg-left">
         <image src='../../images/icon_attendance.png'></image>
       </view>
@@ -93,7 +93,7 @@
         </view>
       </view>
     </view>
-    <view class="msg-item">
+     <view class="msg-item" catchtap="toChat">
       <view class="msg-left">
         <image src='../../images/icon_attendance.png'></image>
       </view>
@@ -104,7 +104,7 @@
         </view>
       </view>
     </view>
-    <view class="msg-item">
+     <view class="msg-item" catchtap="toChat">
       <view class="msg-left">
         <image src='../../images/icon_attendance.png'></image>
       </view>

@@ -1,0 +1,173 @@
+/* pages/chat/chat.wxss */
+page{
+  background-color: rgb(238, 238, 238);
+}
+/* 输入框 */
+.chatInpWrapper{
+  width: 100%;
+  position: fixed;
+  top: auto;
+  bottom: 0;
+  height: 45px;
+  padding: 5px;
+  background-color: rgb(243, 243, 243);
+  z-index: 99;
+}
+.button-sp-area{
+  padding-left: 10px;
+  padding-top: 5px;
+}
+.weui-search-bar__box {
+   padding: 0; 
+}
+.weui-search-bar__input{
+  padding-left: 5px;
+  background-color: #fff;
+  /* width: 50%; */
+  /* width: 65%; */
+  display: inline-block;
+  height: 35px;
+  border-radius:5px;
+  transition: width .3s ease;
+  /* 光标颜色真机无效果 */
+  caret-color: #62c9f8;
+}
+
+.icon_part{
+  display: inline-block;
+  /* width: 28%; */
+  /* width: 20%; */
+  padding-left:10px;
+  height: 35px;
+  position: relative;
+  top: -3px;
+  transition: width .3s ease;
+}
+.icon_part .icon-Smile,.icon_part .icon-add1{
+  font-size: 25px;
+  line-height: 30px;
+  position: absolute;
+  top: 6px;
+}
+.icon_part .icon-add1{
+  top: 0px;
+  left: 0px;
+  z-index: 0;
+}
+.add_send{
+  position: absolute;
+  left: 40px;
+  top: 6px;
+}
+.voiceBtn{
+  display: inline-block;
+}
+.voiceBtn .iconfont{
+  font-size: 25px;
+  width: 10%;
+  height: 35px;
+  position: relative;
+  top: -6px;
+  padding: 5px
+}
+.clickVoice{
+  display: inline-block;
+  width: 64%;
+  padding-left: 5px;
+  height: 35px;
+  border-radius: 5px;
+  /* background-color: #fff; */
+  text-align: center;
+  line-height: 35px;
+  font-size: 14px;
+  position: relative;
+  top: -12px;
+}
+/* .emojiWrapper{
+  width: 100%;
+  height: 50px;
+  position: absolute;
+  bottom: 0px;
+  background-color: rgb(240, 240, 240);
+} */
+/* 聊天界面 */
+.chatContent{
+  padding-bottom: 55px;
+  position: relative;
+  width: 100%;
+  z-index: 1;
+  padding-top: 10px;
+}
+/* 对方 */
+.chatItem{
+  padding: 10px 0; 
+}
+.chatItem.item_left{
+  display: relative;
+  width: 100%;
+  min-height: 35px;
+  top: 10px;
+  bottom: 10px;
+}
+.item_left  .avatar_box{
+  display: inline-block;
+  position: absolute;
+  left: 10px;
+}
+.item_left  .chat_avatar{
+  width: 35px;
+  height: 35px;
+  border-radius: 3px;
+}
+.item_left .content_box{
+  position: absolute;
+  left: 55px;
+display: inline-block;
+padding: 5px;
+min-height: 25px;
+border-radius: 5px;
+font-size: 14px;
+line-height: 25px;
+vertical-align: top;
+background-color: #62c9f8;
+max-width: 250px;
+}
+/* 自己 */
+.chatItem.item_right{
+  position: relative;
+  width: 100%;
+  top: 10px;
+  bottom: 10px;
+  min-height: 55px;
+}
+.item_right  .avatar_box{
+  position: absolute;
+  right: 10px;
+  display: inline-block;
+}
+.item_right  .chat_avatar{
+  width: 35px;
+  height: 35px;
+  border-radius: 3px;
+}
+.item_right .content_box{
+  position: absolute;
+  right: 55px;
+display: inline-block;
+padding: 5px;
+min-height: 25px;
+border-radius: 5px;
+font-size: 14px;
+line-height: 25px;
+vertical-align: top;
+background-color: #62c9f8;
+max-width: 250px;
+}
+/* 时间 */
+.timeTip{
+  width: 100%;
+  padding-bottom:10px;
+  text-align: center;
+  font-size: 14px;
+  color: gray;
+}

@@ -1,0 +1,47 @@
+<view class="page">
+    <view class="page__hd">
+       <view class="weui-cell">
+                <view class="weui-cell__hd" style="position: relative;margin-right: 10px;">
+                    <image src="../../images/avatar/avatar.jpg" style="width: 50px; height: 50px; display: block"/>
+                </view>
+                <view class="weui-cell__bd">
+                    <view  style="font-size: 16px;color: #000;font-weight:600">张三</view>
+                    <view style="font-size: 13px;color: #888888;">昵称：像风向自由</view>
+                    <view style="font-size: 13px;color: #888888;">帐号：12345678</view>
+                </view>
+            </view>
+    </view>
+    <view class="page__bd">
+      <view class="weui-cells weui-cells_after-title tab_top" catchtap="remarksSet">
+            <view class="weui-cell weui-cell_access">
+                <view class="weui-cell__bd">设置备注</view>
+                <view class="weui-cell__ft weui-cell__ft_in-access" style="font-size: 0">
+                </view>
+            </view>
+        </view>
+        <view class="weui-cells weui-cells_after-title tab_bottom">
+            <view class="weui-cell weui-cell_access">
+                <view class="weui-cell__bd">
+                    <view style="display: inline-block; vertical-align: middle">分组</view>
+                </view>
+                <view class="weui-cell__ft weui-cell__ft_in-access"></view>
+            </view>
+            <view class="weui-cell weui-cell_access">
+                <view class="weui-cell__bd">
+                    <view style="display: inline-block; vertical-align: middle">更多信息</view>
+                </view>
+                <view class="weui-cell__ft weui-cell__ft_in-access"></view>
+            </view>
+        </view>
+    </view>
+
+  <view class="weui-panel weui-panel_access">
+                <view class="weui-media-box weui-media-box_text operateTitle" >
+                   发消息
+                </view>
+                 <view class="weui-media-box weui-media-box_text operateTitle">
+                   打电话
+                </view>
+  </view>
+
+</view>

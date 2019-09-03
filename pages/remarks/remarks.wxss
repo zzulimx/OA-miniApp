@@ -1,0 +1,11 @@
+/* pages/remarks/remarks.wxss */
+page{
+  background-color: #eee;
+}
+.weui-cell{
+  padding: 0 15px;
+  font-size: 16px;
+}
+.weui-input::placeholder{
+  font-size: 16px;
+}

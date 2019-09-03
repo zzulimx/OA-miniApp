@@ -122,6 +122,14 @@ Page({
         [cwIcon]: "/images/open.png"
       });
     }
+  },
+
+  // 点击用户聊天
+  toChat:function(){
+    wx.navigateTo({
+      url: '../chat/chat',
+    })
   }
+  
 
 })

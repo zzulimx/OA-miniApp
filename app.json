@@ -12,7 +12,10 @@
     "pages/myagent/myagent",
     "pages/conference/conference",
     "pages/conferencedetail/conferencedetail",
-    "pages/binglogin/binglogin"
+    "pages/binglogin/binglogin",
+    "pages/chat/chat",
+    "pages/userinfo/userinfo",
+    "pages/remarks/remarks"
   ],
   "window": {
     "backgroundTextStyle": "light",

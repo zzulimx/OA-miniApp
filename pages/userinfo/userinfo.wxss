@@ -1,0 +1,19 @@
+/* pages/userinfo/userinfo.wxss */
+page{
+  background-color: #eee;
+}
+.weui-cell{
+  background-color: #fff;
+}
+.tab_top{
+  margin-top: 1px;
+}
+.tab_bottom{
+ margin-top: 5px; 
+}
+.operateTitle{
+  text-align: center;
+  color: #1ca6e6;
+  font-size: 18px;
+  padding: 8px;
+}

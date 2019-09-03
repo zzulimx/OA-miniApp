@@ -48,6 +48,12 @@ Page({
     wx.navigateTo({
       url: '../myagent/myagent?type=' + e.currentTarget.dataset.type,
     });
+  },
+  // 点击用户聊天
+  toChat: function () {
+    wx.navigateTo({
+      url: '../chat/chat',
+    })
   }
 
 })
