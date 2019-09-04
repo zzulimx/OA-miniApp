@@ -15,7 +15,9 @@
     "pages/binglogin/binglogin",
     "pages/chat/chat",
     "pages/userinfo/userinfo",
-    "pages/remarks/remarks"
+    "pages/remarks/remarks",
+    "pages/file/file",
+    "pages/fileitem/fileitem"
   ],
   "window": {
     "backgroundTextStyle": "light",

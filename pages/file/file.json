@@ -1,0 +1,8 @@
+{
+  "usingComponents": {},
+  "navigationBarBackgroundColor": "#62c9f8",
+  "navigationBarTitleText": "文件管理",
+  "enablePullDownRefresh": true,
+  "backgroundColor": "#fff",
+  "backgroundTextStyle": "dark"
+}

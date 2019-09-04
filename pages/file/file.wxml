@@ -1,0 +1,133 @@
+<!--pages/file/file.wxml-->
+<view class="container">
+  <view class="page__bd">
+    <view class="weui-tab">
+      <view class="weui-navbar">
+        <block wx:for="{{tabs}}" wx:key="*this">
+          <view id="{{index}}" class="weui-navbar__item {{activeIndex == index ? 'weui-bar__item_on' : ''}}" bindtap="tabClick">
+            <view class="weui-navbar__title">{{item}}</view>
+          </view>
+        </block>
+        <view class="weui-navbar__slider" style="left: {{sliderLeft}}px; transform: translateX({{sliderOffset}}px); -webkit-transform: translateX({{sliderOffset}}px);"></view>
+      </view>
+      <swiper class="weui-tab__panel" duration="300" bindchange="swiperTab" current="{{activeIndex}}">
+        <swiper-item class="weui-tab__content" hidden="{{activeIndex != 0}}">
+          <view class="weui-tab__content">
+          
+          
+          <!-- 选项一的内容 -->
+<view class="weui-cells weui-cells_after-title">
+                    
+             <block wx:for="{{filelist}}">
+             <view data-idx="{{index}}" data-type="{{item.fileType}}" class="weui-cell weui-cell_access" hover-class="weui-cell_active" bindtap="tofileitem">
+                <view class="weui-cell__hd">
+                   <image src="{{item.icon}}" style="margin-right: 16px;vertical-align: middle;width:40px; height: 40px;"></image>
+                </view>
+               <view class="weui-cell__bd">
+                     <view class="item_top file_name">{{item.name}}</view>
+                     <block wx:if="{{item.fileType==='folder'}}">
+                      <view class="item_bottom file_num">{{item.data.length}}项</view>
+                     </block>
+                      <block wx:else>
+                      <view class="item_bottom file_num"><text class="create_time">{{item.createTime}}</text><text class="file_size">{{item.fileSize}}</text></view>
+                     </block>
+                </view>
+                 <view class="weui-cell__ft weui-cell__ft_in-access"></view>
+            </view>           
+             </block>
+            
+        </view> 
+
+
+          </view>
+        </swiper-item>
+
+        <swiper-item class="weui-tab__content" hidden="{{activeIndex != 1}}">
+          <view class="weui-tab__content">
+          
+          
+          <!-- 选项二的内容 -->
+          <!-- 选项一的内容 -->
+<view class="weui-cells weui-cells_after-title">
+                    
+             <block wx:for="{{filelist}}">
+             <view data-idx="{{index}}" data-type="{{item.fileType}}" class="weui-cell weui-cell_access" hover-class="weui-cell_active" bindtap="tofileitem">
+                <view class="weui-cell__hd">
+                   <image src="{{item.icon}}" style="margin-right: 16px;vertical-align: middle;width:40px; height: 40px;"></image>
+                </view>
+               <view class="weui-cell__bd">
+                     <view class="item_top file_name">{{item.name}}</view>
+                     <block wx:if="{{item.fileType==='folder'}}">
+                      <view class="item_bottom file_num">{{item.data.length}}项</view>
+                     </block>
+                      <block wx:else>
+                      <view class="item_bottom file_num"><text class="create_time">{{item.createTime}}</text><text class="file_size">{{item.fileSize}}</text></view>
+                     </block>
+                </view>
+                 <view class="weui-cell__ft weui-cell__ft_in-access"></view>
+            </view>           
+             </block>
+            
+        </view> 
+
+
+          </view>
+        </swiper-item>
+
+
+
+        <swiper-item class="weui-tab__content" hidden="{{activeIndex != 2}}">
+          <view class="weui-tab__content">
+          
+          <!-- 选项三的内容 -->
+                    <!-- 选项一的内容 -->
+<view class="weui-cells weui-cells_after-title">
+                    
+             <block wx:for="{{filelist}}">
+             <view data-idx="{{index}}" data-type="{{item.fileType}}" class="weui-cell weui-cell_access" hover-class="weui-cell_active" bindtap="tofileitem">
+                <view class="weui-cell__hd">
+                   <image src="{{item.icon}}" style="margin-right: 16px;vertical-align: middle;width:40px; height: 40px;"></image>
+                </view>
+               <view class="weui-cell__bd">
+                     <view class="item_top file_name">{{item.name}}</view>
+                     <block wx:if="{{item.fileType==='folder'}}">
+                      <view class="item_bottom file_num">{{item.data.length}}项</view>
+                     </block>
+                      <block wx:else>
+                      <view class="item_bottom file_num"><text class="create_time">{{item.createTime}}</text><text class="file_size">{{item.fileSize}}</text></view>
+                     </block>
+                </view>
+                 <view class="weui-cell__ft weui-cell__ft_in-access"></view>
+            </view>           
+             </block>
+            
+        </view> 
+          
+          
+          </view>
+        </swiper-item>
+      </swiper>
+    </view>
+  </view>
+</view>
+
+<view class="imgWrpper" wx:if="{{isImg}}" bindtap="imgOperate">
+    <view class="img_box">
+     <image src="{{imgSrc}}"></image>
+    </view>
+
+    <view class="toolBar">
+    <view class="tool_icon">
+     <view class="tool tool_share"><span class="icon iconfont icon-fenxiang"></span></view>
+<view class="tool tool_collect"><span  class="icon iconfont icon-collection"></span></view>
+    <view class="tool tool_edit"><span  class="icon iconfont icon-edit1"></span></view>
+   <view class="tool tool_delete"><span  class="icon iconfont icon-delete2"></span></view>
+    </view>
+    <view class="tool_title">
+ <view class="tool tool_share">分享</view>
+       <view class="tool tool_collect">收藏</view>
+        <view class="tool tool_edit">编辑</view>
+         <view class="tool tool_delete">删除</view>
+    </view>
+    </view>
+</view>

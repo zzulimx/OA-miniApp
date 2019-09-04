@@ -35,6 +35,11 @@ Page({
             img: '../../images/icon_notes.png',
             title: '笔记',
             url: ''
+          },
+          {
+            img: '../../images/icon_file.png',
+            title: '文件管理',
+            url: '../../pages/file/file'
           }
         ],
       },

@@ -1,0 +1,32 @@
+/* pages/fileitem/fileitem.wxss */
+.container .access_path{
+  width: 100%;
+  padding: 10px;
+  font-size: 30rpx;
+}
+.container .access_path .icon-arrow5{
+  color: gray;
+  font-size: 30rpx;
+  padding:0 5px;
+}
+.weui-cell.weui-cell_access .item_top{
+   text-align: left;
+}
+.weui-cell.weui-cell_access .item_bottom{
+   text-align: left;
+   font-size:26rpx; 
+   color: gray;
+ }
+ .container .empty{
+     text-align: center;
+     font-size: 40rpx;
+     color: gray;
+ }
+ .container .empty .empty_icon{
+    padding-top: 210px;
+ }
+ .container .empty .empty_icon .icon-wendang{
+   font-size: 130rpx;
+   color:#bbb;
+ }
+ 
