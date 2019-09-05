@@ -5,9 +5,7 @@ Page({
    * 页面的初始数据
    */
   data: {
-     filelist:'', //文件列表
-    accessPath:[],  //访问路径
-    temp:[]  //测试使用 访问历史文件
+     filelist:'' //文件列表
   },
 
   /**
@@ -17,84 +15,41 @@ Page({
     // 子文件
     let filelist =JSON.parse(options.filelist);
     // 父文件名
-    let ParentName = options.currName;
-    // 来源
-    let resource = options.navTitle; 
+    let navTitle = options.navTitle;
           // 设置导航栏名
     wx.setNavigationBarTitle({
-       title: resource,
+      title: navTitle,
     });
-
-
-    let pathArr=[{order:'',name:resource},{order:0,name:ParentName}];
-    // 设置当前页文件,访问路径
-    this.setData({
-      filelist:filelist,
-      accessPath: pathArr
-    })
-     
-  },
-// 根据路径跳转
-  accessTo:function(event){
-    // 获取索引
-    let idx = event.currentTarget.dataset.idx;
-    if(idx<=0){
-      wx.navigateBack();
-    }else{
-      // 截取路径数组到该位
+    // 设置当前文件
+    if(filelist.length<=0){
       this.setData({
-        accessPath:this.data.accessPath.slice(0,idx+1)
-      });
-      // 跳转到索引位置
-      let order = this.data.accessPath[idx].order;
-       if(order===this.data.temp.length){
-
-       }else{
-
-         //  从历史纪录中取数据
-         this.setData({
-           filelist: this.data.temp[order]
-         });
-         // 删除当前文件之后文件记录
-         this.setData({
-           temp: this.data.temp.slice(0, order)
-         })
-         
-       }
+        filelist:[]
+      })
+    }else{
+      this.setData({
+        filelist: filelist
+      })
     }
   },
   // 打开子文件
   fileitemTo:function(event){
+    // 获取当前索引
+    let idx = event.currentTarget.dataset.idx;
+    // 获取当前文件名字
+    let currName = this.data.filelist[idx].name;
     // 先判断文件类型
     let type = event.currentTarget.dataset.type;
     if(type === 'folder'){
-      //  当前为第几层
-      let order = event.currentTarget.dataset.order;
-      let id = event.currentTarget.dataset.idx;
-      // 设置路径
-      let currPath = {
-        name:this.data.filelist[id].name,  
-        order:order  //第几层
-      }
-      let cheese = 'accessPath['+this.data.accessPath.length+']';
-      this.setData({
-        [cheese]:currPath
+      // 获取当前文件夹子文件
+      let newlist = JSON.stringify(this.data.filelist[idx].data); 
+      wx.navigateTo({
+        url: '/pages/fileitem/fileitem?filelist=' + newlist + '&navTitle=' + currName,
       })
-      // 保存打开之前的文件
-        let demp = 'temp['+this.data.temp.length+ ']';
-      this.setData({
-        [demp]:this.data.filelist
+    }else if(type === 'image'){
+      let imgSrc = this.data.filelist[idx].icon;
+      wx.navigateTo({
+        url: '/pages/imgdisplay/imgdisplay?imgSrc=' + imgSrc + '&navTitle=' + currName
       })
-      // 更新filelist,先判断文件夹下是否为空
-      if (this.data.filelist[id].data.length>0){
-         this.setData({
-           filelist: this.data.filelist[id].data
-         })
-      }else{
-        this.setData({
-          filelist:[]
-        })
-      }
     }
   },
   /**

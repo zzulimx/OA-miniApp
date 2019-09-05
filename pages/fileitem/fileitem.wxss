@@ -30,3 +30,6 @@
    color:#bbb;
  }
  
+ .weui-cell.weui-cell_access .item_bottom .file_size{
+  margin-left: 15px;
+ }

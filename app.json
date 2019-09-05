@@ -17,7 +17,9 @@
     "pages/userinfo/userinfo",
     "pages/remarks/remarks",
     "pages/file/file",
-    "pages/fileitem/fileitem"
+    "pages/fileitem/fileitem",
+    "pages/imgdisplay/imgdisplay",
+    "pages/music/music"
   ],
   "window": {
     "backgroundTextStyle": "light",

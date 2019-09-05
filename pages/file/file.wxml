@@ -111,23 +111,3 @@
   </view>
 </view>
 
-<view class="imgWrpper" wx:if="{{isImg}}" bindtap="imgOperate">
-    <view class="img_box">
-     <image src="{{imgSrc}}"></image>
-    </view>
-
-    <view class="toolBar">
-    <view class="tool_icon">
-     <view class="tool tool_share"><span class="icon iconfont icon-fenxiang"></span></view>
-<view class="tool tool_collect"><span  class="icon iconfont icon-collection"></span></view>
-    <view class="tool tool_edit"><span  class="icon iconfont icon-edit1"></span></view>
-   <view class="tool tool_delete"><span  class="icon iconfont icon-delete2"></span></view>
-    </view>
-    <view class="tool_title">
- <view class="tool tool_share">分享</view>
-       <view class="tool tool_collect">收藏</view>
-        <view class="tool tool_edit">编辑</view>
-         <view class="tool tool_delete">删除</view>
-    </view>
-    </view>
-</view>

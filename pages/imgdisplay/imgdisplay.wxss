@@ -1,0 +1,37 @@
+/* pages/imgdisplay/imgdisplay.wxss */
+ .imgWrpper{
+   position: absolute;
+   top: 0;
+   right: 0;
+   bottom: 0;
+   left: 0;
+   z-index: 9999;
+ }
+ .imgWrpper .img_box{
+     position: absolute;
+     top: 50%;
+     left: 50%;
+     transform: translate(-50%,-50%);
+ }
+ .toolBar{
+   position: fixed;
+   bottom: 0;
+   width: 100%;
+   height: 55px;
+   padding: 10px 0;
+   z-index: 9999;
+ }
+ .toolBar .tool_title{
+   font-size: 26rpx;
+ }
+ .toolBar .tool_icon{
+   font-weight: 600;
+ }
+ .toolBar .tool{
+   display: inline-block;
+   width: 25%;
+   text-align: center;
+ }
+ .tool_icon .iconfont {
+   font-size: 18px
+ }

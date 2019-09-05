@@ -1,0 +1,13 @@
+<!--pages/music/music.wxml-->
+
+<!-- playToll -->
+<view class="continer">
+<view class="playTool">
+  <view class="play_bar"></view>
+  <view class="play_group">
+    <view class="play_btn prev"><span class="icon iconfont icon-PrevioustrackFill"></span></view>
+    <view class="play_btn play_pause" catchtap="palyPause"><span class="icon iconfont {{playIcon}}"></span></view>
+    <view class="play_btn next"><span class="icon iconfont icon-NexttrackFilled"></span></view>
+  </view>
+</view>
+</view>

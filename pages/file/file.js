@@ -9,12 +9,8 @@ Page({
     activeIndex: 0,//展示类型，默认我的消息
     sliderOffset: 0,
     sliderLeft: 0,
-    isImg:false,  //图片展示
-    imgSrc:'',
     filelist:[      //文件管理 文件列表
       {
-        isParent:1,
-        order:0,     //文件层级 第一层
         fileSize:'0KB',
         name:'合同',
         createTime: '2019/06/13 17:48',
@@ -26,8 +22,6 @@ Page({
         url:'/pages/fileitem/fileitem',
         data:[
           {
-            isParent: 0,
-            order:1,  // 文件层级 第二层
             fileSize: '0KB',
             name: '简历1',
             createTime: '2019/06/13 17:48',
@@ -39,8 +33,6 @@ Page({
             url: '/pages/fileitem/fileitem',
             data:[
               {
-              isParent: 1,
-              order:2,
               fileSize: '0KB',
               name: 'test',
               createTime: '2019/06/13 17:48',
@@ -51,10 +43,20 @@ Page({
               isShow: true,
               url: '/pages/fileitem/fileitem',
               data: []
-            }
+            },
+              {
+                fileSize: '6.64KB',
+                name: 'avatar.jpg',
+                createTime: '2019-06-13 17:48',
+                icon: '../../images/avatar/avatar.jpg',
+                pid: '0',
+                id: '0',
+                fileType: 'image',
+                isShow: true,
+                url: '/pages/fileitem/fileitem',
+                data: []
+              }
             ,{
-              isParent: 1,
-              order: 2,
               fileSize: '0KB',
               name: '工作流',
               createTime: '2019/06/13 17:48',
@@ -65,9 +67,7 @@ Page({
               isShow: true,
               url: '/pages/fileitem/fileitem',
               data:[
-                {
-                  isParent: 1,
-                  order: 3,
+                { 
                   fileSize: '0KB',
                   name: 'last3',
                   createTime: '2019/06/13 17:48',
@@ -78,9 +78,7 @@ Page({
                   isShow: true,
                   url: '/pages/fileitem/fileitem',
                   data:[
-                    {
-                      isParent: 1,
-                      order: 4,
+                    {            
                       fileSize: '0KB',
                       name: 'last2',
                       createTime: '2019/06/13 17:48',
@@ -91,9 +89,7 @@ Page({
                       isShow: true,
                       url: '/pages/fileitem/fileitem',
                       data: [
-                        {
-                          isParent: 1,
-                          order: 5,
+                        {                      
                           fileSize: '0KB',
                           name: 'last1',
                           createTime: '2019/06/13 17:48',
@@ -104,9 +100,7 @@ Page({
                           isShow: true,
                           url: '/pages/fileitem/fileitem',
                           data: [
-                            {
-                              isParent: 1,
-                              order: 6,
+                            {                      
                               fileSize: '0KB',
                               name: 'last',
                               createTime: '2019/06/13 17:48',
@@ -128,8 +122,7 @@ Page({
             }
             ]
           },{
-            isParent: 0,
-            order:2,
+           
             fileSize: '0KB',
             name: '简历2',
             createTime: '2019/06/13 17:48',
@@ -144,8 +137,7 @@ Page({
         ]        
       }
       ,{
-        isParent: 1,
-        order:0,
+      
         fileSize: '0KB',
         name: '工作流',
         createTime: '2019/06/13 17:48',
@@ -157,8 +149,7 @@ Page({
         url: '/pages/fileitem/fileitem',
         data: [
           {
-            isParent: 0,
-            order:1,
+          
             fileSize: '0KB',
             name: 'demo1',
             createTime: '2019/06/13 17:48',
@@ -170,8 +161,7 @@ Page({
             url: '/pages/fileitem/fileitem',
             data: []
           }, {
-            isParent: 0,
-            order:1,
+           
             fileSize: '0KB',
             name: 'demo2',
             createTime: '2019/06/13 17:48',
@@ -183,12 +173,21 @@ Page({
             url: '/pages/fileitem/fileitem',
             data:[]
           }
+          , {
+            fileSize: '6.64KB',
+            name: 'avatar2.jpg',
+            createTime: '2019-06-13 17:48',
+            icon: '../../images/avatar/avatar2.jpg',
+            pid: '0',
+            id: '0',
+            fileType: 'image',
+            isShow: true,
+            url: '/pages/fileitem/fileitem',
+            data: []
+          }
         ]
       }
-      , {
-        isParent: 1,
-        order:0,
-        parent: 'filelist',
+      , {     
         fileSize: '6.64KB',
         name: 'avatar.jpg',
         createTime: '2019-06-13 17:48',
@@ -201,7 +200,6 @@ Page({
         data: []
       }
       , {
-        isParent: 1,
         fileSize: '0KB',
         name: '城市天际线',
         createTime: '2019/06/13 17:48',
@@ -209,6 +207,30 @@ Page({
         pid: '0',
         id: '0',
         fileType: 'folder',
+        isShow: true,
+        url: '/pages/fileitem/fileitem',
+        data: []
+      }
+      ,{
+        fileSize: '3KB',
+        name: 'vocabav.bat',
+        createTime: '2019/06/13 17:48',
+        icon: '../../images/file/icon_weizhi.png',
+        pid: '0',
+        id: '0',
+        fileType: 'unkown',
+        isShow: true,
+        url: '/pages/fileitem/fileitem',
+        data: []
+      }
+      ,{
+        fileSize: '4.2MB',
+        name: 'We Are The Brave',
+        createTime: '2019/06/13 17:48',
+        icon: '../../images/file/file_music.png',
+        pid: '0',
+        id: '0',
+        fileType: 'music',
         isShow: true,
         url: '/pages/fileitem/fileitem',
         data: []
@@ -222,17 +244,29 @@ Page({
       let id = event.currentTarget.dataset.idx;
       // 获取当前文件类型
       let type = event.currentTarget.dataset.type;
+      //  获取当前文件名
+      let navTitle= this.data.filelist[id].name;
       // 判断文件类型
       if(type === 'folder'){
         let filelist = JSON.stringify(this.data.filelist[id].data);
         let currName = this.data.filelist[id].name;
         wx.navigateTo({
-          url: '/pages/fileitem/fileitem?filelist=' + filelist + '&currName=' + currName + '&navTitle=' + '我的收藏',
+          url: '/pages/fileitem/fileitem?filelist=' + filelist + '&navTitle=' + navTitle,
         })
       }else if(type === 'image'){
-          this.setData({
-            isImg:true,
-            imgSrc:this.data.filelist[id].icon
+        let imgSrc= this.data.filelist[id].icon;
+        wx.navigateTo({
+          url: '/pages/imgdisplay/imgdisplay?imgSrc=' + imgSrc + '&navTitle=' + navTitle
+        })
+      }else if(type==='unkown'){
+        wx.showToast({
+          title: '未知文件',
+          image: '../../images/tree-round-未知.png',
+          duration: 1000
+        });
+      }else if(type === 'music'){
+          wx.navigateTo({
+            url: '/pages/music/music',
           })
       }
    
