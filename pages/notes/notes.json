@@ -1,0 +1,8 @@
+{
+  "usingComponents": {},
+  "navigationBarBackgroundColor": "#62c9f8",
+  "navigationBarTitleText": "笔记",
+  "enablePullDownRefresh": true,
+  "backgroundColor": "#fff",
+  "backgroundTextStyle": "dark"
+}

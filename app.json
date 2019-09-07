@@ -19,7 +19,8 @@
     "pages/file/file",
     "pages/fileitem/fileitem",
     "pages/imgdisplay/imgdisplay",
-    "pages/music/music"
+    "pages/music/music",
+    "pages/notes/notes"
   ],
   "window": {
     "backgroundTextStyle": "light",

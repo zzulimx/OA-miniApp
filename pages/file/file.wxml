@@ -8,7 +8,7 @@
             <view class="weui-navbar__title">{{item}}</view>
           </view>
         </block>
-        <view class="weui-navbar__slider" style="left: {{sliderLeft}}px; transform: translateX({{sliderOffset}}px); -webkit-transform: translateX({{sliderOffset}}px);"></view>
+        <view class="weui-navbar__slider" style="left:{{sliderLeft}}"></view>
       </view>
       <swiper class="weui-tab__panel" duration="300" bindchange="swiperTab" current="{{activeIndex}}">
         <swiper-item class="weui-tab__content" hidden="{{activeIndex != 0}}">
@@ -19,20 +19,20 @@
 <view class="weui-cells weui-cells_after-title">
                     
              <block wx:for="{{filelist}}">
-             <view data-idx="{{index}}" data-type="{{item.fileType}}" class="weui-cell weui-cell_access" hover-class="weui-cell_active" bindtap="tofileitem">
+             <view data-idx="{{index}}" data-type="{{item.fileType}}" class="weui-cell weui-cell_access" hover-class="weui-cell_active" bindtap="tofileitem" catchlongpress="fileOperate" bindtouchstart="bindTouchStart" bindtouchend="bindTouchEnd">
                 <view class="weui-cell__hd">
                    <image src="{{item.icon}}" style="margin-right: 16px;vertical-align: middle;width:40px; height: 40px;"></image>
                 </view>
                <view class="weui-cell__bd">
                      <view class="item_top file_name">{{item.name}}</view>
                      <block wx:if="{{item.fileType==='folder'}}">
-                      <view class="item_bottom file_num">{{item.data.length}}项</view>
+                     <view class="item_bottom file_num"><text class="create_time">{{item.createTime}}</text></view>
                      </block>
                       <block wx:else>
                       <view class="item_bottom file_num"><text class="create_time">{{item.createTime}}</text><text class="file_size">{{item.fileSize}}</text></view>
                      </block>
                 </view>
-                 <view class="weui-cell__ft weui-cell__ft_in-access"></view>
+                 <view class="icon iconfont {{isLongtap?'':arrowIcon}} {{arrowIcon?(selectIndex[index].sureId ? hasSelect : noSelect):''}}" ></view>
             </view>           
              </block>
             
@@ -51,25 +51,24 @@
 <view class="weui-cells weui-cells_after-title">
                     
              <block wx:for="{{filelist}}">
-             <view data-idx="{{index}}" data-type="{{item.fileType}}" class="weui-cell weui-cell_access" hover-class="weui-cell_active" bindtap="tofileitem">
+             <view data-idx="{{index}}" data-type="{{item.fileType}}" class="weui-cell weui-cell_access" hover-class="weui-cell_active" bindtap="tofileitem" catchlongpress="fileOperate" bindtouchstart="bindTouchStart" bindtouchend="bindTouchEnd">
                 <view class="weui-cell__hd">
                    <image src="{{item.icon}}" style="margin-right: 16px;vertical-align: middle;width:40px; height: 40px;"></image>
                 </view>
                <view class="weui-cell__bd">
                      <view class="item_top file_name">{{item.name}}</view>
                      <block wx:if="{{item.fileType==='folder'}}">
-                      <view class="item_bottom file_num">{{item.data.length}}项</view>
+                     <view class="item_bottom file_num"><text class="create_time">{{item.createTime}}</text></view>
                      </block>
                       <block wx:else>
                       <view class="item_bottom file_num"><text class="create_time">{{item.createTime}}</text><text class="file_size">{{item.fileSize}}</text></view>
                      </block>
                 </view>
-                 <view class="weui-cell__ft weui-cell__ft_in-access"></view>
+                 <view class="icon iconfont {{isLongtap?'':arrowIcon}} {{arrowIcon?(selectIndex[index].sureId ? hasSelect : noSelect):''}}" ></view>
             </view>           
              </block>
             
         </view> 
-
 
           </view>
         </swiper-item>
@@ -80,24 +79,24 @@
           <view class="weui-tab__content">
           
           <!-- 选项三的内容 -->
-                    <!-- 选项一的内容 -->
+          <!-- 选项一的内容 -->
 <view class="weui-cells weui-cells_after-title">
                     
              <block wx:for="{{filelist}}">
-             <view data-idx="{{index}}" data-type="{{item.fileType}}" class="weui-cell weui-cell_access" hover-class="weui-cell_active" bindtap="tofileitem">
+             <view data-idx="{{index}}" data-type="{{item.fileType}}" class="weui-cell weui-cell_access" hover-class="weui-cell_active" bindtap="tofileitem" catchlongpress="fileOperate" bindtouchstart="bindTouchStart" bindtouchend="bindTouchEnd">
                 <view class="weui-cell__hd">
                    <image src="{{item.icon}}" style="margin-right: 16px;vertical-align: middle;width:40px; height: 40px;"></image>
                 </view>
                <view class="weui-cell__bd">
                      <view class="item_top file_name">{{item.name}}</view>
                      <block wx:if="{{item.fileType==='folder'}}">
-                      <view class="item_bottom file_num">{{item.data.length}}项</view>
+                     <view class="item_bottom file_num"><text class="create_time">{{item.createTime}}</text></view>
                      </block>
                       <block wx:else>
                       <view class="item_bottom file_num"><text class="create_time">{{item.createTime}}</text><text class="file_size">{{item.fileSize}}</text></view>
                      </block>
                 </view>
-                 <view class="weui-cell__ft weui-cell__ft_in-access"></view>
+                 <view class="icon iconfont {{isLongtap?'':arrowIcon}} {{arrowIcon?(selectIndex[index].sureId ? hasSelect : noSelect):''}}" ></view>
             </view>           
              </block>
             
@@ -110,4 +109,58 @@
     </view>
   </view>
 </view>
+<!-- operateTool-->
+<view class="operateWrapper" style="height:{{opaHeight}}">
+<view class="operate_icon">
+<view class="operate tool_cancel" catchtap="cancelSelect"><span class="icon iconfont icon-guanbi"></span></view>
+  <view class="operate tool_rename"  catchtap="reNameBtn"><span class="icon iconfont icon-chongmingming"></span></view>
+  <view class="operate tool_delete"  catchtap="deletefile"><span class="icon iconfont icon-delete2"></span></view>
+  <view class="operate tool_move"><span class="icon iconfont icon-filetransfer_px"></span></view>
+  <view class="operate tool_selectAll"  catchtap="selectAll"><span class="icon iconfont icon-quanxuan"></span></view>
+</view>
+<view class="operate_title">
+<view class="operate tool_cancel" catchtap="cancelSelect">取消</view>
+  <view class="operate tool_rename" catchtap="reNameBtn">重命名</view>
+  <view class="operate tool_delete" catchtap="deletefile">删除</view>
+  <view class="operate tool_move">移动到</view>
+  <view class="operate tool_selectAll"  catchtap="selectAll">全选</view>
+</view>
+</view>
 
+
+<!-- 新建时背景 -->
+<view class="addBg" style="height:{{addbgHeight}}" catchtap="hideadd">  
+</view>
+<!-- 新建文件夹按钮-->
+<view class="addWrapper" >
+<view class="add_group" style="height:{{addwrapper}}">
+ <view class="new_file" catchtap="fileCreate"><text>文件夹</text><image src="../../images/file/addfolder.png"></image></view>
+   <view class="upload_file"><text>文件</text><image   src="../../images/file/upload.png"></image></view>
+</view>
+   <view class="add_btn" catchtap="addFile" wx:if="{{isaddFile}}"><image style="transform:rotate({{transdeg}})" src="../../images/file/add.png" ></image></view>
+</view>
+
+<!-- 填充文件夹名字 -->
+
+<view class="layOpen" wx:if="{{islayOpen}}" catchtouchmove="true">
+<view class="layInner">
+<view class="file_title">新建文件夹</view>
+   <view class="file_content"><input placeholder="新建文件夹" bindinput="fileName"></input></view>
+   <view class="hr"></view>
+   <view class="file_operate">
+    <text class="file_cancel"  catchtap="cancel">取消</text><text class="file_create"  catchtap="create">创建</text>
+   </view>
+</view>
+</view>
+
+<!-- 重命名 -->
+<view class="layOpen" wx:if="{{isreName}}" catchtouchmove="true">
+<view class="layInner">
+<view class="file_title">重命名</view>
+   <view class="file_content"><input focus='{true}' value="{{currName}}" bindinput="filereName"></input></view>
+   <view class="hr"></view>
+   <view class="file_operate">
+    <text class="file_cancel"  catchtap="cancelreName">取消</text><text class="file_create"  catchtap="reName">确认</text>
+   </view>
+</view>
+</view>

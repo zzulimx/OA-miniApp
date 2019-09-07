@@ -34,7 +34,7 @@ Page({
           {
             img: '../../images/icon_notes.png',
             title: '笔记',
-            url: ''
+            url: '../../pages/notes/notes'
           },
           {
             img: '../../images/icon_file.png',

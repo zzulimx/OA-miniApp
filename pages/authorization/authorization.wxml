@@ -1,3 +1,12 @@
 <view class="container">
-  <button open-type="getUserInfo" bindgetuserinfo="getUserInfo"> 用户授权 </button>
+  <view class="wechatIcon">
+    <span class="icon iconfont icon-wechat1"></span>
+  </view>
+  <view class="hr"></view>
+  <view class="promptWrapper">
+     <view class="prompt1">申请获取以下权限</view>
+     <view class="prompt2">获得你的公开信息(昵称,头像等)</view>
+  </view>
+
+  <button  class="weui-btn" type="primary" open-type="getUserInfo" bindgetuserinfo="getUserInfo"> 授权登录 </button>
 </view>

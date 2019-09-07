@@ -13,7 +13,7 @@ Page({
         console.log(audioItem.duration);//延时获取长度 单位：秒
       }, 1000)  //这里设置延时1秒获取
     })
-    audioItem.play()
+    // audioItem.play();
   },
   data: {
     playIcon: 'icon-pause',  //播放暂停图标icon-icon_video

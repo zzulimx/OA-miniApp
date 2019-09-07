@@ -1,0 +1,29 @@
+/* pages/authorization/authorization.wxss */
+.container{
+  padding: 20px;
+}
+.wechatIcon{
+  padding: 20px;
+  text-align: center;
+}
+.wechatIcon .icon{
+  font-size: 70px;
+}
+.hr{
+  width: 100%;
+  border-bottom:2px solid #eee;
+}
+.weui-btn{
+  border-radius: 25px;
+}
+.promptWrapper{
+  padding-top: 10px;
+}
+.promptWrapper .prompt1{
+  padding:10px 0; 
+  font-weight: 400;
+}
+.promptWrapper .prompt2{
+  padding:10px 0; 
+  color: gray;
+}

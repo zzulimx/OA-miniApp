@@ -1,35 +1,4 @@
-/* pages/fileitem/fileitem.wxss */
-.container .access_path{
-  width: 100%;
-  padding: 10px;
-  font-size: 30rpx;
-}
-.container .access_path .icon-arrow5{
-  color: gray;
-  font-size: 30rpx;
-  padding:0 5px;
-}
-.weui-cell.weui-cell_access .item_top{
-   text-align: left;
-}
-.weui-cell.weui-cell_access .item_bottom{
-   text-align: left;
-   font-size:26rpx; 
-   color: gray;
- }
- .container .empty{
-     text-align: center;
-     font-size: 40rpx;
-     color: gray;
- }
- .container .empty .empty_icon{
-    padding-top: 210px;
- }
- .container .empty .empty_icon .icon-wendang{
-   font-size: 130rpx;
-   color:#bbb;
- }
- 
+/* pages/notes/notes.wxss */
 page {
   height:100%;
   width: 100%;
@@ -53,7 +22,7 @@ page, .page, .page__bd {
   background-color: #fff;
 }
 .weui-navbar__slider{
-  width: 25.33%;
+  width: 30%;
   transition: left .3s ease;
 }
 .weui-tab__panel {
@@ -97,7 +66,7 @@ page, .page, .page__bd {
  }
 .operateWrapper .operate_icon .operate{
   display: inline-block;
-  width: 20%;
+  width: 25%;
   height: 25x;
   line-height: 35px;
   text-align: center;
@@ -111,7 +80,7 @@ page, .page, .page__bd {
 }
 .operateWrapper .operate_title .operate{
    display: inline-block;
-  width: 20%;
+  width: 25%;
   height: 25px;
   line-height: 25px;
   text-align: center;
@@ -169,7 +138,14 @@ page, .page, .page__bd {
   width:46px;
   height: 46px;
 }
-.addWrapper .upload_file image{
+.addWrapper .new_notes image{
+  float: right;
+  vertical-align: middle;
+  margin-right: 3px;
+  width: 46px;
+  height: 46px;
+}
+.addWrapper .new_markdown image{
   float: right;
   vertical-align: middle;
   margin-right: 5px;
