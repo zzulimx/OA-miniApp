@@ -1,0 +1,52 @@
+<!--pages/newnotes/newnotes.wxml-->
+<view class="container">
+<!-- 头部操作按钮 -->
+<view class="navOperate">
+  <view class="operateIcon">
+    <view class="operate operate_save" hover-class="click" catchtap="saveNotes"><span class="icon iconfont icon-finish"></span></view>
+    <view class="operate operate_save" hover-class="click"><span class="icon iconfont icon-shangyibu"></span></view>
+    <view class="operate operate_save" hover-class="click"><span class="icon iconfont icon-xiayibu"></span></view>
+    <view class="operate operate_save" hover-class="click"><span class="icon iconfont icon-pen"></span></view>
+    <view class="operate operate_save" hover-class="click"><span class="icon iconfont icon-xingzhuang"></span></view>
+    <view class="operate operate_save" hover-class="click"><span class="icon iconfont icon-gengduo"></span></view>
+  </view>
+</view>
+
+
+<!-- 新建笔记信息（标题，标签） -->
+<view class="notesInfo">
+<view class="notes_title">
+<input type="text" focus='{true}' bindinput="notesName" class="input_title" placeholder="新建笔记.md"></input></view>
+<view class="notes_tag">
+   <view class="notes_icon"><span class="icon iconfont icon-Notes"></span></view>
+   <view class="notes_path">个人笔记：/我的笔记/</view>
+   <view class="tag_icon"><span class="icon iconfont icon-tag"></span></view>
+</view>
+</view>
+
+<!-- 笔记内容 -->
+<view class="notesContent">
+ <view class="weui-cells weui-cells_after-title">
+            <view class="weui-cell">
+                <view class="weui-cell__bd">
+                    <textarea show-confirm-bar="{{false}}" bindfocus="inputFocus" bindblur="inputBlur" class="weui-textarea" bindinput="getContent" value="{{textValue}}" style="height:100%;border:0" />
+                </view>
+            </view>
+        </view>
+</view>
+
+
+
+<!-- 书写快捷符号 -->
+<view class="quickSymbol"  style="bottom:{{symbolBottom}}">
+<view class="symbolIcon">
+  <view class="symbol symbol_title" hover-class="click" catchtap="addtitle"><text>#  </text>标题</view>
+  <view class="symbol symbol_title"  hover-class="click" catchtap="addlist"><text>- </text>列表</view>
+  <view class="symbol symbol_title" hover-class="click" catchtap="addbind"><text>* </text>加粗</view>
+  <view class="symbol symbol_title" hover-class="click" catchtap="addlink"><text>> </text>引用</view>
+  <view class="symbol symbol_title"  hover-class="click" catchtap="addcheck"><span class="icon iconfont icon-xuanzhong"></span></view>
+</view>
+</view>
+
+
+</view>

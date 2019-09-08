@@ -1,0 +1,36 @@
+/* pages/notesitem/notesitem.wxss */
+/**基础风格样式**/
+@import '/towxml/style/main.wxss';
+/**如果页面有动态主题切换，则需要将使用到的样式全部引入**/
+/**主题配色（浅色样式）**/
+@import '/towxml/style/theme/light.wxss';
+/**主题配色（深色样式）**/
+@import '/towxml/style/theme/dark.wxss';
+page{
+  width: 100%;
+  height: 100%;
+}
+.operateTool{
+  position: fixed;
+  bottom: 0;
+  z-index: 9;
+  width: 100%;
+  background: #fff;
+  border-top: 1px solid #ddd;
+}
+.operateTool .operateIcon{
+  width: 100%;
+  padding:15px 0;
+}
+.operateTool .operateIcon .operate{
+  display: inline-block;
+  width: 25%;
+  text-align: center;
+}
+.operateTool .operateIcon .operate .icon{
+  font-size: 22px;
+  color: gray;
+}
+.click{
+  background-color: #eee;
+}

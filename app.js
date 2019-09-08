@@ -1,4 +1,6 @@
 //app.js
+// 引入markdown语法js
+const Towxml = require('/towxml/main');
 var network = require("utils/net.js");
 App({
   globalData: {
@@ -51,6 +53,8 @@ App({
 
     }
   },
+  // 创建markdown实例
+  towxml: new Towxml(),  
   judgeUser: function () {
     var _thar = this;
     var consoleUser = wx.getStorageSync(_thar.consoleUserKey);

@@ -20,7 +20,9 @@
     "pages/fileitem/fileitem",
     "pages/imgdisplay/imgdisplay",
     "pages/music/music",
-    "pages/notes/notes"
+    "pages/notes/notes",
+    "pages/newnotes/newnotes",
+    "pages/notesitem/notesitem" 
   ],
   "window": {
     "backgroundTextStyle": "light",

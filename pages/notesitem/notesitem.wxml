@@ -1,0 +1,20 @@
+<!--pages/notesitem/notesitem.wxml-->
+
+<!--loading-->
+<view class="loading" wx:if="{{isloading}}">
+  <image class="loading__icon" src="/images/loading.svg"></image>
+</view>
+
+<!--引入towxml模版入口文件，并使用模版-->
+<import src="/towxml/entry.wxml"/>
+<template is="entry" data="{{...article}}"/> 
+
+<!--操作栏 -->
+<view class="operateTool">
+  <view class="operateIcon">
+    <view class="operate operate_edit" hover-class="click"><span class="icon iconfont icon-edit2"></span></view>
+    <view class="operate operate_message" hover-class="click"><span class="icon iconfont icon-message-o"></span></view>
+    <view class="operate operate_share" hover-class="click"><span class="icon iconfont icon-share"></span></view>
+    <view class="operate operate_clock" hover-class="click"><span class="icon iconfont icon-clock"></span></view>
+  </view>
+</view>

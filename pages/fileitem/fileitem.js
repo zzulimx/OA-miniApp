@@ -318,13 +318,17 @@ Page({
       cancelText: "取消",
       success: function (res) {
         if (res.confirm) {
-          // 获取选中文件
-          that.data.filelist.forEach(function (item, index) {
-            if (that.data.selectIndex[index].sureId) {
-              that.data.filelist.splice(index, 1);
-              that.data.selectIndex.splice(index, 1);
-            }
-          });
+          //  利用递归删除
+          let deletef = function () {
+            that.data.filelist.forEach(function (item, index) {
+              if (that.data.selectIndex[index].sureId) {
+                that.data.filelist.splice(index, 1);
+                that.data.selectIndex.splice(index, 1);
+                deletef();
+              }
+            });
+          };
+          deletef();
           that.setData({
             filelist: that.data.filelist,
             selectIndex: that.data.selectIndex

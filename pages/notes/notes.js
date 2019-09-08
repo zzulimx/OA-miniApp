@@ -1,5 +1,4 @@
 // pages/notes/notes.js
-// pages/file/file.js
 const util = require('../../utils/util.js');
 const formatTime = util.formatTime;
 //获取应用实例
@@ -22,18 +21,166 @@ Page({
     selectIndex: [],  //选中文件索引
     hasSelect: 'icon-checked1',  //选中文件图标
     noSelect: 'icon-unchecked1', //未选中文件图标
-    nodelist: [      //文件管理 文件列表
+    isreName: false,
+    currName: '',
+    newName: '',
+    noteslist: [      //文件管理 文件列表
       {
         fileSize: '0KB',
         title: '合同',
+        id:0,
         createTime: '2019-06-13 17:48',
-        type: '0',
-        fileType: '',
+        tag: '',
         isShow: true,
         url: ' ',
-        content:''
+        content: '## demo',
           }
     ]
+  },
+  // 打开文件重命名弹出层
+  reNameBtn: function () {
+
+    // 判断当前选中文件个数
+    let len = 0;
+    this.data.selectIndex.forEach(function (item, index) {
+      if (item.sureId) {
+        len += 1;
+      }
+    })
+    if (len > 1) {
+      return;
+    } else {
+
+      this.setData({
+        isreName: true
+      });
+      var that = this;
+      // 先给newName赋值
+      this.data.selectIndex.forEach(function (item, index) {
+        if (item.sureId) {
+          that.setData({
+            currName: that.data.noteslist[index].title,
+            newName: that.data.noteslist[index].title
+          })
+        }
+      })
+    }
+
+  },
+  // 重命名的值
+  filereName: function (event) {
+    this.setData({
+      newName: event.detail.value
+    })
+  },
+  // 文件重命名
+  reName: function () {
+    var that = this;
+    if (this.data.newName === '') {
+      wx.showToast({
+        title: '文件名不能为空',
+        image: '../../images/file/cancel.png',
+        duration: 1000
+      });
+     
+    } else {
+      this.data.selectIndex.forEach(function (item, index) {
+        if (item.sureId) {
+          that.data.noteslist[index].title = that.data.newName;
+          that.setData({
+            noteslist: that.data.noteslist
+          })
+        }
+      });
+      //  清空newName
+      this.setData({
+        isreName: false,
+        newName: ''
+      });
+      this.cancelSelect();
+    }
+  },
+  // 取消文件重命名
+  cancelreName: function () {
+    //  清空newName
+    this.setData({
+      isreName: false,
+      newName: ''
+    });
+    this.cancelSelect();
+  },
+  // 全选
+  selectAll: function () {
+    var that = this;
+    //  设置文件选中索引全为false
+    this.data.noteslist.forEach(function (item, index) {
+      that.data.selectIndex[index] = { sureId: true };
+      that.setData({
+        selectIndex: that.data.selectIndex
+      });
+    })
+  },
+  // 取消文件操作状态
+  cancelSelect: function () {
+    this.setData({
+      isLongtap: false,
+      opaHeight: 0,
+      isaddFile: true
+    });
+    var that = this;
+    //  设置文件选中索引全为false
+    this.data.noteslist.forEach(function (item, index) {
+      that.data.selectIndex[index] = { sureId: false };
+      that.setData({
+        selectIndex: that.data.selectIndex
+      });
+    })
+  },
+  // 删除文件
+  deletefile: function () {
+    var that = this;
+    wx.showModal({
+      title: '删除笔记',
+      content: '是否删除选中笔记?',
+      confirmText: "删除",
+      confirmColor: 'red',
+      cancelText: "取消",
+      success: function (res) {
+        if (res.confirm) {
+          //  利用递归删除
+          let deletef = function () {
+            that.data.noteslist.forEach(function (item, index) {
+              if (that.data.selectIndex[index].sureId) {
+                that.data.noteslist.splice(index, 1);
+                that.data.selectIndex.splice(index, 1);
+                deletef();
+              }
+            });
+          };
+          deletef();
+          that.setData({
+            noteslist: that.data.noteslist,
+            selectIndex: that.data.selectIndex
+          });
+          that.cancelSelect();
+        } else {
+
+        }
+      }
+    });
+  },
+  // 创建新的笔记
+  newnotes:function(){
+    // 关闭添加操作栏
+    this.setData({
+      addbgHeight: 0,
+      addwrapper: 0,
+      transdeg: 0,
+    })
+    // 跳转回去
+    wx.navigateTo({
+      url: '/pages/newnotes/newnotes',
+    })
   },
   // 点击空白处关闭添加窗口
   hideadd:function(){
@@ -82,7 +229,7 @@ Page({
         fileType: '',
         isShow: true,
         url: ' ',
-        content:''
+        content:'## notes'
       }
     }
 
@@ -118,39 +265,20 @@ Page({
   bindTouchEnd: function (e) {
     this.endTime = e.timeStamp;
   },
-  // 测试代码（打开文件夹/选择文件夹）
-  tofileitem: function (event) {
+
+  // （打开文件夹/选择文件夹）
+  tonotesitem: function (event) {
     //  非文件操作状态，并且短按点击时
     if (!this.data.isLongtap && this.endTime - this.startTime < 350) {
       // 获取当前索引
       let id = event.currentTarget.dataset.idx;
-      // 获取当前文件类型
-      let type = event.currentTarget.dataset.type;
-      //  获取当前文件名
-      let navTitle = this.data.filelist[id].name;
-      // 判断文件类型
-      if (type === 'folder') {
-        let filelist = JSON.stringify(this.data.filelist[id].data);
-        let currName = this.data.filelist[id].name;
-        wx.navigateTo({
-          url: '/pages/fileitem/fileitem?filelist=' + filelist + '&navTitle=' + navTitle,
-        })
-      } else if (type === 'image') {
-        let imgSrc = this.data.filelist[id].icon;
-        wx.navigateTo({
-          url: '/pages/imgdisplay/imgdisplay?imgSrc=' + imgSrc + '&navTitle=' + navTitle
-        })
-      } else if (type === 'unkown') {
-        wx.showToast({
-          title: '未知文件',
-          image: '../../images/tree-round-未知.png',
-          duration: 1000
-        });
-      } else if (type === 'music') {
-        wx.navigateTo({
-          url: '/pages/music/music',
-        })
-      }
+      //  获取当前内容
+      let content = this.data.noteslist[id].content;
+      let title = this.data.noteslist[id].title;
+      wx.navigateTo({
+        url: '/pages/notesitem/notesitem?content='+content+'&title='+title,
+      })
+     
     }
     // 文件操作状态，短按点击时
     if (this.data.isLongtap && this.endTime - this.startTime < 350) {
@@ -201,11 +329,7 @@ Page({
   },
   onLoad: function (options) {
     //如果上一个页面传递有参数，则根据参数展示
-    if (options.type) {
-      this.setData({
-        activeIndex: options.type
-      });
-    }
+    console.log(options);
     var that = this;
     wx.getSystemInfo({
       success: function (res) {
@@ -215,7 +339,7 @@ Page({
       }
     });
     //  设置文件选中索引
-    this.data.nodelist.forEach(function (item, index) {
+    this.data.noteslist.forEach(function (item, index) {
       that.data.selectIndex[index] = { sureId: false };
       that.setData({
         selectIndex: that.data.selectIndex

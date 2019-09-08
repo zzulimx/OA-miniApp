@@ -532,23 +532,21 @@ Page({
       cancelText: "取消",
       success: function (res) {       
         if (res.confirm) {
-           // 获取选中文件的索引
-           let selectArr =[];
-           that.data.filelist.forEach(function(item,index){
-             if (that.data.selectIndex[index].sureId){
-               selectArr[selectArr.length]=index;        
-              }
-           });
-          console.log(selectArr);
-          //  从文件列表和索引中删除
-           selectArr.forEach(function(item,index){
-             that.data.filelist.splice(item, 1);
-             that.data.selectIndex.splice(item, 1);  
+          //  利用递归删除
+            let deletef=function(){
+              that.data.filelist.forEach(function (item, index) {
+                if (that.data.selectIndex[index].sureId) {
+                  that.data.filelist.splice(index, 1);
+                  that.data.selectIndex.splice(index, 1);  
+                  deletef();
+                }
+              });
+            };
+            deletef();
              that.setData({
                filelist: that.data.filelist,
                selectIndex: that.data.selectIndex
-             });
-           });  
+             }); 
           that.cancelSelect();
         } else {
           
