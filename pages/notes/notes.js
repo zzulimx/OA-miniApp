@@ -27,13 +27,22 @@ Page({
     noteslist: [      //文件管理 文件列表
       {
         fileSize: '0KB',
-        title: '合同',
+        title: '边城',
         id:0,
         createTime: '2019-06-13 17:48',
         tag: '',
         isShow: true,
         url: ' ',
-        content: '## demo',
+        content: '## 图文排列 \r **边城`沈从文`著——中篇小说** \r > 在川湘交界的茶峒附近，小溪白塔旁边，住着主人公翠翠和她爷爷老船夫。茶峒城里有个船总叫顺顺，他有两个儿子，老大叫天保，老二叫傩送。 ![凤凰古城](https://www.vvadd.com/wxml_demo/img.jpg) \r 端午节翠翠去看[龙舟赛](http://link)，偶然相遇相貌英俊的青年水手傩（nuó）送，傩送在翠翠的心里留下了深刻的印象。同时，傩送的兄长天保也喜欢上了翠翠，并提前托媒人提了亲。天保告诉傩送一年前他就爱上了翠翠，而傩送告诉天保他两年前就爱上了翠翠，天保听了后也吃了一惊。然而此时，当地的团总以新磨坊为陪嫁，想把女儿许配给傩送。而傩送宁肯继承一条破船也要与翠翠成婚',
+          },{
+        fileSize: '0KB',
+        title: '边城',
+        id: 0,
+        createTime: '2019-06-13 17:48',
+        tag: '',
+        isShow: true,
+        url: ' ',
+        content: '## 图文排列 '
           }
     ]
   },
@@ -276,7 +285,7 @@ Page({
       let content = this.data.noteslist[id].content;
       let title = this.data.noteslist[id].title;
       wx.navigateTo({
-        url: '/pages/notesitem/notesitem?content='+content+'&title='+title,
+        url: '/pages/notesitem/notesitem?content='+content+'&title='+title+'&id='+id,
       })
      
     }
@@ -329,7 +338,7 @@ Page({
   },
   onLoad: function (options) {
     //如果上一个页面传递有参数，则根据参数展示
-    console.log(options);
+    // console.log(options);
     var that = this;
     wx.getSystemInfo({
       success: function (res) {
@@ -400,25 +409,6 @@ Page({
     }
   },
 
-  /**
-   * 上拉加载
-   */
-  onReachBottom: function () {
-    // console.log(1);
-    // 显示加载图标  
-    wx.showLoading({
-      title: '玩命加载中',
-    });
-    var tabIndex = this.data.activeIndex.toString();
-    switch (tabIndex) {
-      case '0'://最近笔记
-        this.loadMoreMessage();
-        break;
-      case '1'://我的笔记
-
-        break;
-    }
-  },
 
   /**
    * 刷新消息
@@ -445,6 +435,6 @@ Page({
       // 隐藏加载框  
       wx.hideLoading();
     }, 3000);
-  },
+  }
 
 })

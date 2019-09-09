@@ -12,7 +12,7 @@
 <!--操作栏 -->
 <view class="operateTool">
   <view class="operateIcon">
-    <view class="operate operate_edit" hover-class="click"><span class="icon iconfont icon-edit2"></span></view>
+    <view class="operate operate_edit" hover-class="click" catchtap="toedit"><span class="icon iconfont icon-edit2"></span></view>
     <view class="operate operate_message" hover-class="click"><span class="icon iconfont icon-message-o"></span></view>
     <view class="operate operate_share" hover-class="click"><span class="icon iconfont icon-share"></span></view>
     <view class="operate operate_clock" hover-class="click"><span class="icon iconfont icon-clock"></span></view>

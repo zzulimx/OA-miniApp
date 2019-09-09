@@ -22,7 +22,8 @@
     "pages/music/music",
     "pages/notes/notes",
     "pages/newnotes/newnotes",
-    "pages/notesitem/notesitem" 
+    "pages/notesitem/notesitem",
+    "pages/notesedit/notesedit"
   ],
   "window": {
     "backgroundTextStyle": "light",

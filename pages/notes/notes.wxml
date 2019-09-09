@@ -21,7 +21,7 @@
              <block wx:for="{{noteslist}}">
              <view data-idx="{{index}}" data-type="{{item.fileType}}" class="weui-cell weui-cell_access" hover-class="weui-cell_active" bindtap="tonotesitem" catchlongpress="fileOperate" bindtouchstart="bindTouchStart" bindtouchend="bindTouchEnd">
                <view class="weui-cell__bd">
-                     <view class="item_top file_name">{{item.title}}</view>              
+                     <view class="item_top file_name">{{item.title+'.md'}}</view>              
                      <view class="item_bottom file_num"><text class="create_time">{{item.createTime}}</text></view>        
                 </view>
                  <view class="icon iconfont {{isLongtap?'':arrowIcon}} {{arrowIcon?(selectIndex[index].sureId ? hasSelect : noSelect):''}}" ></view>
@@ -53,6 +53,21 @@
           
           
           <!-- 选项二的内容 -->
+          <view class="weui-cells weui-cells_after-title">
+                    
+             <block wx:for="{{noteslist}}">
+             <view data-idx="{{index}}" data-type="{{item.fileType}}" class="weui-cell weui-cell_access" hover-class="weui-cell_active" bindtap="tonotesitem" catchlongpress="fileOperate" bindtouchstart="bindTouchStart" bindtouchend="bindTouchEnd">
+               <view class="weui-cell__bd">
+                     <view class="item_top file_name">{{item.title+'.md'}}</view>              
+                     <view class="item_bottom file_num"><text class="create_time">{{item.createTime}}</text></view>        
+                </view>
+                 <view class="icon iconfont {{isLongtap?'':arrowIcon}} {{arrowIcon?(selectIndex[index].sureId ? hasSelect : noSelect):''}}" ></view>
+            </view>           
+             </block>
+            
+        </view> 
+
+
 
 
           </view>
@@ -80,7 +95,7 @@
 
 
 <!-- 新建时背景 -->
-<view class="addBg" style="height:{{addbgHeight}}" catchtap="hideadd">  
+<view class="addBg" style="height:{{addbgHeight}}" catchtap="hideadd"  catchtouchmove="true">  
 </view>
 <!-- 新建文件夹按钮-->
 <view class="addWrapper" wx:if="{{isaddFile}}">

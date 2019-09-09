@@ -96,7 +96,7 @@ page, .page, .page__bd {
   color: gray;
 }
 .addBg{
-  position: absolute;
+  position: fixed;
   z-index: 999;
   background-color: rgba(0, 0, 0, 0.03);
   width: 100%;

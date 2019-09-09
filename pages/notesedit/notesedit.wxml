@@ -1,4 +1,4 @@
-<!--pages/newnotes/newnotes.wxml-->
+<!--pages/notesedit/notesedit.wxml-->
 <view class="container">
 <!-- 头部操作按钮 -->
 <view class="navOperate">
@@ -16,7 +16,7 @@
 <!-- 新建笔记信息（标题，标签） -->
 <view class="notesInfo">
 <view class="notes_title">
-<input type="text" focus='{true}' bindinput="notesName" class="input_title" placeholder="新建笔记.md"></input></view>
+<input type="text" value="{{notesName}}" bindinput="notesName" class="input_title" placeholder="新建笔记.md"></input></view>
 <view class="notes_tag">
    <view class="notes_icon"><span class="icon iconfont icon-Notes"></span></view>
    <view class="notes_path">个人笔记：/我的笔记/</view>
@@ -29,7 +29,7 @@
  <view class="weui-cells weui-cells_after-title">
             <view class="weui-cell">
                 <view class="weui-cell__bd">
-                    <textarea show-confirm-bar="{{false}}" hold-keyboard="{{true}}"  adjust-position="{{false}}"	 bindfocus="inputFocus" bindblur="inputBlur" class="weui-textarea" bindinput="getContent" value="{{textValue}}" style="height:100%;border:0" />
+                    <textarea show-confirm-bar="{{false}}" hold-keyboard="{{true}}"  adjust-position="{{false}}"	maxlength="-1" bindfocus="inputFocus" bindblur="inputBlur" class="weui-textarea" bindinput="getContent" value="{{textValue}}" style="height:100%;border:0" />
                 </view>
             </view>
         </view>
@@ -50,3 +50,4 @@
 
 
 </view>
+

@@ -15,15 +15,22 @@
 }
 .weui-btn{
   border-radius: 25px;
+  width: 60%;
+  height: 80rpx;
+  line-height: 80rpx;
+  margin-top: 260rpx;
 }
 .promptWrapper{
   padding-top: 10px;
 }
 .promptWrapper .prompt1{
   padding:10px 0; 
+  font-size: 30rpx;
   font-weight: 400;
+
 }
 .promptWrapper .prompt2{
+  font-size: 26rpx;
   padding:10px 0; 
   color: gray;
 }

@@ -7,8 +7,8 @@ Page({
   data: {
     waitSend:false,  //发送按钮显示/隐藏
     voiceBtn:true,   //语音按钮
-    inp_width:'64%',  //输入框样式变化
-    icon_width: '20%',  //输入框右侧图标
+    inp_width:'60%',  //输入框样式变化
+    iconWidth: '23%',  //输入框右侧图标
     voiceText:"按住 说话",  //语音标题
     voiceBg:"#fff",   //语音按钮颜色
     scrollto:0,   //聊天界面滑动
@@ -107,19 +107,18 @@ Page({
   // 切换按钮
   // 发送
   inputTyping:function(event){
-    
     if (event.detail.value.length!==0){
          this.setData({
            waitSend:true,
-           inp_width: '58%',
-           icon_width: '25%'
+           inp_width: '55%',
+           iconWidth: '25%'
          })
      }
      if(event.detail.value.length === 0){
       this.setData({
         waitSend: false,
-         inp_width: '64%',
-        icon_width: '20%'
+         inp_width: '60%',
+        iconWidth: '23%'
       })
      }
   },
@@ -207,7 +206,7 @@ Page({
     let windowHeight = wx.getSystemInfoSync().windowHeight;
     // 聊天记录滚动到底部
     this.setData({
-      windowHeight:windowHeight-55+'px',
+      windowHeight:windowHeight+'px',
       scrollto: windowHeight
     })
   },

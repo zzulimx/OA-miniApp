@@ -25,7 +25,7 @@ page, .page, .page__bd {
   transition: left .3s ease;
 }
 .weui-tab__panel {
-  height: calc(100% - 51px);
+  height: 100%;
   margin-top: 51px;
   padding-top: 0px;
 }
@@ -96,11 +96,10 @@ page, .page, .page__bd {
   color: gray;
 }
 .addBg{
-  position: absolute;
-  z-index: 99;
-  background-color: #fff;
+  position: fixed;
+  z-index: 999;
+  background-color: rgba(0, 0, 0,0.03);
   width: 100%;
-  padding-top: 50px;
   bottom:0;
   top: auto;
   transition: height 0.2s ease-out;
@@ -109,7 +108,7 @@ page, .page, .page__bd {
   position: fixed;
   bottom: 30px;
   right: 30px;
-  z-index: 999;
+  z-index: 9999;
 }
 .addWrapper .add_group{
   overflow: hidden;

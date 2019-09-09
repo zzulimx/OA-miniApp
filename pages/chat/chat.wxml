@@ -39,25 +39,29 @@
         </view>
         <!-- 语音，图标输入框切换 -->
          <block wx:if="{{voiceBtn}}">
-<input type="text" style="width:{{inp_width}}" class="weui-search-bar__input" bindinput="inputTyping" cursor-spacing="10px"/>
+         <view class="input_box"  style="width:{{inp_width}}">
+           <input type="text" style="width:100%" class="weui-search-bar__input" bindinput="inputTyping" cursor-spacing="10px"/>
+           </view>
         </block> 
           <block wx:else>
           <span class="clickVoice" bind:touchstart="holdVoice" bind:touchend="releaseVoice"  style="background-color:{{voiceBg}}">{{voiceText}}</span>
           </block>  
 
-            <view class="icon_part" style="width:{{icon__width}}">
+<view class="icon_part" style="width:{{iconWidth}}">
             <!-- 表情按钮 -->
+            <view class="emoji_box">
             <span class="iconfont icon-Smile" catchtap="emojiBtn"></span>
+            </view>  
              <!-- 发送，添加按钮切换 -->
-            <view class="add_send" >
+             <view class="add_send">
               <block wx:if="{{waitSend}}">
-              <button class="weui-btn mini-btn send_btn" type="primary" size="mini" style="width:61px">发送                   </button>
+              <button class="weui-btn mini-btn send_btn" type="primary" size="mini" style="width:61px">发送</button>
             </block>
             <block wx:else>
            <span class="iconfont icon-add1"></span>
             </block>
-            </view>
-            </view>
+             </view>             
+</view>
         </view>
   </view>
 </view>

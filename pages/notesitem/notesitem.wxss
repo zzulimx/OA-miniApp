@@ -15,21 +15,26 @@ page{
   bottom: 0;
   z-index: 9;
   width: 100%;
+  height: 65px;
   background: #fff;
   border-top: 1px solid #ddd;
 }
 .operateTool .operateIcon{
   width: 100%;
-  padding:15px 0;
+  height: 65px;
 }
 .operateTool .operateIcon .operate{
   display: inline-block;
   width: 25%;
   text-align: center;
+  padding: 15px 0;
 }
 .operateTool .operateIcon .operate .icon{
   font-size: 22px;
   color: gray;
+}
+.h2w-light {
+   padding-bottom:65px;
 }
 .click{
   background-color: #eee;

@@ -1,10 +1,10 @@
 <template name="chatself">
-   <view class="chatItem item_right"  bindtap="touserinfo">
+   <view class="chatItem item_right">
     <block wx:if="{{item.istime}}">
        <view class="timeTip"><text class="sendTime">{{item.currtime}}</text></view>
      </block>
      <view class="chat_box">
-      <view class="avatar_box"><image class="chat_avatar" src="../../images/avatar/avatar2.jpg" ></image></view>
+      <view class="avatar_box"  bindtap="touserinfo"><image class="chat_avatar" src="../../images/avatar/avatar2.jpg" ></image></view>
       <view class="content_box">
         <text class="chat_content">{{item.content}}</text>
       </view>

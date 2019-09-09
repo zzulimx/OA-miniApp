@@ -634,28 +634,6 @@ Page({
     }
   },
 
-  /**
-   * 上拉加载
-   */
-  onReachBottom: function () {
-    // console.log(1);
-    // 显示加载图标  
-    wx.showLoading({
-      title: '玩命加载中',
-    });
-    var tabIndex = this.data.activeIndex.toString();
-    switch (tabIndex) {
-      case '0'://我的收藏
-        this.loadMoreMessage();
-        break;
-      case '1'://我的文件
-
-        break;
-      case '2'://企业网盘
-
-        break;
-    }
-  },
 
   /**
    * 刷新消息
