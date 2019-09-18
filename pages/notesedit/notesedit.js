@@ -6,7 +6,9 @@ Page({
    */
   data: {
     id:'', //当前索引
+    textHeight:'100%', 
     symbolBottom: 0,
+    infoHeight:'90px',
     content: '', //即时输入内容
     textValue: '',  //文本域内容设置
     notesName: '',
@@ -109,55 +111,44 @@ Page({
        id:options.id,
        notesName:options.title,
        textValue:options.content
+    });
+    this.getScrollHeight();
+  },
+  // 封装函数获取ID为box的元素实际高度 
+  getScrollHeight: function () {
+    wx.createSelectorQuery().select('#box').boundingClientRect((rect) => {
+      this.setData({
+        scrollHeight: rect.height
+      })
+      // console.log(this.data.scrollHeight)
+    }).exec()
+  },
+    //监听用户滑动页面事件
+  onPageScroll: function (e) {
+    if (e.scrollTop <= 0) {
+      // 滚动到最顶部
+      e.scrollTop = 0;
+    } else if (e.scrollTop > this.data.scrollHeight) {
+      // 滚动到最底部
+      e.scrollTop = this.data.scrollHeight;
+    }
+    if (e.scrollTop > this.data.scrollTop || e.scrollTop >= this.data.scrollHeight) {
+      //向下滚动 
+      // console.log('向下 ', this.data.scrollHeight)
+      this.setData({
+        infoHeight: '90px'
+      })
+      
+    } else {
+      //向上滚动 
+      // console.log('向上滚动 ', this.data.scrollHeight)
+       this.setData({
+          infoHeight: 0
+        })
+    }
+    //给scrollTop重新赋值 
+    this.setData({
+      scrollTop: e.scrollTop
     })
-  },
-
-  /**
-   * 生命周期函数--监听页面初次渲染完成
-   */
-  onReady: function () {
-
-  },
-
-  /**
-   * 生命周期函数--监听页面显示
-   */
-  onShow: function () {
-
-  },
-
-  /**
-   * 生命周期函数--监听页面隐藏
-   */
-  onHide: function () {
-
-  },
-
-  /**
-   * 生命周期函数--监听页面卸载
-   */
-  onUnload: function () {
-
-  },
-
-  /**
-   * 页面相关事件处理函数--监听用户下拉动作
-   */
-  onPullDownRefresh: function () {
-
-  },
-
-  /**
-   * 页面上拉触底事件的处理函数
-   */
-  onReachBottom: function () {
-
-  },
-
-  /**
-   * 用户点击右上角分享
-   */
-  onShareAppMessage: function () {
-
   }
 })

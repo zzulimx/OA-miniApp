@@ -1,7 +1,7 @@
 {
   "usingComponents": {},
   "navigationBarBackgroundColor": "#fff",
-  "navigationBarTitleText": "新建笔记",
+  "navigationBarTitleText": "新建MD",
   "backgroundColor": "#fff",
   "backgroundTextStyle": "dark"
 }

@@ -8,118 +8,84 @@ page {
   background-color: #fcfbfb;
 }
 
-.mine {
+.container .mine {
   width: 100%;
   background-color: #62c9f8;
-  height: 290rpx;
-  float: left;
+  height: 22%;
+  /* float: left; */
 }
-
-.mine .userinfo-avatar {
-  width: 110rpx;
-  height: 110rpx;
-  margin: 27rpx;
-  border-radius: 50%;
-  float: left;
-}
-
-.mine .userinfo-nickname {
-  float: left;
-  line-height: 128rpx;
-  margin: 20rpx;
-  font-size:30rpx;
-}
-
-.order-icon {
-  width: 50rpx;
-  height: 50rpx;
-  margin-right: 20rpx;
-  border-radius: 50%;
-  vertical-align: middle;
-}
-
-.order-title {
-  font-size: 28rpx;
-  width: 100%;
-  vertical-align: middle;
-}
-
-.list-icon {
-  width: 45rpx;
-  height: 45rpx;
-  border-radius: 50%;
-}
-
-.list-title {
-  font-size: 24rpx;
-  width: 100%;
-  margin-top: 8rpx;
-  color: gray;
-}
-
-.all-order {
-  color: #999;
-  font-size: 28rpx;
-}
-
-.order {
-  display: flex;
-  flex-direction: row;
-  justify-content: space-between;
-  align-items: center;
-  width: calc(100% - 20rpx);
-  height: 94rpx;
-  line-height: 94rpx;
-  padding: 0 20rpx;
-  margin: 10rpx;
-  box-sizing: border-box;
-  border-radius: 6rpx;
+.container .personalInfo{
+  position: absolute;
+  width: 90%;
+  height: 20%;
+  top: 8%;
+  left: 50%;
+  transform: translateX(-50%);
   background-color: #fff;
+  box-shadow: 2px 2px 12px #ddd;
+  border-radius: 8px;
 }
-
-.service {
-  width: calc(100% - 40rpx);
-  margin: 0rpx 20rpx;
-  background-color: #fff;
-  margin-top: -120rpx;
-  float: left;
-}
-
-.service-title {
+.container .personalInfo .user_avatar{
+  position: relative;
+  height: 30%;
   width: 100%;
-  height: 80rpx;
-  line-height: 80rpx;
-  padding: 0 20rpx;
+}
+.personalInfo .user_avatar image{
+  width: 17vw;
+  height: 17vw;
+  border-radius: 50%;
+  position: absolute;
+  left: 50%;
+  transform: translate(-50%,-50%);
+}
+.personalInfo .info_box{
+  width: 100%;
+  height: 70%;
   box-sizing: border-box;
-  color: gray;
-  font-size: 28rpx;
-  border-bottom: 1rpx solid rgba(153, 153, 153, 0.2);
-}
-
-.service .icons {
-  display: inline-flex;
-  flex-direction: row;
-  /* 自动换行 */
-  flex-wrap: wrap;
-  width: 100%;
-}
-
-.service .icons .user-item {
-  width: 25%;
-  height: 130rpx;
-  padding-top: 24rpx;
   text-align: center;
 }
-
-.button {
-  border: none;
-  outline: none;
-  background: transparent;
-  margin: 0;
-  padding: 0;
-  line-height: 44rpx;
+.personalInfo .info_box .user_name{
+  font-size: 34rpx;
+  font-weight:600;
+  padding: 5px;
+}
+.personalInfo .info_box .user_depart{
+  font-size: 30rpx;
+  color: gray;
+}
+.personalInfo .info_box .user_num{
+  font-size: 26rpx;
+  color: #ccc;
+}
+.container .menu_box{
+  padding-top: 13%;
+  box-sizing: border-box;
+  background-color: #fff;
 }
 
-.button::after {
-  border: none;
+.menu_box .menu1,.menu_box .menu2{
+  display: inline-block;
+  padding: 10px;
+  width: 50%;
+  box-sizing: border-box;
+  text-align: center;
 }
+.menu1 image, .menu2 image{
+  width: 30px;
+  height: 30px;
+}
+.menu_box .menu_title{
+  font-size: 30rpx;
+}
+.hr{
+  width: 100%;
+  height: 1%;
+  background-color: #eee;
+}
+.weui-cells:before{
+  content: unset;
+}
+.weui-cells.group1::after{
+  content: unset;
+}
+

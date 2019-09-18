@@ -12,6 +12,9 @@ page{
 }
 .container .navOperate{
   width: 100%;
+  position: fixed;
+  top: 0;
+  z-index: 9999;
 }
 .container .navOperate .operateIcon{
   width: 100%;
@@ -29,17 +32,30 @@ page{
 .container .navOperate .operateIcon .operate .icon{
   font-size: 22px;
 }
+.container .inner{
+  position: fixed;
+  height: 100%;
+  width: 100%;
+  top: 50px;
+  
+}
 .container .notesInfo{
   width: 100%;
   background-color: #eee;
-  padding: 10px;
+  overflow: hidden;
+  box-sizing: border-box;
+  padding: 0 10px;
+  transition: height .3s ease;
 }
 .container .notesInfo .notes_title input{
   font-size: 16px;
   height: 25px;
 }
 .container .notesInfo .notes_title{
-  padding-bottom:10px;
+  padding:10px 0;
+}
+.container .notesInfo .notes_tag{
+  padding-bottom: 10px;
 }
 .container .notesInfo .notes_tag .notes_icon{
   display: inline-block;
@@ -51,7 +67,7 @@ page{
 }
 .container  .notesInfo  .notes_tag .notes_path{
   display: inline-block;
-  width: 70%;
+  width: 80%;
   color: #62c9f8;
   font-size: 26rpx;
 }
@@ -59,6 +75,7 @@ page{
   display: inline-block;
   width: 10%;
   text-align: right;
+  float: right;
 }
 .container .notesInfo .notes_tag .tag_icon .icon{
   color: #62c9f8;
@@ -82,21 +99,30 @@ page{
   width: 20%;
   line-height: 45px;
   text-align: center;
+  position: relative;
+   font-size: 40rpx;
 }
+
 .container .quickSymbol .symbolIcon .symbol.check_box{
   position: absolute;
   height: 45px;
 }
-.container .quickSymbol .symbolIcon .symbol.check_box cover-image{
-  width: 20px;
-  height: 20px;
+.container .quickSymbol .symbolIcon .symbol cover-image{
+  width: 23px;
+  height: 23px;
   position: absolute;
   top: 50%;
   left: 50%;
   transform: translate(-50%,-50%);
 }
+.container .quickSymbol .symbolIcon .symbol.symbol.check_box cover-image{
+  width: 20px;
+  height: 20px;
+}
 
 .click{
   background-color: #eee;
 }
-
+#box{
+  min-height: 100%;
+}

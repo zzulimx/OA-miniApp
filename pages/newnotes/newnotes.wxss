@@ -79,18 +79,24 @@ page{
   width: 20%;
   line-height: 45px;
   text-align: center;
+  position: relative;
+  font-size: 40rpx;
 }
 .container .quickSymbol .symbolIcon .symbol.check_box{
   position: absolute;
   height: 45px;
 }
-.container .quickSymbol .symbolIcon .symbol.check_box cover-image{
-  width: 20px;
-  height: 20px;
+.container .quickSymbol .symbolIcon .symbol cover-image{
+  width: 23px;
+  height: 23px;
   position: absolute;
   top: 50%;
   left: 50%;
   transform: translate(-50%,-50%);
+}
+.container .quickSymbol .symbolIcon .symbol.symbol.check_box cover-image{
+  width: 20px;
+  height: 20px;
 }
 .click{
   background-color: #eee;

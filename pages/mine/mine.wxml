@@ -1,20 +1,53 @@
 <view class="container">
   <view class="mine">
-    <image bindtap="bindViewTap" class="userinfo-avatar" src="{{userInfo.avatarUrl}}" mode="cover"></image>
-    <text class="userinfo-nickname">{{userInfo.nickName}}</text>
   </view>
-
-  <view class="service">
-    <view class="service-title">我的服务</view>
-    <view class="icons">
-      <block wx:for="{{list}}" wx:key="{{index}}">
-        <view class="user-item" bindtap="toMyMore" data-url="{{item.url}}">
-          <button open-type="{{item.url}}" class="button">
-            <image src="{{item.img}}" class="list-icon"></image>
-            <view class="list-title">{{item.title}}</view>
-          </button>
-        </view>
-      </block>
+  <view class="personalInfo">
+     <view class="user_avatar">
+     <image src="{{userInfo.avatarUrl}}"></image>
+     </view>
+     <view class="info_box">
+     <view class="user_name">张三</view>
+     <view class="user_depart">未来科技公司研发部</view>
+     <view class="user_num">0920</view>
+     </view>
+  </view>
+  <view class="menu_box">
+    <view class="menu1">
+      <view class="menu_icon"><image src="../../images/mine/calendar.png"></image></view>
+      <view class="menu_title">公司年历</view>
     </view>
+    <view class="menu2">
+     <view class="menu_icon"><image src="../../images/mine/question.png"></image></view>
+      <view class="menu_title">问卷调查</view></view>
   </view>
-</view>
+  <view class="hr"></view>
+   <view class="weui-cells weui-cells_after-title group1">
+            <view class="weui-cell weui-cell_example problem">
+                <view class="weui-cell__hd">
+                    <image src="../../images/mine/problem.png" style="margin-right: 16px;vertical-align: middle;width:20px; height: 20px;"></image>
+                </view>
+                <view class="weui-cell__bd">常见问题</view>
+                <!-- <view class="weui-cell__ft">说明文字</view> -->
+            </view>
+            <view class="weui-cell weui-cell_example pwd">
+                <view class="weui-cell__hd">
+                    <image src="../../images/mine/pwd.png" style="margin-right: 16px;vertical-align: middle;width:20px; height: 20px;"></image>
+                </view>
+                <view class="weui-cell__bd">修改密码</view>
+                <!-- <view class="weui-cell__ft">说明文字</view> -->
+            </view>
+        </view>
+        
+
+
+        <view class="hr"></view>
+ <view class="weui-cells weui-cells_after-title">
+          <view class="weui-cell weui-cell_example about">
+                <view class="weui-cell__hd">
+                    <image src="../../images/mine/about.png" style="margin-right: 16px;vertical-align: middle;width:20px; height: 20px;"></image>
+                </view>
+                <view class="weui-cell__bd">关于我们</view>
+                <!-- <view class="weui-cell__ft">说明文字</view> -->
+            </view>
+ </view>
+ </view>

@@ -29,7 +29,7 @@
  <view class="weui-cells weui-cells_after-title">
             <view class="weui-cell">
                 <view class="weui-cell__bd">
-                    <textarea show-confirm-bar="{{false}}" hold-keyboard="{{true}}"  adjust-position="{{false}}"	 bindfocus="inputFocus" bindblur="inputBlur" class="weui-textarea" bindinput="getContent" value="{{textValue}}" style="height:100%;border:0" />
+                    <textarea show-confirm-bar="{{false}}" hold-keyboard="{{true}}"   bindfocus="inputFocus" bindblur="inputBlur" class="weui-textarea" bindinput="getContent" value="{{textValue}}" style="height:{{textHeight}};border:0" />
                 </view>
             </view>
         </view>
@@ -40,10 +40,10 @@
 <!-- 书写快捷符号 -->
 <cover-view class="quickSymbol"  style="bottom:{{symbolBottom}}">
 <cover-view class="symbolIcon">
-  <cover-view class="symbol symbol_title" hover-class="click" catchtap="addtitle">#  标题</cover-view>
-  <cover-view class="symbol symbol_title"  hover-class="click" catchtap="addlist">- 列表</cover-view>
-  <cover-view class="symbol symbol_title" hover-class="click" catchtap="addbind">* 加粗</cover-view>
-  <cover-view class="symbol symbol_title" hover-class="click" catchtap="addlink"> >引用</cover-view>
+  <cover-view class="symbol symbol_title" hover-class="click" catchtap="addtitle"><cover-image src="../../images/notes/title.png"></cover-image></cover-view>
+  <cover-view class="symbol symbol_title"  hover-class="click" catchtap="addlist"><cover-image src="../../images/notes/list.png"></cover-image></cover-view>
+  <cover-view class="symbol symbol_title" hover-class="click" catchtap="addbind"><cover-image src="../../images/notes/bind.png"></cover-image></cover-view>
+  <cover-view class="symbol symbol_title" hover-class="click" catchtap="addlink"><cover-image src="../../images/notes/link.png"></cover-image></cover-view>
   <cover-view class="symbol check_box symbol_title"  hover-class="click" catchtap="addcheck"><cover-image src="../../images/notes/check.png"></cover-image></cover-view>
 </cover-view>
 </cover-view>

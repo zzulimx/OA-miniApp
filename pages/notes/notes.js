@@ -355,7 +355,11 @@ Page({
       });
     })
   },
-
+  torichtext:function(){
+     wx.navigateTo({
+       url: '../richtext/richtext',
+     })
+  },
   //点击切换
   tabClick: function (e) {
     let currIndex = parseInt(e.currentTarget.id);

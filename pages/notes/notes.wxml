@@ -101,7 +101,7 @@
 <view class="addWrapper" wx:if="{{isaddFile}}">
 <view class="add_group" style="height:{{addwrapper}}">
  <view class="new_file" catchtap="fileCreate"><text>文件夹</text><image src="../../images/file/addfolder.png"></image></view>
-   <view class="new_notes"><text>笔记</text><image   src="../../images/notes/notes.png"></image></view>
+   <view class="new_notes richtext" catchtap="torichtext"><text>文本</text><image   src="../../images/notes/notes.png"></image></view>
     <view class="new_markdown" catchtap="newnotes"><text>Markdown</text><image   src="../../images/notes/md.png"></image></view>
 </view>
    <view class="add_btn" catchtap="addFile" wx:if="{{isaddFile}}"><image style="transform:rotate({{transdeg}})" src="../../images/file/add.png" ></image></view>
