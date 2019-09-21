@@ -13,55 +13,51 @@ Page({
     textValue: '',  //文本域内容设置
     notesName: '',
   },
-  inputFocus: function (event) {
-    if (event.detail.height) {
-      let keyboardHeight = event.detail.height;
-      this.setData({
-        symbolBottom: keyboardHeight + 'px'
+  // 初始化编辑器
+  onEditorReady() {
+    const that = this
+    wx.createSelectorQuery().select('#editor').context(function (res) {
+      that.editorCtx = res.context;
+      that.editorCtx.setContents({
+        html: that.data.textValue
       })
-    }
+    }).exec();
   },
-  inputBlur: function (event) {
-    this.setData({
-      symbolBottom: 0
-    })
+  // 撤销
+  undo:function(){
+    this.editorCtx.undo();
   },
-  getContent: function (e) {
-    this.setData({
-      content: e.detail.value
-    })
+  // 恢复
+  redo:function(){
+    this.editorCtx.redo();
   },
-  // 底部栏添加内容
-  addtitle: function () {
+  // 插入图片
+  insertImg: function () {
+    wx.chooseImage({
+      count: 1,
+      sourceType: ['album', 'camera'],
+      success: (res) => {
+        this.editorCtx.insertImage({
+          src: res.tempFilePaths[0]
+        });
+      },
+    });
 
-    this.setData({
-      textValue: this.data.content + '#',
-      content: this.data.content + '#'
-    });
   },
-  addlist: function () {
+  // 获取输入内容
+  getContent: function (e) {
+    // 拼接输入内容
+    var currContent = '';
+    e.detail.delta.ops.forEach((item, index) => {
+      if (item.insert.image) {
+        currContent += '![](' + item.insert.image + ')';
+      } else {
+        currContent += item.insert;
+      }
+    })
     this.setData({
-      textValue: this.data.content + '-',
-      content: this.data.content + '-'
-    });
-  },
-  addbind: function () {
-    this.setData({
-      textValue: this.data.content + '**',
-      content: this.data.content + '**'
-    });
-  },
-  addlink: function () {
-    this.setData({
-      textValue: this.data.content + '>',
-      content: this.data.content + ''
-    });
-  },
-  addcheck: function () {
-    this.setData({
-      textValue: this.data.content + '- [x] ',
-      content: this.data.content + '- [x] '
-    });
+      content: currContent
+    })
   },
   // 获取新建笔记名称
   notesName: function (e) {
@@ -112,43 +108,5 @@ Page({
        notesName:options.title,
        textValue:options.content
     });
-    this.getScrollHeight();
-  },
-  // 封装函数获取ID为box的元素实际高度 
-  getScrollHeight: function () {
-    wx.createSelectorQuery().select('#box').boundingClientRect((rect) => {
-      this.setData({
-        scrollHeight: rect.height
-      })
-      // console.log(this.data.scrollHeight)
-    }).exec()
-  },
-    //监听用户滑动页面事件
-  onPageScroll: function (e) {
-    if (e.scrollTop <= 0) {
-      // 滚动到最顶部
-      e.scrollTop = 0;
-    } else if (e.scrollTop > this.data.scrollHeight) {
-      // 滚动到最底部
-      e.scrollTop = this.data.scrollHeight;
-    }
-    if (e.scrollTop > this.data.scrollTop || e.scrollTop >= this.data.scrollHeight) {
-      //向下滚动 
-      // console.log('向下 ', this.data.scrollHeight)
-      this.setData({
-        infoHeight: '90px'
-      })
-      
-    } else {
-      //向上滚动 
-      // console.log('向上滚动 ', this.data.scrollHeight)
-       this.setData({
-          infoHeight: 0
-        })
-    }
-    //给scrollTop重新赋值 
-    this.setData({
-      scrollTop: e.scrollTop
-    })
   }
 })

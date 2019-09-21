@@ -8,6 +8,7 @@ var sliderWidth = 96; // 需要设置slider的宽度，用于计算中间位置
 Page({
   data: {
     tabs: ["最近笔记", "我的笔记"],
+    overflow:'none', //添加文件工具栏隐藏
     activeIndex: 0,//展示类型，默认我的消息
     isaddFile: true,   //添加文件按钮显示/隐藏
     addbgHeight: 0,  //添加文件时背景显示
@@ -186,6 +187,12 @@ Page({
       addwrapper: 0,
       transdeg: 0,
     })
+    var that = this;
+    setTimeout(function(){
+      that.setData({
+        overflow:'none'
+      })
+    },200);
     // 跳转回去
     wx.navigateTo({
       url: '/pages/newnotes/newnotes',
@@ -202,7 +209,13 @@ Page({
       addbgHeight: 0,
       addwrapper: 0,
       transdeg: 0,
-    })
+    });
+    var that = this;
+    setTimeout(function () {
+      that.setData({
+        overflow: 'none'
+      })
+    }, 200)
   },
   // 获取新建的文件夹名称
   fileName: function (e) {
@@ -258,12 +271,20 @@ Page({
         addbgHeight: 0,
         addwrapper: 0,
         transdeg: 0,
-      })
+      });
+      var that = this;
+      setTimeout(function () {
+        that.setData({
+          overflow: 'none'
+        })
+      }, 200);
+
     } else {
       this.setData({
         addbgHeight: '100%',
         addwrapper: '180px',
         transdeg: '495deg',
+        overflow:'block'
       })
     }
   },
@@ -357,7 +378,7 @@ Page({
   },
   torichtext:function(){
      wx.navigateTo({
-       url: '../richtext/richtext',
+       url: '../newtext/newtext',
      })
   },
   //点击切换
@@ -370,6 +391,12 @@ Page({
       addwrapper: 0,
       transdeg: 0,
     });
+    var that = this;
+    setTimeout(function () {
+      that.setData({
+        overflow: 'none'
+      })
+    }, 200)
 
   },
 
@@ -387,6 +414,11 @@ Page({
           addwrapper: 0,
           transdeg: 0,
         });
+        setTimeout(function () {
+          that.setData({
+            overflow: 'none'
+          })
+        }, 200)
       }
     });
   },

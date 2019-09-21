@@ -24,7 +24,7 @@
     "pages/newnotes/newnotes",
     "pages/notesitem/notesitem",
     "pages/notesedit/notesedit",
-    "pages/richtext/richtext"
+    "pages/newtext/newtext"
   ],
   "window": {
     "backgroundTextStyle": "light",

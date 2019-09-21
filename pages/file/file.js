@@ -8,6 +8,7 @@ var sliderWidth = 96; // 需要设置slider的宽度，用于计算中间位置
 Page({
   data: {
     tabs: ["我的收藏", "我的文件", "企业网盘"],
+    overflow:'none', //添加文件栏溢出 
     activeIndex: 0,//展示类型，默认我的消息
     isaddFile:true,   //添加文件按钮显示/隐藏
     addbgHeight:0,  //添加文件时背景显示
@@ -259,7 +260,13 @@ Page({
         addbgHeight: 0,
         addwrapper: 0,
         transdeg: 0,
-      })
+      });
+      var that = this;
+      setTimeout(function(){
+        that.setData({
+          overflow:'none'
+        })
+      },200)
     }
   },
   // 新建文件夹窗口弹窗
@@ -268,8 +275,14 @@ Page({
       islayOpen:true,
       addbgHeight: 0,
       addwrapper: 0,
-      transdeg: 0,
+      transdeg: 0
     })
+    var that = this;
+    setTimeout(function () {
+      that.setData({
+        overflow: 'none'
+      })
+    }, 200)
   },
   // 打开文件重命名弹出层
   reNameBtn:function(){
@@ -400,13 +413,20 @@ Page({
       this.setData({
         addbgHeight: 0,
         addwrapper: 0,
-        transdeg: 0,
+        transdeg: 0
       })
+      var that = this;
+      setTimeout(function () {
+        that.setData({
+          overflow: 'none'
+        })
+      }, 200)
     }else{
       this.setData({
         addbgHeight: '100%',
         addwrapper: '115px',
         transdeg: '495deg',
+        overflow: 'block'
       })
     }
   },
@@ -570,7 +590,8 @@ Page({
     this.setData({
       isLongtap: false,
       opaHeight: 0,
-      isaddFile: true
+      isaddFile: true,
+      overflow: 'block'
     });
     var that=this;
     //  设置文件选中索引全为false
@@ -589,9 +610,14 @@ Page({
       activeIndex: e.currentTarget.id,
       addbgHeight: 0,
       addwrapper: 0,
-      transdeg: 0,
+      transdeg: 0
     });
-  
+    var that = this;
+    setTimeout(function () {
+      that.setData({
+        overflow: 'none'
+      })
+    }, 200)
   },
 
   // //滑动切换
@@ -606,8 +632,13 @@ Page({
           activeIndex: currIndex,
           addbgHeight: 0,
           addwrapper: 0,
-          transdeg: 0,
+          transdeg: 0
         });
+        setTimeout(function () {
+          that.setData({
+            overflow: 'none'
+          })
+        }, 200)
       }
     });
   },

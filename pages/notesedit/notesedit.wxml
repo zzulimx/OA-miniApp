@@ -4,16 +4,16 @@
 <view class="navOperate">
   <view class="operateIcon">
     <view class="operate operate_save" hover-class="click" catchtap="saveNotes"><span class="icon iconfont icon-finish"></span></view>
-    <view class="operate operate_save" hover-class="click"><span class="icon iconfont icon-shangyibu"></span></view>
-    <view class="operate operate_save" hover-class="click"><span class="icon iconfont icon-xiayibu"></span></view>
-    <view class="operate operate_save" hover-class="click"><span class="icon iconfont icon-pen"></span></view>
+    <view class="operate operate_cancel" hover-class="click" catchtap="undo"><span class="icon iconfont icon-shangyibu"></span></view>
+    <view class="operate operate_redo" hover-class="click" catchtap="redo"><span class="icon iconfont icon-xiayibu"></span></view>
+    <view class="operate operate_save" hover-class="click" catchtap="insertImg"><span class="icon iconfont icon-tupian1"></span></view>
     <view class="operate operate_save" hover-class="click"><span class="icon iconfont icon-xingzhuang"></span></view>
-    <view class="operate operate_save" hover-class="click"><span class="icon iconfont icon-gengduo"></span></view>
+    <view class="operate operate_save" hover-class="click"><span class="icon iconfont icon-biaoti"></span></view>
   </view>
 </view>
 
 
-<view class="inner">
+
 <!-- 新建笔记信息（标题，标签） -->
 <view class="notesInfo" style="height:{{infoHeight}}">
 <view class="notes_title">
@@ -27,19 +27,12 @@
 
 <!-- 笔记内容 -->
 <view class="notesContent">
- <view class="weui-cells weui-cells_after-title">
-            <view class="weui-cell">
-                <view class="weui-cell__bd">
-                    <textarea id="box"  show-confirm-bar="{{false}}" 	hold-keyboard="{{true}}" cursor-spacing="20" 	maxlength="-1" bindfocus="inputFocus" bindblur="inputBlur" class="weui-textarea" bindinput="getContent" value="{{textValue}}"/>
-                </view>
-            </view>
-        </view>
+<editor id="editor"  bindinput="getContent" bindready="onEditorReady" style="border:0;"></editor>           
 </view>
 
 
-
 <!-- 书写快捷符号 -->
-<cover-view class="quickSymbol"  style="bottom:{{symbolBottom}}">
+<cover-view class="quickSymbol"  style="bottom:{{symbolBottom}};display:none">
 <cover-view class="symbolIcon">
   <cover-view class="symbol symbol_title" hover-class="click" catchtap="addtitle"><cover-image src="../../images/notes/title.png"></cover-image></cover-view>
   <cover-view class="symbol symbol_title"  hover-class="click" catchtap="addlist"><cover-image src="../../images/notes/list.png"></cover-image></cover-view>
@@ -50,6 +43,6 @@
 </cover-view>
 
 
-</view>
+
 </view>
 

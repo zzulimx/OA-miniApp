@@ -7,11 +7,6 @@ Page({
     placeholder: '开始输入...',
     _focus: false,
   },
-  readOnlyChange() {
-    this.setData({
-      readOnly: !this.data.readOnly
-    })
-  },
   onLoad() {
     wx.loadFontFace({
       family: 'Pacifico',

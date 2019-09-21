@@ -1,6 +1,5 @@
 // pages/newnotes/newnotes.js
 Page({
-
   /**
    * 页面的初始数据
    */
@@ -8,57 +7,72 @@ Page({
     symbolBottom:0,
     content:'', //即时输入内容
     textValue:'',  //文本域内容设置
-    notesName:''
+    notesName:'',
+    infoHeight:'90px' //标题栏高度
   },
-  inputFocus:function(event){
-   if(event.detail.height){
-     let keyboardHeight = event.detail.height;
-     this.setData({
-       symbolBottom: keyboardHeight + 'px'
-     })
-   }
+  // 标题框聚焦
+  infoSet:function(){
+    if(this.timer){
+      clearTimeout(this.timer)
+    }
   },
-  inputBlur: function (event) {
+  // 标题框失去焦点
+  infocancel:function(){
+    this.timer=setTimeout(()=>{
+       this.setData({
+         infoHeight:0
+       })
+    },2000)
+  },
+  // 点击设置标题
+  setInfo:function(){
+    clearTimeout(this.timer);
     this.setData({
-      symbolBottom: 0
+      infoHeight:'90px'
     })
   },
+  // 初始化editor
+  onEditorReady() {
+    const that = this
+    wx.createSelectorQuery().select('#editor').context(function (res) {
+      that.editorCtx = res.context
+    }).exec()
+  },
+  // 获取输入内容
   getContent:function(e){
+    // 拼接输入内容
+    var currContent='';
+    e.detail.delta.ops.forEach((item,index)=>{
+      if(item.insert.image){
+        currContent += '![]('+item.insert.image+')';
+      }else{
+        currContent += item.insert;
+      }    
+    })
     this.setData({
-      content:e.detail.value
+      content:currContent
     })
   },
-  // 底部栏添加内容
-  addtitle:function(){
-    
-    this.setData({
-      textValue: this.data.content+'#',
-      content: this.data.content + '#'
-    });
+  // 撤销
+  undo: function () {
+    this.editorCtx.undo();
   },
-  addlist:function(){
-    this.setData({
-      textValue: this.data.content + '-',
-      content: this.data.content + '-'
-    });
+  // 恢复
+  redo: function () {
+    this.editorCtx.redo();
   },
-  addbind:function(){
-    this.setData({
-      textValue: this.data.content + '**',
-       content: this.data.content + '**'
+  // 插入图片
+  insertImg:function(){
+    wx.chooseImage({
+      count:1,
+      sourceType: ['album', 'camera'],
+      success:(res)=> {
+        this.editorCtx.insertImage({
+          src: res.tempFilePaths[0]
+        });
+      },
     });
-  },
-  addlink:function(){
-    this.setData({
-      textValue: this.data.content + '>',
-      content: this.data.content + ''
-    });
-  },
-  addcheck:function(){
-    this.setData({
-      textValue: this.data.content + '- [x] ',
-      content: this.data.content + '- [x] '
-    });
+   
   },
   // 获取新建笔记名称
   notesName:function(e){ 
@@ -67,6 +81,7 @@ Page({
       })
   },
   saveNotes:function(){
+    console.log(this.data.content);
     var pages = getCurrentPages();
     var currPage = pages[pages.length - 1];   //当前页面
     var prevPage = pages[pages.length - 2];  //上一个页面
@@ -74,7 +89,7 @@ Page({
     //直接调用上一个页面的setData()方法，把数据存到上一个页面中去
     //不需要页面更新
     if (this.data.notesName === ''){
-      this.data.notesName='新建笔记.md'
+      this.data.notesName='新建笔记'
       this.setData({
         notesName:this.data.notesName
       })
@@ -93,62 +108,5 @@ Page({
       noteslist: prevPage.data.noteslist
     });
     wx.navigateBack();
-    console.log(this.data.notesName);
-    console.log(this.data.content);
-  },
-  /**
-   * 生命周期函数--监听页面加载
-   */
-  onLoad: function (options) {
-
-  },
-
-  /**
-   * 生命周期函数--监听页面初次渲染完成
-   */
-  onReady: function () {
-
-  },
-
-  /**
-   * 生命周期函数--监听页面显示
-   */
-  onShow: function () {
-
-  },
-
-  /**
-   * 生命周期函数--监听页面隐藏
-   */
-  onHide: function () {
-
-  },
-
-  /**
-   * 生命周期函数--监听页面卸载
-   */
-  onUnload: function () {
-
-  },
-
-  /**
-   * 页面相关事件处理函数--监听用户下拉动作
-   */
-  onPullDownRefresh: function () {
-
-  },
-
-  /**
-   * 页面上拉触底事件的处理函数
-   */
-  onReachBottom: function () {
-
-  },
-
-  /**
-   * 用户点击右上角分享
-   */
-  onShareAppMessage: function () {
-
   }
 })

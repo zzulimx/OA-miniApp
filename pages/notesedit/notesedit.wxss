@@ -12,8 +12,6 @@ page{
 }
 .container .navOperate{
   width: 100%;
-  position: fixed;
-  top: 0;
   z-index: 9999;
 }
 .container .navOperate .operateIcon{
@@ -31,13 +29,6 @@ page{
 }
 .container .navOperate .operateIcon .operate .icon{
   font-size: 22px;
-}
-.container .inner{
-  position: fixed;
-  height: 100%;
-  width: 100%;
-  top: 50px;
-  
 }
 .container .notesInfo{
   width: 100%;
@@ -81,9 +72,14 @@ page{
   color: #62c9f8;
   font-size: 20px;
 }
-.container .notesContent,.container .notesContent .weui-cell__bd,.container .notesContent .weui-cell,.container .notesContent .weui-cells{
+.container .notesContent{
   width: 100%;
-  height: 100%;
+  height: auto;
+}
+.container .notesContent editor{
+  box-sizing: border-box;
+  padding: 10px 10px 45px 10px;
+  min-height:calc( 100vh - 140px );
 }
 .container .quickSymbol{
   position: fixed;
@@ -121,8 +117,5 @@ page{
 }
 
 .click{
-  background-color: #eee;
-}
-#box{
-  min-height: 100%;
+  background-color: rgba(255, 255, 255,.3);
 }

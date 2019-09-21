@@ -117,8 +117,7 @@ page, .page, .page__bd {
 .addWrapper view{
   padding: 10px 0;
   overflow: hidden;
-  line-height: 40px;
-  vertical-align: middle;
+  /* line-height: 40px; */
 }
 .addWrapper view text{
   line-height: 40px;

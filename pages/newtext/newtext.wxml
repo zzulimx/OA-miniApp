@@ -45,12 +45,6 @@
 
       <editor id="editor" class="ql-container" placeholder="{{placeholder}}" showImgSize showImgToolbar showImgResize bindstatuschange="onStatusChange"  read-only="{{readOnly}}" bindready="onEditorReady">
       </editor>
-
-      <!-- <view>
-        <button bindtap="readOnlyChange">{{readOnly ? '可写':'只读'}}</button>
-      </view> -->
     </view>
   </view>
-
-  <template is="foot" />
 </view>
