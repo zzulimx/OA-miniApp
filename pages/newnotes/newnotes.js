@@ -4,9 +4,7 @@ Page({
    * 页面的初始数据
    */
   data: {
-    symbolBottom:0,
     content:'', //即时输入内容
-    textValue:'',  //文本域内容设置
     notesName:'',
     infoHeight:'90px' //标题栏高度
   },
@@ -15,6 +13,9 @@ Page({
     if(this.timer){
       clearTimeout(this.timer)
     }
+    this.setData({
+      infoHeight: '90px'
+    })
   },
   // 标题框失去焦点
   infocancel:function(){
@@ -27,9 +28,16 @@ Page({
   // 点击设置标题
   setInfo:function(){
     clearTimeout(this.timer);
-    this.setData({
-      infoHeight:'90px'
-    })
+    if(this.data.infoHeight=== 0){
+      this.setData({
+        infoHeight: '90px'
+      });
+      this.infocancel();
+    }else{
+      this.setData({
+        infoHeight: 0
+      })
+    }
   },
   // 初始化editor
   onEditorReady() {
@@ -80,8 +88,8 @@ Page({
         notesName: e.detail.value
       })
   },
+  // 保存笔记
   saveNotes:function(){
-    console.log(this.data.content);
     var pages = getCurrentPages();
     var currPage = pages[pages.length - 1];   //当前页面
     var prevPage = pages[pages.length - 2];  //上一个页面

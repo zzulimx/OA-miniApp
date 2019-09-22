@@ -21,7 +21,7 @@
              <block wx:for="{{noteslist}}">
              <view data-idx="{{index}}" data-type="{{item.fileType}}" class="weui-cell weui-cell_access" hover-class="weui-cell_active" bindtap="tonotesitem" catchlongpress="fileOperate" bindtouchstart="bindTouchStart" bindtouchend="bindTouchEnd">
                <view class="weui-cell__bd">
-                     <view class="item_top file_name">{{item.title+'.md'}}</view>              
+                     <view class="item_top file_name">{{item.fileType==='md'?item.title+'.md' : item.title}}</view>              
                      <view class="item_bottom file_num"><text class="create_time">{{item.createTime}}</text></view>        
                 </view>
                  <view class="icon iconfont {{isLongtap?'':arrowIcon}} {{arrowIcon?(selectIndex[index].sureId ? hasSelect : noSelect):''}}" ></view>

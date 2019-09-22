@@ -28,6 +28,7 @@ Page({
     noteslist: [      //文件管理 文件列表
       {
         fileSize: '0KB',
+        fileType:'md',
         title: '边城',
         id:0,
         createTime: '2019-06-13 17:48',
@@ -37,6 +38,7 @@ Page({
         content: '## 图文排列 \r **边城`沈从文`著——中篇小说** \r > 在川湘交界的茶峒附近，小溪白塔旁边，住着主人公翠翠和她爷爷老船夫。茶峒城里有个船总叫顺顺，他有两个儿子，老大叫天保，老二叫傩送。 ![凤凰古城](https://www.vvadd.com/wxml_demo/img.jpg) \r 端午节翠翠去看[龙舟赛](http://link)，偶然相遇相貌英俊的青年水手傩（nuó）送，傩送在翠翠的心里留下了深刻的印象。同时，傩送的兄长天保也喜欢上了翠翠，并提前托媒人提了亲。天保告诉傩送一年前他就爱上了翠翠，而傩送告诉天保他两年前就爱上了翠翠，天保听了后也吃了一惊。然而此时，当地的团总以新磨坊为陪嫁，想把女儿许配给傩送。而傩送宁肯继承一条破船也要与翠翠成婚',
           },{
         fileSize: '0KB',
+        fileType:'md',
         title: '边城',
         id: 0,
         createTime: '2019-06-13 17:48',
@@ -193,7 +195,7 @@ Page({
         overflow:'none'
       })
     },200);
-    // 跳转回去
+    // 跳转
     wx.navigateTo({
       url: '/pages/newnotes/newnotes',
     })
@@ -296,19 +298,33 @@ Page({
     this.endTime = e.timeStamp;
   },
 
-  // （打开文件夹/选择文件夹）
+  // （打开文件/选择文）
   tonotesitem: function (event) {
     //  非文件操作状态，并且短按点击时
     if (!this.data.isLongtap && this.endTime - this.startTime < 350) {
       // 获取当前索引
       let id = event.currentTarget.dataset.idx;
-      //  获取当前内容
-      let content = this.data.noteslist[id].content;
+      // 获取当前文件类型
+      let type = event.currentTarget.dataset.type;
       let title = this.data.noteslist[id].title;
+      // 设置url
+      var tourl='';
+      // 设置内容
+      var content='';
+      if(type === 'md'){
+        tourl ='/pages/notesitem/notesitem';
+        //  获取当前内容
+         content = this.data.noteslist[id].content;
+      }else{
+        tourl ='/pages/textitem/textitem'
+        //  获取当前内容
+        // 防止字符串被截取
+        content = JSON.stringify(this.data.noteslist[id].content).replace(/\=/g, "%3D");
+         console.log(content);
+      }
       wx.navigateTo({
-        url: '/pages/notesitem/notesitem?content='+content+'&title='+title+'&id='+id,
-      })
-     
+        url: tourl+'?content='+content+'&title='+title+'&id='+id,
+      });
     }
     // 文件操作状态，短按点击时
     if (this.data.isLongtap && this.endTime - this.startTime < 350) {
@@ -376,7 +392,20 @@ Page({
       });
     })
   },
+  // 创建新的富文本
   torichtext:function(){
+    // 关闭添加操作栏
+    this.setData({
+      addbgHeight: 0,
+      addwrapper: 0,
+      transdeg: 0,
+    })
+    var that = this;
+    setTimeout(function () {
+      that.setData({
+        overflow: 'none'
+      })
+    }, 200);
      wx.navigateTo({
        url: '../newtext/newtext',
      })

@@ -1,4 +1,4 @@
-// pages/richtext/richtext.js
+// pages/textedit/textedit.js
 Page({
   data: {
     formats: {},
@@ -7,10 +7,10 @@ Page({
     placeholder: '开始输入...',
     _focus: false,
     infoHeight: '90px', //标题栏高度
-    toolHeight:0,
-    editorTop:'50px', //editor的top值
+    toolHeight: 0,
+    editorTop: '50px', //editor的top值
     notesName: '',
-    content:'' //输入内容
+    content: '' //输入内容
   },
   onLoad() {
     wx.loadFontFace({
@@ -20,7 +20,7 @@ Page({
     })
   },
   // 获取输入内容
-  getContent:function(event){
+  getContent: function (event) {
     this.setData({
       content: event.detail
     })
@@ -32,7 +32,7 @@ Page({
     }
     this.setData({
       infoHeight: '90px',
-      editorTop:'150px'
+      editorTop: '150px'
     })
   },
   // 标题框失去焦点
@@ -40,7 +40,7 @@ Page({
     this.timer = setTimeout(() => {
       this.setData({
         infoHeight: 0,
-        editorTop:'50px'
+        editorTop: '50px'
       })
     }, 2000)
   },
@@ -51,34 +51,34 @@ Page({
       if (this.data.infoHeight === 0) {
         this.setData({
           infoHeight: '90px',
-          editorTop:'140px'
+          editorTop: '140px'
         });
         this.infocancel();
       } else {
         this.setData({
           infoHeight: 0,
-          editorTop:'50px'
+          editorTop: '50px'
         })
       }
     }
   },
   // 打开文本编辑操作栏
-  operateTool:function(){
-     if(this.data.infoHeight!==0){
-       this.setData({
-         toolHeight:0,
-       })
-     }else if(this.data.toolHeight===0){
-       this.setData({
-         toolHeight: '160px',
-         editorTop:'210px'
-       })
-     }else if(this.data.toolHeight!==0){
-       this.setData({
-         toolHeight: 0,
-         editorTop:'50px'
-       })
-     }
+  operateTool: function () {
+    if (this.data.infoHeight !== 0) {
+      this.setData({
+        toolHeight: 0,
+      })
+    } else if (this.data.toolHeight === 0) {
+      this.setData({
+        toolHeight: '160px',
+        editorTop: '210px'
+      })
+    } else if (this.data.toolHeight !== 0) {
+      this.setData({
+        toolHeight: 0,
+        editorTop: '50px'
+      })
+    }
   },
   // 初始化editor
   onEditorReady() {
@@ -166,7 +166,7 @@ Page({
     }
     prevPage.data.noteslist[prevPage.data.noteslist.length] = {
       fileSize: '0KB',
-      fileType:'text',
+      fileType: 'text',
       title: this.data.notesName,
       id: 0,
       createTime: '2019-06-13 17:48',

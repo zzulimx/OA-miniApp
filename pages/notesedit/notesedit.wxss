@@ -78,8 +78,8 @@ page{
 }
 .container .notesContent editor{
   box-sizing: border-box;
-  padding: 10px 10px 45px 10px;
-  min-height:calc( 100vh - 140px );
+  padding: 10px;
+  min-height:calc( 100vh - 50px );
 }
 .container .quickSymbol{
   position: fixed;

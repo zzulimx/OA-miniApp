@@ -7,11 +7,41 @@ Page({
   data: {
     id:'', //当前索引
     textHeight:'100%', 
-    symbolBottom: 0,
     infoHeight:'90px',
     content: '', //即时输入内容
     textValue: '',  //文本域内容设置
     notesName: '',
+  },
+  // 标题框聚焦
+  infoSet: function () {
+    if (this.timer) {
+      clearTimeout(this.timer)
+    }
+    this.setData({
+      infoHeight: '90px'
+    })
+  },
+  // 标题框失去焦点
+  infocancel: function () {
+    this.timer = setTimeout(() => {
+      this.setData({
+        infoHeight: 0
+      })
+    }, 2000)
+  },
+  // 点击设置标题
+  setInfo: function () {
+    clearTimeout(this.timer);
+    if (this.data.infoHeight === 0) {
+      this.setData({
+        infoHeight: '90px'
+      });
+      this.infocancel();
+    } else {
+      this.setData({
+        infoHeight: 0
+      })
+    }
   },
   // 初始化编辑器
   onEditorReady() {

@@ -71,7 +71,7 @@ page{
 }
 .container .notesContent{
   width: 100%;
-  height:calc( 100vh - 140px );
+  height:calc( 100vh - 50px );
 }
 .container .notesContent editor{
   box-sizing: border-box;

@@ -1,4 +1,4 @@
-<!--pages/richtext/richtext.wxml-->
+<!--pages/textedit/textedit.wxml-->
 <view class="container">
   <!-- <template is="head" data="{{title: 'editor'}}"/> -->
   <view class="page-body">
@@ -76,3 +76,4 @@
     </view>
   </view>
 </view>
+
