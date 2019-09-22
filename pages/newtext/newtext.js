@@ -178,7 +178,7 @@ Page({
     prevPage.setData({
       noteslist: prevPage.data.noteslist
     });
-    console.log(this.data.content)
+    // console.log(this.data.content)
     wx.navigateBack();
   }
 })

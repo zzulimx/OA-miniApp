@@ -19,7 +19,7 @@ Page({
         html: that.data.content.html,
         delta:that.data.content.delta,
         success: (res) => {
-          console.log(res)
+          // console.log(res)
         },
         fail: (res) => {
           console.log(res)
@@ -29,8 +29,8 @@ Page({
   },
   // 跳转到编辑
   toedit(){
-    
-  }
+
+  },
   /**
    * 生命周期函数--监听页面加载
    */

@@ -320,7 +320,7 @@ Page({
         //  获取当前内容
         // 防止字符串被截取
         content = JSON.stringify(this.data.noteslist[id].content).replace(/\=/g, "%3D");
-         console.log(content);
+        //  console.log(content);
       }
       wx.navigateTo({
         url: tourl+'?content='+content+'&title='+title+'&id='+id,
