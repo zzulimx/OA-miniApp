@@ -32,7 +32,8 @@
 <view class="notesContent">
 <editor id="editor"
  bindinput="getContent"  
-  bindready="onEditorReady"></editor>         
+bindready="onEditorReady"
+placeholder="开始输入..."></editor>         
 </view>
 
 

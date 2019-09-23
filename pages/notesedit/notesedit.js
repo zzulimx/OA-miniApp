@@ -12,31 +12,12 @@ Page({
     textValue: '',  //文本域内容设置
     notesName: '',
   },
-  // 标题框聚焦
-  infoSet: function () {
-    if (this.timer) {
-      clearTimeout(this.timer)
-    }
-    this.setData({
-      infoHeight: '90px'
-    })
-  },
-  // 标题框失去焦点
-  infocancel: function () {
-    this.timer = setTimeout(() => {
-      this.setData({
-        infoHeight: 0
-      })
-    }, 2000)
-  },
   // 点击设置标题
   setInfo: function () {
-    clearTimeout(this.timer);
     if (this.data.infoHeight === 0) {
       this.setData({
         infoHeight: '90px'
       });
-      this.infocancel();
     } else {
       this.setData({
         infoHeight: 0
@@ -94,7 +75,6 @@ Page({
     this.setData({
       notesName: e.detail.value
     })
-    console.log(this.data.notesName);
   },
   saveNotes: function () {
     // 点击保存需要修改两层页面 上一层和上上层
@@ -115,6 +95,7 @@ Page({
     // 设置上上个页面
     prevaginPage.data.noteslist[this.data.id] = {
       fileSize: '0KB',
+      fileType:'md',
       title: this.data.notesName,
       id: 0,
       createTime: '2019-06-13 17:48',

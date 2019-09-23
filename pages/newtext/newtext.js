@@ -8,16 +8,9 @@ Page({
     _focus: false,
     infoHeight: '90px', //标题栏高度
     toolHeight:0,
-    editorTop:'50px', //editor的top值
+    editorTop:'140px', //editor的top值
     notesName: '',
     content:'' //输入内容
-  },
-  onLoad() {
-    wx.loadFontFace({
-      family: 'Pacifico',
-      source: 'url("https://sungd.github.io/Pacifico.ttf")',
-      success: console.log
-    })
   },
   // 获取输入内容
   getContent:function(event){
@@ -25,35 +18,14 @@ Page({
       content: event.detail
     })
   },
-  // 标题框聚焦
-  infoSet: function () {
-    if (this.timer) {
-      clearTimeout(this.timer)
-    }
-    this.setData({
-      infoHeight: '90px',
-      editorTop:'150px'
-    })
-  },
-  // 标题框失去焦点
-  infocancel: function () {
-    this.timer = setTimeout(() => {
-      this.setData({
-        infoHeight: 0,
-        editorTop:'50px'
-      })
-    }, 2000)
-  },
   // 点击设置标题
   setInfo: function () {
     if (this.data.toolHeight === 0) {
-      clearTimeout(this.timer);
       if (this.data.infoHeight === 0) {
         this.setData({
           infoHeight: '90px',
           editorTop:'140px'
         });
-        this.infocancel();
       } else {
         this.setData({
           infoHeight: 0,
@@ -178,7 +150,6 @@ Page({
     prevPage.setData({
       noteslist: prevPage.data.noteslist
     });
-    // console.log(this.data.content)
     wx.navigateBack();
   }
 })

@@ -11,8 +11,7 @@ Page({
     title:'',  //当前笔记标题
     isloading: true,
     article: {},  //当前笔记编译后日容
-    content:'',  //未编译md内容
-    timer: undefined
+    content:'',  //未编译内容
   },
 
   /**
@@ -34,18 +33,10 @@ Page({
         });
   },
   toedit:function(){
-    // /pages/notesedit / notesedit & content='+this.data.content+' & title='+this.data.title,
    wx.navigateTo({
      url: '/pages/notesedit/notesedit?content=' + this.data.content + ' &title=' + this.data.title+'&id='+this.data.id
    })
   },
-  /**
-   * 生命周期函数--监听页面初次渲染完成
-   */
-  onReady: function () {
-
-  },
-
   /**
    * 生命周期函数--监听页面显示
    */
@@ -55,38 +46,4 @@ Page({
     })
   },
 
-  /**
-   * 生命周期函数--监听页面隐藏
-   */
-  onHide: function () {
-
-  },
-
-  /**
-   * 生命周期函数--监听页面卸载
-   */
-  onUnload: function () {
-
-  },
-
-  /**
-   * 页面相关事件处理函数--监听用户下拉动作
-   */
-  onPullDownRefresh: function () {
-
-  },
-
-  /**
-   * 页面上拉触底事件的处理函数
-   */
-  onReachBottom: function () {
-
-  },
-
-  /**
-   * 用户点击右上角分享
-   */
-  onShareAppMessage: function () {
-
-  }
 })

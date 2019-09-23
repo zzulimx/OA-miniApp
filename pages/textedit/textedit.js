@@ -8,16 +8,18 @@ Page({
     _focus: false,
     infoHeight: '90px', //标题栏高度
     toolHeight: 0,
-    editorTop: '50px', //editor的top值
+    editorTop: '140px', //editor的top值
+    id:'',
     notesName: '',
     content: '' //输入内容
   },
-  onLoad() {
-    wx.loadFontFace({
-      family: 'Pacifico',
-      source: 'url("https://sungd.github.io/Pacifico.ttf")',
-      success: console.log
-    })
+  onLoad(options) {
+    let content = JSON.parse(options.content);
+    this.setData({
+      id:options.id,
+      content:content,
+      notesName:options.title
+    }); 
   },
   // 获取输入内容
   getContent: function (event) {
@@ -25,35 +27,30 @@ Page({
       content: event.detail
     })
   },
-  // 标题框聚焦
-  infoSet: function () {
-    if (this.timer) {
-      clearTimeout(this.timer)
-    }
-    this.setData({
-      infoHeight: '90px',
-      editorTop: '150px'
-    })
-  },
-  // 标题框失去焦点
-  infocancel: function () {
-    this.timer = setTimeout(() => {
-      this.setData({
-        infoHeight: 0,
-        editorTop: '50px'
+  // 初始化editor
+  onEditorReady() {
+    const that = this;
+    wx.createSelectorQuery().select('#editor').context(function (res) {
+      that.editorCtx = res.context;
+      // 设置内容
+      that.editorCtx.setContents({
+        html: that.data.content.html,
+        delta: that.data.content.delta,
+        fail: (res) => {
+          console.log(res)
+          console.log(that.data.content)
+        }
       })
-    }, 2000)
+    }).exec()
   },
   // 点击设置标题
   setInfo: function () {
     if (this.data.toolHeight === 0) {
-      clearTimeout(this.timer);
       if (this.data.infoHeight === 0) {
         this.setData({
           infoHeight: '90px',
           editorTop: '140px'
         });
-        this.infocancel();
       } else {
         this.setData({
           infoHeight: 0,
@@ -79,13 +76,6 @@ Page({
         editorTop: '50px'
       })
     }
-  },
-  // 初始化editor
-  onEditorReady() {
-    const that = this
-    wx.createSelectorQuery().select('#editor').context(function (res) {
-      that.editorCtx = res.context
-    }).exec()
   },
   //撤销
   undo() {
@@ -152,21 +142,22 @@ Page({
   },
   // 保存笔记
   saveNotes: function () {
+    // 点击保存需要修改两层页面 上一层和上上层
     var pages = getCurrentPages();
-    var currPage = pages[pages.length - 1];   //当前页面
     var prevPage = pages[pages.length - 2];  //上一个页面
+    var prevaginPage = pages[pages.length - 3];  //上一个页面
 
     //直接调用上一个页面的setData()方法，把数据存到上一个页面中去
     //不需要页面更新
-    if (this.data.notesName === '') {
-      this.data.notesName = '新建笔记'
-      this.setData({
-        notesName: this.data.notesName
-      })
-    }
-    prevPage.data.noteslist[prevPage.data.noteslist.length] = {
+    // 设置上一个也页面
+    prevPage.setData({
+      title: this.data.notesName,
+      content: this.data.content,
+    });
+    // 设置上上个页面
+    prevaginPage.data.noteslist[this.data.id] = {
       fileSize: '0KB',
-      fileType: 'text',
+      fileType:'text',
       title: this.data.notesName,
       id: 0,
       createTime: '2019-06-13 17:48',
@@ -175,10 +166,9 @@ Page({
       url: ' ',
       content: this.data.content,
     }
-    prevPage.setData({
-      noteslist: prevPage.data.noteslist
-    });
-    console.log(this.data.content)
+    prevaginPage.setData({
+      noteslist: prevaginPage.data.noteslist
+    })
     wx.navigateBack();
   }
 })
