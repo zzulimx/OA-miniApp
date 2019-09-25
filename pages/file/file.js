@@ -31,30 +31,24 @@ Page({
         name:'合同',
         createTime: '2019-06-13 17:48',
         icon:'../../images/file/folder.png' ,
-        pid:'0',
-        id:'0',
         fileType:'folder',
         isShow:true,
-        url:'/pages/fileitem/fileitem',
+        url:'',
         data:[
           {
             fileSize: '0KB',
             name: '简历1',
             createTime: '2019-06-13 17:48',
             icon: '../../images/file/folder.png',
-            pid: '0',
-            id: '0',
             fileType: 'folder',
             isShow: true,
-            url: '/pages/fileitem/fileitem',
+            url: '',
             data:[
               {
               fileSize: '0KB',
               name: 'test',
-               createTime: '2019-06-13 17:48',
+              createTime: '2019-06-13 17:48',
               icon: '../../images/file/folder.png',
-              pid: '0',
-              id: '0',
               fileType: 'folder',
               isShow: true,
               url: '/pages/fileitem/fileitem',
@@ -65,56 +59,46 @@ Page({
                 name: 'avatar.jpg',
                 createTime: '2019-06-13 17:48',
                 icon: '../../images/avatar/avatar.jpg',
-                pid: '0',
-                id: '0',
                 fileType: 'image',
                 isShow: true,
-                url: '/pages/fileitem/fileitem',
+                url: '',
                 data: []
               }
             ,{
               fileSize: '0KB',
               name: '工作流',
               createTime: '2019-06-13 17:48',
-              icon: '../../images/file/folder.png',
-              pid: '0',
-              id: '0',
+              icon: '../../images/file/folder.png', 
               fileType: 'folder',
               isShow: true,
-              url: '/pages/fileitem/fileitem',
+              url: '',
               data:[
                 { 
                   fileSize: '0KB',
                   name: 'last3',
                   createTime: '2019-06-13 17:48',
                   icon: '../../images/file/folder.png',
-                  pid: '0',
-                  id: '0',
                   fileType: 'folder',
                   isShow: true,
-                  url: '/pages/fileitem/fileitem',
+                  url: '',
                   data:[
                     {            
                       fileSize: '0KB',
                       name: 'last2',
                       createTime: '2019-06-13 17:48',
-                      icon: '../../images/file/folder.png',
-                      pid: '0',
-                      id: '0',
+                      icon: '../../images/file/folder.png',                 
                       fileType: 'folder',
                       isShow: true,
-                      url: '/pages/fileitem/fileitem',
+                      url: '',
                       data: [
                         {                      
                           fileSize: '0KB',
                           name: 'last1',
                           createTime: '2019-06-13 17:48',
-                          icon: '../../images/file/folder.png',
-                          pid: '0',
-                          id: '0',
+                          icon: '../../images/file/folder.png',            
                           fileType: 'folder',
                           isShow: true,
-                          url: '/pages/fileitem/fileitem',
+                          url: '',
                           data: [
                             {                      
                               fileSize: '0KB',
@@ -125,7 +109,7 @@ Page({
                               id: '0',
                               fileType: 'folder',
                               isShow: true,
-                              url: '/pages/fileitem/fileitem',
+                              url: '',
                               data: []
                             }
                           ]
@@ -147,7 +131,7 @@ Page({
             id: '0',
             fileType: 'folder',
             isShow: true,
-            url: '/pages/fileitem/fileitem',
+            url: '',
             data:[]
           }
         ]        
@@ -158,11 +142,9 @@ Page({
         name: '工作流',
         createTime: '2019-06-13 17:48',
         icon: '../../images/file/folder.png',
-        pid: '0',
-        id: '0',
         fileType: 'folder',
         isShow: true,
-        url: '/pages/fileitem/fileitem',
+        url: '',
         data: [
           {
           
@@ -170,11 +152,9 @@ Page({
             name: 'demo1',
             createTime: '2019-06-13 17:48',
             icon: '../../images/file/folder.png',
-            pid: '0',
-            id: '0',
             fileType: 'folder',
             isShow: true,
-            url: '/pages/fileitem/fileitem',
+            url: '',
             data: []
           }, {
            
@@ -186,7 +166,7 @@ Page({
             id: '0',
             fileType: 'folder',
             isShow: true,
-            url: '/pages/fileitem/fileitem',
+            url: '',
             data:[]
           }
           , {
@@ -194,11 +174,9 @@ Page({
             name: 'avatar2.jpg',
             createTime: '2019-06-13 17:48',
             icon: '../../images/avatar/avatar2.jpg',
-            pid: '0',
-            id: '0',
             fileType: 'image',
             isShow: true,
-            url: '/pages/fileitem/fileitem',
+            url: '',
             data: []
           }
         ]
@@ -208,11 +186,9 @@ Page({
         name: 'avatar.jpg',
         createTime: '2019-06-13 17:48',
         icon: '../../images/avatar/avatar.jpg',
-        pid: '0',
-        id: '0',
         fileType: 'image',
         isShow: true,
-        url: '/pages/fileitem/fileitem',
+        url: '',
         data: []
       }
       , {
@@ -220,11 +196,9 @@ Page({
         name: '城市天际线',
         createTime: '2019-06-13 17:48',
         icon: '../../images/file/folder.png',
-        pid: '0',
-        id: '0',
         fileType: 'folder',
         isShow: true,
-        url: '/pages/fileitem/fileitem',
+        url: '',
         data: []
       }
       ,{
@@ -232,11 +206,9 @@ Page({
         name: 'vocabav.bat',
         createTime: '2019-06-13 17:48',
         icon: '../../images/file/icon_weizhi.png',
-        pid: '0',
-        id: '0',
         fileType: 'unkown',
         isShow: true,
-        url: '/pages/fileitem/fileitem',
+        url: '',
         data: []
       }
       ,{
@@ -244,11 +216,9 @@ Page({
         name: 'We Are The Brave',
         createTime: '2019-06-13 17:48',
         icon: '../../images/file/file_music.png',
-        pid: '0',
-        id: '0',
         fileType: 'music',
         isShow: true,
-        url: '/pages/fileitem/fileitem',
+        url: '',
         data: []
       }
     ]

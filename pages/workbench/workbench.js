@@ -19,7 +19,7 @@ Page({
           {
             img: '../../images/icon_attendance.png',
             title: '考勤',
-            url: ''
+            url: '../../pages/attendance/attendance'
           },
           {
             img: '../../images/icon_note.png',

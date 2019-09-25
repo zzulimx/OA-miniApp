@@ -131,7 +131,7 @@
 <!-- 新建时背景 -->
 <view class="addBg" style="height:{{addbgHeight}}" catchtap="hideadd" catchtouchmove="true">  
 </view>
-<!-- 新建文件夹按钮-->
+<!-- 新建操作栏按钮-->
 <view class="addWrapper"  wx:if="{{isaddFile}}">
 <view class="add_group" style="height:{{addwrapper}};display:{{overflow}}">
  <view class="new_file" catchtap="fileCreate"><text>文件夹</text><image src="../../images/file/addfolder.png"></image></view>

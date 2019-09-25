@@ -1,0 +1,60 @@
+<!--pages/punch/punch.wxml-->
+
+<view class="container">
+  <view class="page__bd">
+    <view class="weui-tab">
+      <view class="weui-navbar">
+        <block wx:for="{{tabs}}" wx:key="*this">
+          <view id="{{index}}" class="weui-navbar__item {{activeIndex == index ? 'weui-bar__item_on' : ''}}" bindtap="tabClick">
+            <view class="weui-navbar__title">{{item}}</view>
+          </view>
+        </block>
+        <view class="weui-navbar__slider" style="left:{{sliderLeft}}"></view>
+      </view>
+      <swiper class="weui-tab__panel" duration="300" bindchange="swiperTab" current="{{activeIndex}}">
+        <swiper-item class="weui-tab__content" hidden="{{activeIndex != 0}}">
+          <view class="inner">
+          <view class="userInfo">
+           <view class="imgWrapper">
+               <image src="{{userInfo.avatarUrl}}"></image>
+           </view>
+           <view class="userName">
+             <view>{{userInfo.nickName}}</view>
+            </view>
+            <view class="signature">
+             <view>{{signature}}</view>
+            </view>
+          </view>
+          <view class="punch">
+              <view class="punchInner">
+                 <view class="onworkTime">
+                 <view class="dot"><view class="icon iconfont icon-dot"></view></view>
+                 <view class="time">上班时间09：00</view>
+                 </view>
+                 <view class="detalWrapper">
+                    <view class="bar"><view class="timebar"></view></view>
+                    <view class="detail">
+                      <view class="btnWrapper">
+                         <view class="timeBtn">
+                         <view>08：59</view>
+                            <view>上班打卡</view>
+                         </view>
+                      </view>
+                    </view>
+                 </view>
+              </view>
+          </view>
+          </view>
+        </swiper-item>
+        <swiper-item class="weui-tab__content" hidden="{{activeIndex != 1}}">
+          <view class="inner">
+          
+          </view>
+        </swiper-item>
+
+
+      </swiper>
+    </view>
+  </view>
+</view>
+

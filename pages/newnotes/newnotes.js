@@ -86,7 +86,6 @@ Page({
     prevPage.data.noteslist[prevPage.data.noteslist.length] = {
       fileSize: '0KB',
       title:this.data.notesName ,
-      id: 0,
       createTime: '2019-06-13 17:48',
       tag: '',
       isShow: true,

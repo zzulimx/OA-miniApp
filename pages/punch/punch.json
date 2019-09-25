@@ -1,0 +1,9 @@
+{
+  "usingComponents": {},
+  "navigationBarBackgroundColor":"#62c9f8",
+  "navigationBarTitleText":"打卡",
+  "backgroundColor":"#fff",
+  "enablePullDownRefresh":true,
+  "backgroundTextStyle":"dark"
+
+}

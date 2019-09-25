@@ -9,7 +9,7 @@ Page({
   data: {
     tabs: ["最近笔记", "我的笔记"],
     overflow:'none', //添加文件工具栏隐藏
-    activeIndex: 0,//展示类型，默认我的消息
+    activeIndex: 0,//展示页面，默认我的收藏
     isaddFile: true,   //添加文件按钮显示/隐藏
     addbgHeight: 0,  //添加文件时背景显示
     addwrapper: 0,   //添加文件操作框高度
@@ -30,7 +30,6 @@ Page({
         fileSize: '0KB',
         fileType:'md',
         title: '边城',
-        id:0,
         createTime: '2019-06-13 17:48',
         tag: '',
         isShow: true,
@@ -41,7 +40,6 @@ Page({
         fileSize: '0KB',
         fileType:'md',
         title: '边城',
-        id: 0,
         createTime: '2019-06-13 17:48',
         tag: '',
         isShow: true,
@@ -52,7 +50,6 @@ Page({
             fileSize: '0KB',
             fileType: 'text',
             title: '富文本笔记',
-            id: 0,
             createTime: '2019-06-13 17:48',
             tag: '',
             isShow: true,

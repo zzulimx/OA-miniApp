@@ -18,7 +18,7 @@ page {
 .container .personalInfo{
   position: absolute;
   width: 90%;
-  height: 20%;
+  height: 23%;
   top: 8%;
   left: 50%;
   transform: translateX(-50%);
@@ -57,9 +57,10 @@ page {
 .personalInfo .info_box .user_num{
   font-size: 26rpx;
   color: #ccc;
+  padding: 5px;
 }
 .container .menu_box{
-  padding-top: 13%;
+  padding-top: 16%;
   box-sizing: border-box;
   background-color: #fff;
 }

@@ -26,7 +26,10 @@
     "pages/notesedit/notesedit",
     "pages/newtext/newtext",
     "pages/textitem/textitem",
-    "pages/textedit/textedit"
+    "pages/textedit/textedit",
+    "pages/attendance/attendance",
+    "pages/punch/punch"
+
   ],
   "window": {
     "backgroundTextStyle": "light",

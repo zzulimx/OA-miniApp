@@ -9,6 +9,7 @@ Page({
   data: {
     activeIndex: 0,//展示类型，默认我的消息
     isaddFile: true,   //添加文件按钮显示/隐藏
+    overflow: 'none', //添加文件栏溢出 
     addbgHeight: 0,  //添加文件时背景显示
     addwrapper: 0,   //添加文件操作框高度
     transdeg: 0,     //添加文件按钮显示
@@ -82,7 +83,13 @@ Page({
         addbgHeight: 0,
         addwrapper: 0,
         transdeg: 0,
-      })
+      });
+      var that = this;
+      setTimeout(function () {
+        that.setData({
+          overflow: 'none'
+        })
+      }, 200)
     }
   },
   // 打开文件重命名弹出层
@@ -224,12 +231,19 @@ Page({
         addbgHeight: 0,
         addwrapper: 0,
         transdeg: 0,
-      })
+      });
+      var that = this;
+      setTimeout(function () {
+        that.setData({
+          overflow: 'none'
+        })
+      }, 200)
     } else {
       this.setData({
         addbgHeight: '100%',
         addwrapper: '115px',
         transdeg: '495deg',
+        overflow:'block'
       })
     }
   },

@@ -12,7 +12,6 @@ Page({
       this.setData({
         userInfo: wx.getStorageSync('userInfo')
       });
-      //  console.log(this.data.userInfo);
     }
   },
 

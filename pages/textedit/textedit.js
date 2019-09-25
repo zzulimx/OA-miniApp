@@ -159,7 +159,6 @@ Page({
       fileSize: '0KB',
       fileType:'text',
       title: this.data.notesName,
-      id: 0,
       createTime: '2019-06-13 17:48',
       tag: '',
       isShow: true,
