@@ -105,7 +105,7 @@ page{
 .timebar{
   width: 8rpx;
   height: 120rpx;
-  background-color:#ceeaf5;
+  background-color:#eee;
   margin-left: 50%;
   transform: translateX(-50%); 
 }
@@ -129,7 +129,7 @@ page{
 }
 .barRight .status{
   font-size: 25rpx;
-  color: #10b1fc;
+  color: #555;
 }
 /* .container .toolWrapper{
   width: 100%;

@@ -45,11 +45,11 @@
     <view class="offtime">{{offtime}}</view>
    </view>
    <view class="barRight">
-     <view class="top" hover-class="click" catchtap="topunch">
+     <view class="top" catchtap="topunch">
        <view class="onwork" >上班</view>
       <view class="status">正常打卡(18:00)</view>
      </view>
-<view class="bottom"  hover-class="click" catchtap="topunch">
+<view class="bottom"   catchtap="topunch">
      <view class="offwork" >下班</view>
       <view class="status">正常打卡(18:00)</view>
 </view>

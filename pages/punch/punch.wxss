@@ -27,9 +27,10 @@ page, .page, .page__bd {
 .weui-navbar__slider {
   background-color: #62c9f8;
 }
-.swiperTab .inner{
+.weui-tab__panel .inner{
   width: 100%;
   height: auto;
+  padding-top: 20rpx;
 }
 .inner .userInfo{
   width: 100%;
@@ -70,15 +71,20 @@ page, .page, .page__bd {
   display: inline-block;
   text-align: center;
 }
+.punch .btnPunch{
+  padding: 40rpx 0 20rpx 40rpx;
+}
 .punch .punchInner .time{
   display: inline-block;
+  color: #000;
+  font-size: 26rpx;
 }
-.punch .punchInner .onworkTime .icon{
+.punch .punchInner .icon{
    display: inline-block;
 }
 .punchInner .detalWrapper .bar{
   width: 8%;
-  height:100%;
+  height:400rpx;
   text-align: center;
   display:inline-block;
   vertical-align: top;
@@ -88,9 +94,67 @@ page, .page, .page__bd {
  height: 100%;
  background-color: #eee;
  display: inline-block;
- 
-
 }
 .punchInner .detalWrapper .detail{
   display: inline-block;
+  width: 82%;
 }
+.detail .btnWrapper{
+  width: 240rpx;
+  height: 240rpx;
+  border-radius: 50%;
+  border: 2px solid #eee;
+  position: relative;
+  background-color: #b2e0f5;
+}
+.detail .btnWrapper .timeBtn{
+  width: 210rpx;
+  height: 210rpx;
+  border-radius: 50%;
+  border: 2px solid #eee;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%,-50%);
+  text-align: center;
+  background-color: #fff;
+}
+.timeBtn .clock, .timeBtn .towork{
+  width: 100%;
+  height: 50%;
+  font-size: 28rpx;
+  font-weight: normal;
+}
+.timeBtn .clock{
+  line-height: 160rpx;
+  font-size: 38rpx;
+  font-weight: bold;
+}
+.detalWrapper .detail .btnWrapper .punchClick{
+  background-color: #b2e0f5;
+}
+.locaWrapper .icon{
+  display: inline-block;
+  color: #62c9f8;
+}
+.locaWrapper .locaDetal{
+  display: inline-block;
+}
+.locaDetal .ranStatus{
+  display: inline-block;
+  font-size: 26rpx;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  max-width: 420rpx;
+  overflow: hidden;
+}
+.locaDetal .reLocate{
+  display: inline-block;
+  font-size: 27rpx;
+  color: #FF5722;
+  min-width: 45rpx;
+  vertical-align: super;
+  font-weight: bold;
+}
+
+

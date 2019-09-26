@@ -9,7 +9,7 @@ Page({
     sliderLeft: 0,  //控制导航底部样式
     activeIndex: 0,//展示选项卡页面，默认上下班打卡
     userInfo: {},  //用户登录信息
-    signature:"年轻是咱们唯一有权利去编织梦想的的时光"
+    signature:"年轻是咱们唯一有权利去编织梦想的的时光", //签名
   },
   // 页面加载
   onLoad: function (options) {
@@ -28,7 +28,6 @@ Page({
         userInfo: wx.getStorageSync('userInfo')
       });
     }
-    console.log(this.data.userInfo);
   },
   //点击切换选项卡
   tabClick: function (e) {
@@ -51,8 +50,9 @@ Page({
       }
     });
   },
-  // 监听下拉动作
-  onPullDownRefresh: function () {
-
+  toLocate:function(){
+    wx.navigateTo({
+      url: '../locate/locate',
+    })
   }
 })

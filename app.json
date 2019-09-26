@@ -28,9 +28,15 @@
     "pages/textitem/textitem",
     "pages/textedit/textedit",
     "pages/attendance/attendance",
-    "pages/punch/punch"
+    "pages/punch/punch",
+    "pages/locate/locate"
 
   ],
+  "permission": {
+    "scope.userLocation": {
+      "desc": "将获取你的位置信息" 
+    }
+  },
   "window": {
     "backgroundTextStyle": "light",
     "navigationBarBackgroundColor": "#fff",

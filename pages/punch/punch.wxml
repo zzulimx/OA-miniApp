@@ -14,33 +14,54 @@
       <swiper class="weui-tab__panel" duration="300" bindchange="swiperTab" current="{{activeIndex}}">
         <swiper-item class="weui-tab__content" hidden="{{activeIndex != 0}}">
           <view class="inner">
+          <!-- 个人信息 -->
           <view class="userInfo">
            <view class="imgWrapper">
                <image src="{{userInfo.avatarUrl}}"></image>
            </view>
            <view class="userName">
-             <view>{{userInfo.nickName}}</view>
+             <view>张三</view>
             </view>
             <view class="signature">
              <view>{{signature}}</view>
             </view>
           </view>
+          <!-- 打卡 -->
           <view class="punch">
               <view class="punchInner">
+              <!-- 上班时间点 -->
                  <view class="onworkTime">
                  <view class="dot"><view class="icon iconfont icon-dot"></view></view>
                  <view class="time">上班时间09：00</view>
                  </view>
-                 <view class="detalWrapper">
-                    <view class="bar"><view class="timebar"></view></view>
-                    <view class="detail">
-                      <view class="btnWrapper">
-                         <view class="timeBtn">
-                         <view>08：59</view>
-                            <view>上班打卡</view>
-                         </view>
+               <!-- 打卡按钮 信息 -->
+              <view class="detalWrapper">
+                <view class="bar"><view class="timebar"></view></view>
+                <view class="detail">
+                   <view class="btnPunch">
+                    <view class="btnWrapper">
+                      <view class="timeBtn" hover-class="punchClick">
+                          <view class="clock">08：59</view>
+                           <view class="towork">上班打卡</view>
                       </view>
-                    </view>
+                    </view> 
+                   </view>        
+                  <view class="locaWrapper">
+                      <view class="locaDetal">
+                        <view class="ranStatus">
+                          <view class="icon iconfont icon-checked1"></view>
+                             已经入考勤范围:未来科技公司(科学大道136号)
+                        </view>                        
+                          <view class="reLocate" catchtap="toLocate">去重新定位</view>
+                     </view>
+                  </view>
+                </view>
+              </view>
+                 <!-- 下班时间点 -->
+                  <!-- 上班时间点 -->
+                 <view class="offworkTime">
+                 <view class="dot"><view class="icon iconfont icon-dot"></view></view>
+                 <view class="time">下班时间18：00</view>
                  </view>
               </view>
           </view>
