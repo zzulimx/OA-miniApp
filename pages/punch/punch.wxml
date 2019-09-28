@@ -39,9 +39,9 @@
                 <view class="bar"><view class="timebar"></view></view>
                 <view class="detail">
                    <view class="btnPunch">
-                    <view class="btnWrapper">
+                    <view class="btnWrapper" catchtap="toPunch">
                       <view class="timeBtn" hover-class="punchClick">
-                          <view class="clock">08：59</view>
+                          <view class="clock">{{clock}}</view>
                            <view class="towork">上班打卡</view>
                       </view>
                     </view> 
@@ -52,28 +52,50 @@
                           <view class="icon iconfont icon-checked1"></view>
                              已经入考勤范围:未来科技公司(科学大道136号)
                         </view>                        
-                          <view class="reLocate" catchtap="toLocate">去重新定位</view>
+                          <view class="reLocate" hover-class="locaClick" catchtap="toLocate">去重新定位</view>
                      </view>
                   </view>
                 </view>
               </view>
                  <!-- 下班时间点 -->
-                  <!-- 上班时间点 -->
-                 <view class="offworkTime">
-                 <view class="dot"><view class="icon iconfont icon-dot"></view></view>
-                 <view class="time">下班时间18：00</view>
+          <view class="offworkTime">
+                 <view class="dot">
+                   <view class="icon iconfont icon-dot"></view>
                  </view>
+                <view class="time">下班时间18：00</view>
+          </view>
+           <!-- 打卡按钮 信息 -->
+              <view class="detalWrapper offPunch">
+                <view class="bar"><view class="timebar"></view></view>
+                <view class="detail">
+                   <view class="btnPunch">
+                    <view class="btnWrapper" catchtap="toPunch">
+                      <view class="timeBtn" hover-class="punchClick">
+                          <view class="clock">{{clock}}</view>
+                           <view class="towork">下班打卡</view>
+                      </view>
+                    </view> 
+                   </view>        
+                  <view class="locaWrapper">
+                      <view class="locaDetal">
+                        <view class="ranStatus">
+                          <view class="icon iconfont icon-checked1"></view>
+                             已经入考勤范围:未来科技公司(科学大道136号)
+                        </view>                        
+                          <view class="reLocate" hover-class="locaClick" catchtap="toLocate">去重新定位</view>
+                     </view>
+                  </view>
+                </view>
+              </view>
               </view>
           </view>
           </view>
         </swiper-item>
         <swiper-item class="weui-tab__content" hidden="{{activeIndex != 1}}">
           <view class="inner">
-          
+             外出打卡
           </view>
         </swiper-item>
-
-
       </swiper>
     </view>
   </view>

@@ -89,6 +89,9 @@ page, .page, .page__bd {
   display:inline-block;
   vertical-align: top;
 }
+.punchInner .detalWrapper.offPunch .bar .timebar{
+  display: none
+}
 .punchInner .detalWrapper .bar .timebar{
  width: 8rpx;
  height: 100%;
@@ -156,5 +159,7 @@ page, .page, .page__bd {
   vertical-align: super;
   font-weight: bold;
 }
-
+.locaDetal .locaClick{
+  text-decoration:underline; 
+}
 

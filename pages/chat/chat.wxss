@@ -45,6 +45,7 @@ page{
   /* 光标颜色真机无效果 */
   caret-color: #62c9f8;
   padding-left: 10px;
+  box-sizing: border-box;
 }
 .chatInpWrapper .inputBar .button-sp-area .icon_part{
   display: inline-block;
@@ -89,7 +90,6 @@ page{
 .clickVoice{
   display: inline-block;
   width: 60%;
-  padding-left: 5px;
   height: 35px;
   border-radius: 5px;
   /* background-color: #fff; */

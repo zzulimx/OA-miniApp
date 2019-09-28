@@ -12,7 +12,7 @@ Page({
     voiceText:"按住 说话",  //语音标题
     voiceBg:"#fff",   //语音按钮颜色
     scrollto:0,   //聊天界面滑动
-    windowHeight:"600px",   //聊天界面高度
+    chatPageH:0,   //聊天界面高度
     isload:false,  //加载按钮显示/隐藏
     chatContent:[
       {
@@ -102,7 +102,6 @@ Page({
         content: "我也是"
       }
     ]
-    // keyboardHeight:0
   },
   // 切换按钮
   // 发送
@@ -129,7 +128,6 @@ Page({
       this.setData({
         isload:true
       });
-     
       // 测试代码
       if(this.data.chatContent.length<21){
         this.setData({
@@ -162,14 +160,9 @@ Page({
        })
      }
   },
-  // 表情
+  // 打开表情
   emojiBtn:function(){
-    // wx.onKeyboardHeightChange(res => {
-    //   this.setData({
-    //     keyboardHeight:res.height
-    //   })
-    //   console.log(res.height)
-    // })
+   
   },
   // 按住说话
   holdVoice:function(){
@@ -209,53 +202,5 @@ Page({
       windowHeight:windowHeight+'px',
       scrollto: windowHeight
     })
-  },
-  /**
-   * 生命周期函数--监听页面初次渲染完成
-   */
-  onReady: function () {
-
-  },
-
-  /**
-   * 生命周期函数--监听页面显示
-   */
-  onShow: function () {
-
-  },
-
-  /**
-   * 生命周期函数--监听页面隐藏
-   */
-  onHide: function () {
-
-  },
-
-  /**
-   * 生命周期函数--监听页面卸载
-   */
-  onUnload: function () {
-
-  },
-
-  /**
-   * 页面相关事件处理函数--监听用户下拉动作
-   */
-  onPullDownRefresh: function () {
-   
-  },
-
-  /**
-   * 页面上拉触底事件的处理函数
-   */
-  onReachBottom: function () {
-
-  },
-
-  /**
-   * 用户点击右上角分享
-   */
-  onShareAppMessage: function () {
-
   }
 })

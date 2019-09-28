@@ -1,11 +1,11 @@
 // pages/punch/punch.js
+// 获取时间
+const util = require('../../utils/util.js');
+const formatTime = util.formatTime;
 Page({
-
-  /**
-   * 页面的初始数据
-   */
   data: {
     tabs: ["上下班打卡", "外出打卡"],
+    clock:'',  //时钟
     sliderLeft: 0,  //控制导航底部样式
     activeIndex: 0,//展示选项卡页面，默认上下班打卡
     userInfo: {},  //用户登录信息
@@ -27,7 +27,23 @@ Page({
       this.setData({
         userInfo: wx.getStorageSync('userInfo')
       });
-    }
+    };
+    // 时钟初始化
+    var date = new Date();
+    let clock = formatTime(date).split(' ')[1].split(':');
+    clock = clock[0] + ':' + clock[1];
+    this.setData({
+      clock: clock
+    });
+    setInterval(()=>{
+      // 设置时钟
+      var date = new Date();
+      let clock = formatTime(date).split(' ')[1].split(':');
+      clock = clock[0] + ':' + clock[1];
+      this.setData({
+        clock:clock
+      })
+    },1000)
   },
   //点击切换选项卡
   tabClick: function (e) {
@@ -50,9 +66,17 @@ Page({
       }
     });
   },
+  // 重新定位
   toLocate:function(){
     wx.navigateTo({
       url: '../locate/locate',
     })
+  }
+  ,toPunch:function(){
+      if(this.data.status === 'on'){
+        
+      }else{
+
+      }
   }
 })
