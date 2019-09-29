@@ -1,0 +1,32 @@
+<!--pages/outPunch/outPunch.wxml-->
+<view class="container">
+  <view class="punchDeta">
+    <view class="punchTime">
+      <view class="icon iconfont icon-clock2"></view>
+      {{punchTime}}
+    </view>
+    <view class="punchLoca">
+      <view class="icon iconfont icon-location1"></view>
+      {{punchLoca}}
+    </view>
+  </view>
+  <view>
+    <textarea 
+    bindinput="getContent"
+    placeholder="请填写外出描述"
+    show-confirm-bar="{{false}}"
+    >
+    </textarea>
+  </view>
+  <view class="imgWrapper">
+    <block wx:if="{{!imgSrc}}"> 
+      <view class="iconBox" catchtap="toChooseImg">
+        <view class="icon iconfont icon-camera"></view>
+      </view> 
+    </block> 
+    <block wx:else>
+       <image src="{{imgSrc}}"></image>
+    </block>
+  </view>
+  <view class="submit" catchtap="toSubmit">提交</view>
+</view>

@@ -46,7 +46,7 @@
    <view class="barRight">
      <view class="top" hover-class="click" catchtap="topunch">
        <view class="onwork" >上班</view>
-      <view class="status">{{onstatus}}{{ontime? '('+ontime+')' : ''}}</view>
+      <view class="status">{{onstatus?onstatus : '今日未打卡'}}{{ontime? '('+ontime+')' : ''}}</view>
      </view>
 <view class="bottom"  hover-class="click" catchtap="topunch">
      <view class="offwork" >下班</view>

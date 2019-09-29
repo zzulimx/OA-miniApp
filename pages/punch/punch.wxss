@@ -82,9 +82,12 @@ page, .page, .page__bd {
 .punch .punchInner .icon{
    display: inline-block;
 }
+.punch .punchInner .icon-circle{
+  font-size: 10px;
+  font-weight: bold;
+}
 .punchInner .detalWrapper .bar{
   width: 8%;
-  height:400rpx;
   text-align: center;
   display:inline-block;
   vertical-align: top;
@@ -102,7 +105,7 @@ page, .page, .page__bd {
   display: inline-block;
   width: 82%;
 }
-.detail .btnWrapper{
+.btnWrapper{
   width: 240rpx;
   height: 240rpx;
   border-radius: 50%;
@@ -110,7 +113,7 @@ page, .page, .page__bd {
   position: relative;
   background-color: #b2e0f5;
 }
-.detail .btnWrapper .timeBtn{
+.timeBtn{
   width: 210rpx;
   height: 210rpx;
   border-radius: 50%;
@@ -133,8 +136,23 @@ page, .page, .page__bd {
   font-size: 38rpx;
   font-weight: bold;
 }
-.detalWrapper .detail .btnWrapper .punchClick{
-  background-color: #b2e0f5;
+
+.detalWrapper .punchOver{
+  display: inline-block;
+  padding: 50rpx 0;
+}
+.punchOver .punchTime{
+  font-size: 35rpx;
+  font-weight: bold;
+}
+.punchOver .punchLoca .icon{
+  display: inline-block;
+  font-size: 35rpx;
+  color: #1E9FFF;
+}
+.punchOver .punchLoca .workPlace{
+  display: inline-block;
+  font-size: 26rpx;
 }
 .locaWrapper .icon{
   display: inline-block;
@@ -162,4 +180,37 @@ page, .page, .page__bd {
 .locaDetal .locaClick{
   text-decoration:underline; 
 }
-
+.inner.out .userInfo{
+  height: 220rpx;
+}
+.inner.out map{
+  width: 90%;
+  height: 215rpx;
+  margin: 0 auto;
+}
+.inner.out .outLoca{
+  width: 100%;
+  padding-top: 20rpx;
+  font-size: 30rpx;
+  text-align: center;
+}
+.outLoca .icon{
+  color: #1E9FFF;
+  display: inline-block;
+}
+.outPunch{
+  padding-top:40rpx;
+  text-align: center; 
+}
+.outPunch .btnPunch{
+  display: inline-block;
+}
+.outPunch .outStatus{
+  width: 100%;
+  text-align: center;
+  font-size: 28rpx;
+  padding-top: 20rpx;
+}
+ .punchClick{
+  background-color: #b2e0f5;
+}

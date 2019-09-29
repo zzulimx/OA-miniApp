@@ -29,7 +29,8 @@
     "pages/textedit/textedit",
     "pages/attendance/attendance",
     "pages/punch/punch",
-    "pages/locate/locate"
+    "pages/locate/locate",
+    "pages/outPunch/outPunch"
 
   ],
   "permission": {

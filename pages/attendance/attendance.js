@@ -7,10 +7,10 @@ Page({
     currentObj: '',   //当前日期（未格式化）
     currentDay: '',     //当前具体几号
     currentClickKey: '',  //当点击的key
-    ontime: '08：56',   //上班时间
-    onstatus: '正常打卡',  //上班状态  正常/迟到
-    offtime: '18：05',   //下班时间
-    offstatus: '正常打卡',  //下班状态 正常/提前
+    ontime: '',   //上班时间
+    onstatus: '',  //上班状态  正常/迟到
+    offtime: '',   //下班时间
+    offstatus: '',  //下班状态 正常/提前
     punchData:[   //打卡数据 
     [],   //1月
     [],
@@ -259,12 +259,6 @@ Page({
     []
     ]
   },
-  // 去打卡
-  topunch:function(){
-    wx.navigateTo({
-      url: '../punch/punch',
-    })
-  },
   onLoad: function (options) {
     var currentObj = this.getCurrentDayString()
     this.setData({
@@ -275,14 +269,22 @@ Page({
     this.setSchedule(currentObj);
     // 设置当前日期下的状态
     var x = currentObj.getMonth();
-    var y = this.data.currentDay;
-    this.setData({
-      ontime:this.data.punchData[x][y].ontime,
-      onstatus: this.data.punchData[x][y].onstatus,
-      offtime: this.data.punchData[x][y].offtime,
-      offstatus: this.data.punchData[x][y].offstatus
-    });
-    // console.log(this.data.punchData[x][y])
+    var y = this.data.currentDay - 1;
+    if(this.data.punchData[x][y]==='' || this.data.punchData[x][y] === undefined){
+      this.setData({
+        ontime: '',
+        onstatus: '',
+        offtime: '',
+        offstatus: '',
+      })
+    }else{
+     this.setData({
+        ontime:this.data.punchData[x][y].ontime,
+        onstatus: this.data.punchData[x][y].onstatus,
+        offtime: this.data.punchData[x][y].offtime,
+        offstatus: this.data.punchData[x][y].offstatus
+      });
+    }
   },
   // 日期切换
   doDay: function (e) {
@@ -340,7 +342,7 @@ Page({
     var f = 0
     for (var i = 0; i < 42; i++) {
       let data = []
-      if (i < firstKey - 1) {
+      if (i < firstKey - 1) {      
         currentDayList[i] = {
           day:''
         }
@@ -368,7 +370,6 @@ Page({
     that.setData({
       currentDayList: currentDayList
     });
-    console.log(currentDayList)
   },
 
   // 设置点击事件
@@ -381,9 +382,9 @@ Page({
     if(this.data.currentDayList[idx].data===undefined){
       this.setData({
         ontime:'',
-        onstatus: '今日未打卡',
+        onstatus: '',
         offtime: '',
-        offstatus: '今日未打卡', 
+        offstatus: '', 
       })
     }else{
       this.setData({
@@ -393,5 +394,19 @@ Page({
         offstatus: this.data.currentDayList[idx].data.offstatus
       })
     }
-  }
+  },
+  // 去打卡
+  topunch: function () {
+    // 获取今日数据
+    let currData={
+      ontime:this.data.ontime,
+      onstatus:this.data.onstatus,
+      offtime:this.data.offtime,
+      offstatus:this.data.offstatus
+    }
+    currData = JSON.stringify(currData)
+    wx.navigateTo({
+      url: '../punch/punch?currData='+currData,
+    })
+  },
 })
