@@ -2,10 +2,6 @@ page, .page, .page__bd {
   height: 100%;
 }
 
-.page__bd {
-  padding-bottom: 0;
-}
-
 .weui-navbar {
   position: fixed;
   background-color: #fff;
@@ -27,105 +23,132 @@ page {
   font-family: -apple-system-font, Helvetica Neue, Helvetica, sans-serif;
 }
 
-.page__hd {
-  padding: 40px;
-}
-
 .page__bd {
   padding-bottom: 40px;
 }
 
-.page__bd_spacing {
-  padding-left: 15px;
-  padding-right: 15px;
+.weui-navbar__item.weui-bar__item_on {
+  color: #62c9f8;
 }
 
-.page__ft {
-  padding-bottom: 10px;
-  text-align: center;
+.weui-navbar__slider {
+  background-color: #62c9f8;
 }
 
-.page__title {
-  text-align: left;
-  font-size: 20px;
-  font-weight: 400;
+.page .lay-add {
+  width: 100vw;
+  position: fixed;
+  z-index: 999;
+  bottom: 0;
+  background-color: rgba(0, 0, 0, 0.03);
+  transition: height 0.3s ease;
 }
 
-.page__desc {
-  margin-top: 5px;
-  color: #888;
-  text-align: left;
-  font-size: 14px;
+.page .addWrapper {
+  width: 250rpx;
+  height: 450rpx;
+  z-index: 9999;
+  position: fixed;
+  bottom: 75rpx;
+  right: 75rpx;
 }
 
-.singleTrade {
-  width: calc(100% - 20rpx);
-  margin: 10rpx;
-  border: 1px solid #CDC9C9;
-  border-radius: 10px;
-  height: 80px;
-  background-color: #fff;
-}
-
-.singleTrade .title {
+.addWrapper .addGroup {
   width: 100%;
-  float: left;
+  overflow: hidden;
+  transition: height 0.3s ease;
 }
 
-.singleTrade .title .name {
-  width: calc(70% - 20px);
-  text-align: left;
-  margin-left: 20rpx;
-  float: left;
-}
-
-.singleTrade .title .state {
-  width: calc(30% - 20px);
-  text-align: right;
-  margin-right: 20rpx;
-  float: right;
-  font-size:21rpx;
-  line-height:45rpx;
-}
-
-.singleTrade .title .unread{
-  color: red;
-}
-
-.singleTrade .title .read{
-  color: greenyellow;
-}
-
-.singleTrade .content{
-  float: left;
-  height:25px;
-  width:calc(100% - 60rpx);
-  margin:0 30rpx;
-  text-align:left;
-  color: #a0a0a0;
-}
-
-.singleTrade .other-mation {
+.addGroup .add {
   width: 100%;
-  float: left;
+  height: 30%;
+  overflow: hidden;
 }
 
-.singleTrade .other-mation .send-name {
-  width: calc(50% - 20px);
-  text-align: left;
-  margin-left: 20rpx;
-  float: left;
-  font-size:21rpx;
-  line-height:55rpx;
-  color: #000;
-}
-
-.singleTrade .other-mation .date {
-  width: calc(50% - 20px);
-  text-align: right;
-  margin-right: 20rpx;
+.add .icon {
+  font-size: 65rpx;
   float: right;
-  font-size:21rpx;
-  line-height:55rpx;
-  color: #000;
+  display: inline-block;
+  height: 100%;
+  line-height: 94.5rpx;
+  margin-right: 20rpx;
+}
+
+.addGroup .add:nth-child(2) .icon {
+  color: #ff5722;
+}
+
+.addGroup .add:last-child .icon {
+  color: #009688;
+}
+
+.add .title {
+  display: inline-block;
+  height: 100%;
+  line-height: 94.5rpx;
+  margin-left: 45rpx;
+  font-size: 28rpx;
+  color: #333;
+}
+
+.addWrapper .addBtn {
+  height: 30%;
+  width: 100%;
+  overflow: hidden;
+  line-height: 135rpx;
+  position: absolute;
+  bottom: 0;
+}
+
+.addBtn .icon {
+  color: #62c9f8;
+  font-size: 110rpx;
+  float: right;
+  transition: transform 0.3s ease;
+}
+
+.logBox {
+  width: 100%;
+  padding: 25rpx;
+  box-sizing: border-box;
+  max-height: 350rpx;
+  overflow: hidden;
+}
+
+.logBox .info {
+  height: 120rpx;
+  width: 100%;
+}
+
+.info .avatar {
+  display: inline-block;
+  height: 100%;
+  float: left;
+}
+
+.avatar image {
+  width: 90rpx;
+  height: 90rpx;
+  border-radius: 50%;
+  margin-top: 15rpx;
+}
+.sendDeta{
+  display: inline-block;
+   float: left;
+   padding: 0 20rpx;
+}
+.logBox .content{
+ 
+}
+.sender{
+  font-size: 38rpx;
+font-weight: normal;
+height: 60rpx;
+line-height: 85rpx;
+}
+.time{
+  font-size: 28rpx;
+color: gray;
+height: 60rpx;
+line-height: 85rpx;
 }

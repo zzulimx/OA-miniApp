@@ -1,0 +1,21 @@
+<!--pages/addlog/addlog.wxml-->
+<import src="../../template/daylog/daylog.wxml" />
+<import src="../../template/weeklog/weeklog.wxml" />
+<import src="../../template/monthlog/monthlog.wxml" />
+<view class="container">
+<view class="prompt">实时保存，保存时间{{time}}</view>
+<form bindsubmit="getContent">
+    <block wx:if="{{type===0}}">
+      <template is="daylog" data="{{data}}"></template>
+     </block>
+    <block wx:elif="{{type===1}}">
+      <template is="weeklog" data="{{data}}"></template>
+    </block>
+    <block wx:else>
+      <template is="monthlog" data="{{data}}"></template>
+    </block>
+    <view class="btnWrapper">
+      <button class="submit-btn" form-type="submit">提交</button>
+    </view>
+</form>
+</view>

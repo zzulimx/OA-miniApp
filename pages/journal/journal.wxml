@@ -1,7 +1,6 @@
 <view class="page">
   <view class="page__bd">
     <view class="weui-tab">
-    
       <view class="weui-navbar">
         <block wx:for="{{tabs}}" wx:key="*this">
           <view id="{{index}}" class="weui-navbar__item {{activeIndex == index ? 'weui-bar__item_on' : ''}}" bindtap="tabClick">
@@ -10,34 +9,67 @@
         </block>
         <view class="weui-navbar__slider" style="left: {{sliderLeft}}px; transform: translateX({{sliderOffset}}px); -webkit-transform: translateX({{sliderOffset}}px);"></view>
       </view>
-
+      <!-- 我收到的 -->
       <swiper class="weui-tab__panel" duration="300" bindchange="swiperTab" current="{{activeIndex}}">
         <swiper-item hidden="{{activeIndex != 0}}">
           <view class="weui-tab__content">
-            <block wx:for="{{seeWorkLogList}}" wx:for-index="idx" wx:for-item="bean">
-              <view class="singleTrade" catchtap="showSeeWorkLogDetail" data-id="{{bean.id}}">
-                <view class="title">
-                  <view class="name">{{bean.title}}</view>
-                  <view class="state read">已读</view>
+            <block wx:for="{{list}}">
+              <view class="logBox">
+                <view class="info">
+                  <view class="avatar">
+                    <image src="{{item.avatarUrl}}"></image>
+                  </view>
+                  <view class="sendDeta">
+                    <view class="sender">
+                    {{item.sender}}{{item.type===0?'的日报':(item.type===1?'                     的周报':'的月报')}}
+                    </view>
+                    <view class="time">
+                    {{item.time}}
+                    </view>
+                  </view>
                 </view>
                 <view class="content">
-                  {{bean.content}}
-                </view>
-                <view class="other-mation">
-                  <view class="send-name">￥{{bean.sendId}}</view>
-                  <view class="date">￥{{bean.sendId}}</view>
+
                 </view>
               </view>
             </block>
           </view>
         </swiper-item>
+        <!-- 我发出的 -->
         <swiper-item hidden="{{activeIndex != 1}}">
-          <view class="weui-tab__content">选项二的内容</view>
+          <view class="weui-tab__content">
+
+          </view>
         </swiper-item>
+        <!-- 日志统计 -->
         <swiper-item hidden="{{activeIndex != 2}}">
-          <view class="weui-tab__content">选项三的内容</view>
+          <view class="weui-tab__content">
+
+          </view>
         </swiper-item>
       </swiper>
+    </view>
+  </view>
+  <!-- 添加日志弹出层-->
+  <view class="lay-add" catchtap="toAdd" catchtouchmove="true" style="height:{{layAddHeight}}">
+  </view>
+  <view class="addWrapper">
+    <view class="addGroup" style="height:{{addGroupHeight}}">
+      <view class="add add_day" catchtap="toaddDay">
+        <view class="title">日报</view>
+        <view class="icon iconfont icon-ribao"></view>
+      </view>
+      <view class="add add_week" catchtap="toaddWeek">
+        <view class="title">周报</view>
+        <view class="icon iconfont icon-zhoubao"></view>
+      </view>
+      <view class="add add_month" catchtap="toaddMonth">
+        <view class="title">月报</view>
+        <view class="icon iconfont icon-yuebao"></view>
+      </view>
+    </view>
+    <view class="addBtn">
+      <view class="icon iconfont icon-add3" catchtap="toAdd" style="transform:rotate({{rotateDeg}})"></view>
     </view>
   </view>
 </view>

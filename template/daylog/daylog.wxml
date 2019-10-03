@@ -1,0 +1,88 @@
+<template name="daylog">
+  <view class="contentWrapper">
+    <view class="done">
+      <text 
+      style="font-size:{{data.fontSize0}};color:{{data.color0}}">
+      今日完成工作</text>
+      <textarea 
+      data-idx="0"
+      auto-height
+      show-confirm-bar="{{false}}" 
+      name="todayDone"
+      bindfocus="styleSet"
+      bindblur="styleUnset"
+      ></textarea>
+    </view>
+    <view class="undone">
+    <text 
+    style="font-size:{{data.fontSize1}};color:{{data.color1}}">
+    今日未完成工作</text>
+      <textarea
+      data-idx="1" 
+      auto-height 
+      show-confirm-bar="{{false}}" 
+      name="todayUndone"
+      bindfocus="styleSet"
+      bindblur="styleUnset"
+      ></textarea>
+    </view>
+    <view class="coordination">
+      <text 
+      style="font-size:{{data.fontSize2}};color:{{data.color2}}">
+      需协调工作</text>
+      <textarea
+      data-idx="2" 
+      auto-height 
+      show-confirm-bar="{{false}}" 
+      name="todayCoor"
+      bindfocus="styleSet"
+      bindblur="styleUnset"
+      ></textarea>
+    </view>
+  </view>
+  <view class="fileWrapper">
+    <view class="imgWrapper" catchtap="tochooseImg" hover-class="click">
+      <view class="imgBtn">
+        <text>图片</text>
+        <view class="icon iconfont icon-tupian2"></view>
+      </view>
+    </view>
+    <view class="annexWrapper" hover-class="click">
+      <view class="annexBtn">
+        <text>附件</text>
+        <view class="icon iconfont icon-xingzhuang"></view>
+      </view>
+    </view>   
+  </view>
+  <view class="logReceiver" hover-class="click" >
+    <view class="addReceiverBtn">
+      <text>日志接收人</text>
+      <view class="icon iconfont icon-add"></view>
+    </view>
+  </view>
+  <view class="sendPrompt">
+    <view>
+      <view class="icon iconfont {{data.checkIcon}}"></view>
+      <text>日志转聊天 不勾选时，日志通过工作通知发送给对方</text>
+    </view>
+  </view>
+  <view class="sendGroup" hover-class="click">
+    <view class="sendGroupBtn">
+      <text>发送到群聊</text>
+      <view class="icon iconfont icon-add"></view>
+    </view>
+  </view>
+  <view class="shareSet">
+    <view class="weui-cells weui-cells_after-title">
+      <view class="weui-cell weui-cell_switch">
+        <view class="weui-cell__bd">仅接受人可见，不可转发</view>
+        <view class="weui-cell__ft">
+          <switch color="#62c9f8" />
+        </view>
+      </view>
+     </view>
+  </view>
+  <view class="sendGroupPrompt">
+   <text>除了你自己，任何人不可转发你的日志内容</text>
+  </view>
+</template>

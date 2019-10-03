@@ -1,0 +1,79 @@
+ .contentWrapper{
+  width: 100%;
+  background-color: #fff;
+  padding: 0 25rpx;
+  box-sizing: border-box;
+}
+.contentWrapper .done{
+  border-bottom: 1px solid #ddd;
+  padding: 25rpx 0;
+}
+.contentWrapper .plan{
+  border-bottom: 1px solid #ddd;
+  padding: 25rpx 0;
+}
+.contentWrapper .summary{
+  border-bottom: 1px solid #ddd;
+  padding: 25rpx 0;
+}
+.contentWrapper .coordination{
+  border-bottom: 1px solid #ddd;
+  padding: 25rpx 0;
+}
+.contentWrapper textarea{
+  min-height:50rpx;
+}
+ .fileWrapper{
+  margin-top: 25rpx;
+  background-color: #fff;
+  padding: 0 25rpx;
+}
+.fileWrapper .imgWrapper,.fileWrapper .annexWrapper, .logReceiver .addReceiverBtn, .sendGroup .sendGroupBtn{
+  padding: 20rpx 0;
+  line-height: 100rpx;
+  border-bottom: 1px solid #ddd;
+}
+.fileWrapper .annexWrapper,.logReceiver .addReceiverBtn, .sendGroup .sendGroupBtn{
+  border: none;
+}
+.imgBtn text,annexBtn text,.addReceiverBtn text,.sendGroupBtn text{
+  font-size: 38rpx;
+}
+.imgBtn .icon, .annexBtn .icon, .addReceiverBtn .icon ,.sendGroupBtn .icon{
+  display: inline-block;
+  color: #1E9FFF;
+  font-size: 52rpx;
+  float: right;
+}
+.annexBtn .icon{
+  font-size: 45rpx;
+}
+.logReceiver, .sendGroup{
+  background-color: #fff;
+  margin-top: 25rpx;
+  padding: 0 25rpx;
+}
+ .sendPrompt,.sendGroupPrompt{
+  width: 100%;
+  padding: 15rpx 25rpx;
+  box-sizing: border-box;
+  font-size: 28rpx;
+  color: gray;
+  text-align: left;
+}
+.sendPrompt .icon{
+  display: inline-block;
+  font-size: 34rpx;
+}
+.shareSet{
+  margin-top: 25rpx;
+}
+.shareSet .weui-cells_after-title {
+
+}
+.shareSet .weui-cells::before,.weui-cells::after{
+  content: unset;
+}
+.click,.logReceiver.click,.sendGroup.click{
+  background-color: #efefef;
+}
