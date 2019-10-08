@@ -61,14 +61,20 @@ Page({
     var date = new Date();
     let clock = formatTime(date).split(' ')[1].split(':');
     // 模拟代码
-    let percent = parseInt(clock[1])*10 / 60;
+    let percent = (parseInt(clock[1]) * 60 + parseInt(clock[2])) * 10 / 3600;
     let deg = percent*36;
     
     if(deg>180){
       let deg2 = 45-deg; 
       this.setData({
         degRight:'45deg',
-        degLeft:deg2
+        degLeft:deg2+'deg'
+      })
+    }else{
+      let deg1=deg-135
+      this.setData({
+        degRight: deg1+'deg',
+        degLeft: '-135deg'
       })
     }
     clock = clock[0] + ':' + clock[1] + ':' + clock[2];
@@ -80,13 +86,20 @@ Page({
       var date = new Date();
       let clock = formatTime(date).split(' ')[1].split(':');
       // 模拟代码
-      let percent = parseInt(clock[1]) * 10 / 60;
+      let percent = (parseInt(clock[1]) * 60 + parseInt(clock[2]) )*10 / 3600;
       let deg = percent * 36;
+
       if (deg > 180) {
         let deg2 = 45 - deg;
         this.setData({
           degRight: '45deg',
-          degLeft: deg2
+          degLeft: deg2 + 'deg'
+        })
+      } else {
+        let deg1 = deg - 135
+        this.setData({
+          degRight: deg1 + 'deg',
+          degLeft: '-135deg'
         })
       }
       clock = clock[0] + ':' + clock[1] + ':' + clock[2];
