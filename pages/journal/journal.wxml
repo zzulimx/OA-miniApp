@@ -12,64 +12,127 @@
       <!-- 我收到的 -->
       <swiper class="weui-tab__panel" duration="300" bindchange="swiperTab" current="{{activeIndex}}">
         <swiper-item hidden="{{activeIndex != 0}}">
-          <view class="weui-tab__content">
-            <block wx:for="{{list}}">
-              <view class="logBox">
-                <view class="info">
-                  <view class="avatar">
-                    <image src="{{item.avatarUrl}}"></image>
+          <scroll-view scroll-y="true" style="height:calc(100vh - 51px)">
+            <view class="weui-tab__content">
+              <block wx:for="{{receiveList}}">
+                <view class="logBox">
+                  <view class="info">
+                    <view class="avatar">
+                      <image src="{{item.avatarUrl}}"></image>
+                    </view>
+                    <view class="sendDeta">
+                      <view class="sender">
+                        {{item.sender}}{{item.type===0?'的日报':(item.type===1?' 的周报':'的月报')}}
+                      </view>
+                      <view class="time">
+                        {{item.time}}
+                      </view>
+                    </view>
+                    <view class="more">
+                      <view class="icon iconfont icon-more"></view>
+                    </view>
                   </view>
-                  <view class="sendDeta">
-                    <view class="sender">
-                    {{item.sender}}{{item.type===0?'的日报':(item.type===1?'                     的周报':'的月报')}}
-                    </view>
-                    <view class="time">
-                    {{item.time}}
-                    </view>
+                  <view class="content">
+                    <block wx:if="{{item.type===0}}">
+                      <view>今日完成工作:{{item.content.todayDone}}</view>
+                      <view>今日未完成工作:{{item.content.todayUndone}}</view>
+                      <view>需协调工作:{{item.content.todayCoor}}</view>
+                    </block>
+                    <block wx:elif="{{item.type===1}}">
+                      <view>本周完成工作:{{item.content.weekDone}}</view>
+                      <view>下周工作计划:{{item.content.weekPlan}}</view>
+                      <view>本周工作总结:{{item.content.weekSummary}}</view>
+                      <view>需协调帮助:{{item.content.weekCoor}}</view>
+                    </block>
+                    <block wx:else>
+                      <view>本月完成工作:{{item.content.monthDone}}</view>
+                      <view>下月工作计划:{{item.content.monthPlan}}</view>
+                      <view>本月工作总结:{{item.content.monthSummary}}</view>
+                      <view>需协调帮助:{{item.content.monthCoor}}</view>
+                    </block>
                   </view>
                 </view>
-                <view class="content">
-
-                </view>
-              </view>
-            </block>
-          </view>
+              </block>
+            </view>
+          </scroll-view>
         </swiper-item>
         <!-- 我发出的 -->
         <swiper-item hidden="{{activeIndex != 1}}">
-          <view class="weui-tab__content">
-
-          </view>
+          <scroll-view scroll-y="true" style="height:calc(100vh - 51px)">
+            <view class="weui-tab__content">
+              <block wx:for="{{sendList}}">
+                <view class="logBox">
+                  <view class="info">
+                    <view class="avatar">
+                      <image src="{{userInfo.avatarUrl}}"></image>
+                    </view>
+                    <view class="sendDeta">
+                      <view class="sender">
+                        {{userInfo.nickName}}{{item.type===0?'的日报':(item.type===1?' 的周报':'的月报')}}
+                      </view>
+                      <view class="time">
+                        {{item.time}}
+                      </view>
+                    </view>
+                    <view class="more">
+                      <view class="icon iconfont icon-more"></view>
+                    </view>
+                  </view>
+                  <view class="content">
+                    <block wx:if="{{item.type===0}}">
+                      <view>今日完成工作:{{item.content.todayDone}}</view>
+                      <view>今日未完成工作:{{item.content.todayUndone}}</view>
+                      <view>需协调工作:{{item.content.todayCoor}}</view>
+                    </block>
+                    <block wx:elif="{{item.type===1}}">
+                      <view>本周完成工作:{{item.content.weekDone}}</view>
+                      <view>下周工作计划:{{item.content.weekPlan}}</view>
+                      <view>本周工作总结:{{item.content.weekSummary}}</view>
+                      <view>需协调帮助:{{item.content.weekCoor}}</view>
+                    </block>
+                    <block wx:else>
+                      <view>本月完成工作:{{item.content.monthDone}}</view>
+                      <view>下月工作计划:{{item.content.monthPlan}}</view>
+                      <view>本月工作总结:{{item.content.monthSummary}}</view>
+                      <view>需协调帮助:{{item.content.monthCoor}}</view>
+                    </block>
+                  </view>
+                </view>
+              </block>
+            </view>
+          </scroll-view>
         </swiper-item>
         <!-- 日志统计 -->
         <swiper-item hidden="{{activeIndex != 2}}">
           <view class="weui-tab__content">
-
+            <scroll-view scroll-y="true" style="height:calc(100vh - 51px)">
+            </scroll-view>
           </view>
         </swiper-item>
       </swiper>
     </view>
   </view>
-  <!-- 添加日志弹出层-->
-  <view class="lay-add" catchtap="toAdd" catchtouchmove="true" style="height:{{layAddHeight}}">
-  </view>
-  <view class="addWrapper">
-    <view class="addGroup" style="height:{{addGroupHeight}}">
-      <view class="add add_day" catchtap="toaddDay">
-        <view class="title">日报</view>
-        <view class="icon iconfont icon-ribao"></view>
-      </view>
-      <view class="add add_week" catchtap="toaddWeek">
-        <view class="title">周报</view>
-        <view class="icon iconfont icon-zhoubao"></view>
-      </view>
-      <view class="add add_month" catchtap="toaddMonth">
-        <view class="title">月报</view>
-        <view class="icon iconfont icon-yuebao"></view>
-      </view>
+<!-- 添加日志弹出层背景-->
+<view class="addBg" style="height:{{addbgHeight}}" catchtap="hideadd" catchtouchmove="true">
+</view>
+<!-- 新建操作栏按钮-->
+<view class="addWrapper" wx:if="{{isaddFile}}" catchtouchmove="tapMove" catchtouchend="tapEnd" style="left:{{left}};top:{{top}};bottom:{{bottom}};right:{{right}}">
+  <view class="add_group" style="height:{{addwrapper}};display:{{overflow}}">
+    <view class="new_file" catchtap="toaddDay">
+      <text>日报</text>
+      <image src="../../images/logs/day(1).png"></image>
     </view>
-    <view class="addBtn">
-      <view class="icon iconfont icon-add3" catchtap="toAdd" style="transform:rotate({{rotateDeg}})"></view>
+    <view class="upload_file" catchtap="toaddWeek">
+      <text>周报</text>
+      <image src="../../images/logs/week.png"></image>
+    </view>
+    <view class="upload_file" catchtap="toaddMonth">
+      <text>月报</text>
+      <image src="../../images/logs/month.png"></image>
     </view>
   </view>
+  <view class="add_btn"  wx:if="{{isaddFile}}">
+    <image style="transform:rotate({{transdeg}})" src="../../images/file/add.png"></image>
+  </view>
+</view>
 </view>

@@ -1,5 +1,4 @@
 <!--pages/punch/punch.wxml-->
-
 <view class="container">
   <view class="page__bd">
     <view class="weui-tab">
@@ -14,149 +13,151 @@
       <swiper class="weui-tab__panel" duration="300" bindchange="swiperTab" current="{{activeIndex}}">
         <swiper-item class="weui-tab__content" hidden="{{activeIndex != 0}}">
           <view class="inner">
-          <!-- 个人信息 -->
-          <view class="userInfo">
-           <view class="imgWrapper">
-               <image src="{{userInfo.avatarUrl}}"></image>
-           </view>
-           <view class="userName">
-             <view>张三</view>
-            </view>
-            <view class="signature">
-             <view>{{signature}}</view>
-            </view>
-          </view>
-          <!-- 打卡 -->
-          <view class="punch">
-              <view class="punchInner">
-              <!-- 上班时间点 -->
-                 <view class="onworkTime">
-                 <view class="dot"><view class="icon iconfont {{onIcon}}"></view></view>
-                 <view class="time">上班时间09：00</view>
-                 </view>
-               <!-- 打卡 信息 -->
-  <view class="detalWrapper">
-      <view class="bar" style="height:{{barHeight}}">
-          <view class="timebar"></view>
-      </view>
-      <!-- 打卡按钮 -->
-      <block wx:if="{{!ontime}}">
-        <view class="detail">
-          <view class="btnPunch">
-            <view class="btnWrapper" catchtap="toPunch">
-              <view class="timeBtn" hover-class="punchClick">
-                  <view class="clock">{{clock}}</view>
-                  <view class="towork">上班打卡</view>
+            <!-- 个人信息 -->
+            <view class="userInfo">
+              <view class="imgWrapper">
+                <image src="{{userInfo.avatarUrl}}"></image>
               </view>
-            </view> 
-          </view>       
-          <view class="locaWrapper">
-            <view class="locaDetal">
-              <view class="ranStatus">
-                <view class="icon iconfont icon-checked1"></view>
-                             已经入考勤范围:未来科技公司(科学大道136号)
-                </view>                        
-                <view class="reLocate" hover-class="locaClick"
-                   catchtap="toLocate">去重新定位          
+              <view class="userName">
+                <view>张三</view>
+              </view>
+              <view class="signature">
+                <view>{{signature}}</view>
+              </view>
+            </view>
+            <!-- 打卡 -->
+            <view class="punch">
+              <view class="punchInner">
+                <!-- 上班时间点 -->
+                <view class="onworkTime">
+                  <view class="dot">
+                    <view class="icon iconfont {{onIcon}}"></view>
+                  </view>
+                  <view class="time">上班时间09：00</view>
                 </view>
-               </view>
+                <!-- 打卡 信息 -->
+                <view class="detalWrapper">
+                  <view class="bar" style="height:{{barHeight}}">
+                    <view class="timebar"></view>
+                  </view>
+                  <!-- 打卡按钮 -->
+                  <block wx:if="{{!ontime}}">
+                    <view class="detail">
+                      <view class="btnPunch">
+                      <view class="btnWrapper" catchtap="toPunch">
+                       <view class="circle_process">
+                          <view class="wrapper right">
+                            <view class="circle rightcircle" style="transform:rotate({{degRight}})"></view>
+                          </view>
+                          <view class="wrapper left">
+                            <view class="circle leftcircle" id="leftcircle" style="transform:rotate({{degLeft}})"></view>
+                          </view>
+                      </view>
+                        <view class="timeBtn" hover-class="punchClick">
+                          <view class="clock">{{clock}}</view>
+                          <view class="towork">上班打卡</view>
+                        </view>
+                      </view>
+                    </view>
+                    <view class="locaWrapper">
+                      <view class="locaDetal">
+                        <view class="ranStatus">
+                          <view class="icon iconfont icon-checked1"></view>
+                          已经入考勤范围:未来科技公司(科学大道136号)
+                        </view>
+                        <view class="reLocate" hover-class="locaClick" catchtap="toLocate">去重新定位
+                        </view>
+                      </view>
+                    </view>
+                </view>
+                </block>
+                <block wx:else>
+                  <view class="punchOver">
+                    <view class="punchTime">打卡时间{{ontime}}</view>
+                    <view class="punchLoca">
+                      <view class="icon iconfont icon-lbs"></view>
+                      <view class="workPlace">未来科技公司</view>
+                    </view>
+                  </view>
+                </block>
+              </view>
+              <!-- 下班时间点 -->
+              <view class="offworkTime">
+                <view class="dot">
+                  <view class="icon iconfont {{offIcon}}"></view>
+                </view>
+                <view class="time">下班时间18：00</view>
+              </view>
+              <!-- 打卡 信息 -->
+              <view class="detalWrapper offPunch">
+                <view class="bar">
+                  <view class="timebar"></view>
+                </view>
+                <block wx:if="{{ontime?(!offtime):''}}">
+                  <view class="detail">
+                    <view class="btnPunch">
+                      <view class="btnWrapper" catchtap="toPunch">
+                        <view class="timeBtn" hover-class="punchClick">
+                          <view class="clock">{{clock}}</view>
+                          <view class="towork">下班打卡</view>
+                        </view>
+                      </view>
+                    </view>
+                    <view class="locaWrapper">
+                      <view class="locaDetal">
+                        <view class="ranStatus">
+                          <view class="icon iconfont icon-checked1"></view>
+                          已经入考勤范围:未来科技公司(科学大道136号)
+                        </view>
+                        <view class="reLocate" hover-class="locaClick" catchtap="toLocate">去重新定位
+                        </view>
+                      </view>
+                    </view>
+                  </view>
+                </block>
+                <block wx:elif="{{offtime}}">
+                  <view class="punchOver">
+                    <view class="punchTime">打卡时间{{offtime}}</view>
+                    <view class="punchLoca">
+                      <view class="icon iconfont icon-lbs"></view>
+                      <view class="workPlace">未来科技公司</view>
+                    </view>
+                  </view>
+                </block>
+              </view>
             </view>
           </view>
-      </block>
-      <block wx:else>
-       <view class="punchOver">
-         <view class="punchTime">打卡时间{{ontime}}</view>
-          <view class="punchLoca">
-            <view class="icon iconfont icon-lbs"></view>
-            <view class="workPlace">未来科技公司</view>
-          </view>
-       </view>   
-      </block>
-  </view>
-                 <!-- 下班时间点 -->
-  <view class="offworkTime">
-    <view class="dot">
-      <view class="icon iconfont {{offIcon}}"></view>
     </view>
-    <view class="time">下班时间18：00</view>
-  </view>
-      <!-- 打卡 信息 -->
-  <view class="detalWrapper offPunch">
-    <view class="bar">
-      <view class="timebar"></view>
-    </view>
-    <block wx:if="{{ontime?(!offtime):''}}">
-    <view class="detail">
-      <view class="btnPunch">
-        <view class="btnWrapper" catchtap="toPunch">
-          <view class="timeBtn" hover-class="punchClick">
-            <view class="clock">{{clock}}</view>
-            <view class="towork">下班打卡</view>
+    </swiper-item>
+    <swiper-item class="weui-tab__content" hidden="{{activeIndex != 1}}">
+      <view class="inner out">
+        <view class="userInfo">
+          <view class="imgWrapper">
+            <image src="{{userInfo.avatarUrl}}"></image>
           </view>
-        </view> 
-      </view>        
-      <view class="locaWrapper">
-        <view class="locaDetal">
-          <view class="ranStatus">
-            <view class="icon iconfont icon-checked1"></view>
-            已经入考勤范围:未来科技公司(科学大道136号)
-          </view>                        
-          <view class="reLocate" hover-class="locaClick"   
-          catchtap="toLocate">去重新定位
+          <view class="userName">
+            <view>张三</view>
           </view>
         </view>
-      </view>
-    </view>
-    </block>
-    <block wx:elif="{{offtime}}">
-       <view class="punchOver">
-         <view class="punchTime">打卡时间{{offtime}}</view>
-          <view class="punchLoca">
-            <view class="icon iconfont icon-lbs"></view>
-            <view class="workPlace">未来科技公司</view>
-          </view>
-       </view> 
-    </block>
-  </view>
-</view>
-</view>
-</view>
-</swiper-item>
-<swiper-item class="weui-tab__content" hidden="{{activeIndex != 1}}">
-  <view class="inner out">
-    <view class="userInfo">
-      <view class="imgWrapper">
-        <image src="{{userInfo.avatarUrl}}"></image>
-      </view>
-      <view class="userName">
-        <view>张三</view>
-      </view>
-    </view>
-    <map
-      id="myMap"
-      latitude="{{latitude}}"
-      longitude="{{longitude}}"
-      show-location
-    >
-    </map>
-    <view class="outLoca">
-      <view class="icon iconfont icon-location3"></view>{{outLoca}}
-    </view>
-    <view class="outPunch">
-      <view class="btnPunch">
-          <view class="btnWrapper" catchtap="toOutPunch">
+        <map id="myMap" latitude="{{latitude}}" longitude="{{longitude}}" show-location>
+        </map>
+        <view class="outLoca">
+          <view class="icon iconfont icon-location3"></view>{{outLoca}}
+        </view>
+        <view class="outPunch">
+          <view class="btnPunch">
+            <view class="btnWrapper" catchtap="toOutPunch">
               <view class="timeBtn" hover-class="punchClick">
-                  <view class="clock">{{clock}}</view>
-                  <view class="towork">上班打卡</view>
+                <view class="clock">{{clock}}</view>
+                <view class="towork">外出打卡</view>
               </view>
-            </view> 
-          </view>  
+            </view>
+          </view>
           <view class="outStatus">今日外出未打卡</view>
-    </view>
+        </view>
+      </view>
+    </swiper-item>
+    </swiper>
   </view>
-</swiper-item>
-</swiper>
 </view>
 </view>
-</view>
-

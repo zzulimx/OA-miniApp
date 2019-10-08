@@ -1,14 +1,14 @@
 /* pages/file/file.wxss */
-page {
-  height:100%;
-  width: 100%;
+page{
+ height: calc(100% - 51px);
+ width: 100%;
 }
 .container {
   height: 100%;
   background-color: #fcfbfb;
 }
 
-page, .page, .page__bd {
+.page, .page__bd {
   height: 100%;
 }
 
@@ -106,8 +106,6 @@ page, .page, .page__bd {
 }
 .addWrapper{
   position: fixed;
-  bottom: 30px;
-  right: 30px;
   z-index: 9999;
 }
 .addWrapper .add_group{

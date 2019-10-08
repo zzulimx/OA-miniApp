@@ -25,6 +25,10 @@ Page({
     isreName: false,
     currName: '',
     newName: '',
+    top: '',
+    left: '',
+    right: '30px',
+    bottom: '30px',
     noteslist: [      //文件管理 文件列表
       {
         fileSize: '0KB',
@@ -252,7 +256,7 @@ Page({
   // 确认创建文件夹
   create: function (event) {
     if (this.data.fileName === '' || this.data.fileName === undefined) {
-      this.data.nodelist[this.data.nodelist.length] = {
+      this.data.noteslist[this.data.noteslist.length] = {
         fileSize: '0KB',
           title: '新建文件夹',
             createTime: '2019-06-13 17:48',
@@ -263,7 +267,7 @@ Page({
                     content:''     
       }
     } else {
-      this.data.nodelist[this.data.nodelist.length] = {
+      this.data.noteslist[this.data.noteslist.length] = {
         fileSize: '0KB',
         title: this.data.fileName,
         createTime: '2019-06-13 17:48',
@@ -279,7 +283,7 @@ Page({
     this.data.selectIndex[this.data.selectIndex.length] = { sureId: false };
     this.setData({
       islayOpen: false,
-      nodelist: this.data.nodelist,
+      noteslist: this.data.noteslist,
       fileName: '',
       selectIndex: this.data.selectIndex
     })
@@ -292,6 +296,8 @@ Page({
         addwrapper: 0,
         transdeg: 0,
       });
+      // 手动滑动按钮允许
+      this.lock=true;
       var that = this;
       setTimeout(function () {
         that.setData({
@@ -300,6 +306,8 @@ Page({
       }, 200);
 
     } else {
+      // 手动滑动按钮禁止
+      this.lock=false;
       this.setData({
         addbgHeight: '100%',
         addwrapper: '180px',
@@ -391,6 +399,8 @@ Page({
     })
   },
   onLoad: function (options) {
+    // 手动滑动按钮
+    this.lock=true;
     //如果上一个页面传递有参数，则根据参数展示
     // console.log(options);
     var that = this;
@@ -490,7 +500,27 @@ Page({
         break;
     }
   },
-
+  tapMove(e) {
+    if(this.lock){
+      let clientX = e.touches[0].clientX;
+      let clienty = e.touches[0].clientY;
+      this.setData({
+        left: clientX - 25 + 'px',
+        top: clienty - 35 + 'px',
+        bottom: '',
+        right: ''
+      });
+    }
+  },
+  tapEnd(e) {
+    this.setData({
+      left: '',
+      top: '',
+      bottom: '30px',
+      right: '30px'
+    })
+    this.addFile();
+  },
 
   /**
    * 刷新消息

@@ -1,119 +1,145 @@
 /* pages/punch/punch.wxss */
+
 page {
-  height:100%;
+  height: 100%;
   width: 100%;
 }
+
 .container {
   height: 100%;
   background-color: #fcfbfb;
 }
+
 page, .page, .page__bd {
   height: 100%;
 }
+
 .page__bd {
   padding-bottom: 0;
 }
+
 .weui-navbar {
   position: fixed;
   background-color: #fff;
 }
-.weui-navbar__slider{
+
+.weui-navbar__slider {
   width: 30%;
-  transition: left .3s ease;
+  transition: left 0.3s ease;
 }
-.weui-navbar__item.weui-bar__item_on{
+
+.weui-navbar__item.weui-bar__item_on {
   color: #62c9f8;
 }
+
 .weui-navbar__slider {
   background-color: #62c9f8;
 }
-.weui-tab__panel .inner{
+
+.weui-tab__panel .inner {
   width: 100%;
   height: auto;
   padding-top: 20rpx;
 }
-.inner .userInfo{
+
+.inner .userInfo {
   width: 100%;
   height: 270rpx;
 }
-.userInfo .imgWrapper{
+
+.userInfo .imgWrapper {
   width: 100%;
   height: 150rpx;
   text-align: center;
   box-sizing: border-box;
   padding-top: 10rpx;
 }
-.userInfo .imgWrapper image{
+
+.userInfo .imgWrapper image {
   width: 125rpx;
   height: 125rpx;
   border-radius: 50%;
   border: 2px solid #eee;
 }
-.userInfo .userName{
+
+.userInfo .userName {
   width: 100%;
   text-align: center;
   font-size: 28rpx;
   color: rgb(204, 45, 17);
 }
-.userInfo .signature{
+
+.userInfo .signature {
   width: 100%;
   text-align: center;
   font-size: 26rpx;
   color: gray;
   padding: 8rpx 0;
 }
-.punch{
+
+.punch {
   width: 100%;
   padding-left: 120rpx;
 }
-.punch .punchInner .dot{
+
+.punch .punchInner .dot {
   width: 8%;
   display: inline-block;
   text-align: center;
 }
-.punch .btnPunch{
+
+.punch .btnPunch {
   padding: 40rpx 0 20rpx 40rpx;
 }
-.punch .punchInner .time{
+
+.punch .punchInner .time {
   display: inline-block;
   color: #000;
   font-size: 26rpx;
 }
-.punch .punchInner .icon{
-   display: inline-block;
+
+.punch .punchInner .icon {
+  display: inline-block;
 }
-.punch .punchInner .icon-circle{
+
+.punch .punchInner .icon-circle {
   font-size: 10px;
   font-weight: bold;
 }
-.punchInner .detalWrapper .bar{
+
+.punchInner .detalWrapper .bar {
   width: 8%;
   text-align: center;
-  display:inline-block;
+  display: inline-block;
   vertical-align: top;
 }
-.punchInner .detalWrapper.offPunch .bar .timebar{
-  display: none
+
+.punchInner .detalWrapper.offPunch .bar .timebar {
+  display: none;
 }
-.punchInner .detalWrapper .bar .timebar{
- width: 8rpx;
- height: 100%;
- background-color: #eee;
- display: inline-block;
+
+.punchInner .detalWrapper .bar .timebar {
+  width: 8rpx;
+  height: 100%;
+  background-color: #eee;
+  display: inline-block;
 }
-.punchInner .detalWrapper .detail{
+
+.punchInner .detalWrapper .detail {
   display: inline-block;
   width: 82%;
 }
-.btnWrapper{
+
+.btnWrapper {
   width: 240rpx;
   height: 240rpx;
   border-radius: 50%;
   border: 2px solid #eee;
   position: relative;
-  background-color: #b2e0f5;
+  background-color: #fff;
 }
-.timeBtn{
+
+.timeBtn {
   width: 210rpx;
   height: 210rpx;
   border-radius: 50%;
@@ -121,47 +147,55 @@ page, .page, .page__bd {
   position: absolute;
   top: 50%;
   left: 50%;
-  transform: translate(-50%,-50%);
+  transform: translate(-50%, -50%);
   text-align: center;
   background-color: #fff;
 }
-.timeBtn .clock, .timeBtn .towork{
+
+.timeBtn .clock, .timeBtn .towork {
   width: 100%;
   height: 50%;
   font-size: 28rpx;
   font-weight: normal;
 }
-.timeBtn .clock{
+
+.timeBtn .clock {
   line-height: 160rpx;
-  font-size: 38rpx;
+  font-size: 35rpx;
   font-weight: bold;
 }
 
-.detalWrapper .punchOver{
+.detalWrapper .punchOver {
   display: inline-block;
   padding: 50rpx 0;
 }
-.punchOver .punchTime{
+
+.punchOver .punchTime {
   font-size: 35rpx;
   font-weight: bold;
 }
-.punchOver .punchLoca .icon{
+
+.punchOver .punchLoca .icon {
   display: inline-block;
   font-size: 35rpx;
-  color: #1E9FFF;
+  color: #1e9fff;
 }
-.punchOver .punchLoca .workPlace{
+
+.punchOver .punchLoca .workPlace {
   display: inline-block;
   font-size: 26rpx;
 }
-.locaWrapper .icon{
+
+.locaWrapper .icon {
   display: inline-block;
   color: #62c9f8;
 }
-.locaWrapper .locaDetal{
+
+.locaWrapper .locaDetal {
   display: inline-block;
 }
-.locaDetal .ranStatus{
+
+.locaDetal .ranStatus {
   display: inline-block;
   font-size: 26rpx;
   text-overflow: ellipsis;
@@ -169,48 +203,103 @@ page, .page, .page__bd {
   max-width: 420rpx;
   overflow: hidden;
 }
-.locaDetal .reLocate{
+
+.locaDetal .reLocate {
   display: inline-block;
   font-size: 27rpx;
-  color: #FF5722;
+  color: #ff5722;
   min-width: 45rpx;
   vertical-align: super;
   font-weight: bold;
 }
-.locaDetal .locaClick{
-  text-decoration:underline; 
+
+.locaDetal .locaClick {
+  text-decoration: underline;
 }
-.inner.out .userInfo{
+
+.inner.out .userInfo {
   height: 220rpx;
 }
-.inner.out map{
+
+.inner.out map {
   width: 90%;
   height: 215rpx;
   margin: 0 auto;
 }
-.inner.out .outLoca{
+
+.inner.out .outLoca {
   width: 100%;
   padding-top: 20rpx;
   font-size: 30rpx;
   text-align: center;
 }
-.outLoca .icon{
-  color: #1E9FFF;
+
+.outLoca .icon {
+  color: #1e9fff;
   display: inline-block;
 }
-.outPunch{
-  padding-top:40rpx;
-  text-align: center; 
+
+.outPunch {
+  padding-top: 40rpx;
+  text-align: center;
 }
-.outPunch .btnPunch{
+
+.outPunch .btnPunch {
   display: inline-block;
 }
-.outPunch .outStatus{
+
+.outPunch .outStatus {
   width: 100%;
   text-align: center;
   font-size: 28rpx;
   padding-top: 20rpx;
 }
- .punchClick{
+
+.punchClick{
   background-color: #b2e0f5;
 }
+
+.circle_process {
+  position: relative;
+  width: 240rpx;
+  height: 240rpx;
+}
+
+.circle_process .wrapper {
+  width: 120rpx;
+  height: 240rpx;
+  position: absolute;
+  top: 0;
+  overflow: hidden;
+}
+
+.circle_process .right {
+  right: 0;
+}
+
+.circle_process .left {
+  left: 0;
+}
+
+.circle_process .circle {
+  width: 200rpx;
+  height: 200rpx;
+  border: 20rpx solid transparent;
+  border-radius: 50%;
+  position: absolute;
+  top: 0;
+}
+
+.circle_process .rightcircle {
+  border-top: 20rpx solid #62c9f8;
+  border-right: 20rpx solid #62c9f8;
+  right: 0;
+}
+
+.circle_process .leftcircle {
+  border-bottom: 20rpx solid #62c9f8;
+  border-left: 20rpx solid #62c9f8;
+  left: 0;
+}
+
+

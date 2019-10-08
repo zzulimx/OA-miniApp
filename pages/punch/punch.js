@@ -23,6 +23,8 @@ Page({
     currLoca:'',//当前位置
     isPunch:'',//是否可以打卡
     outLoca:'',  //外出打卡定位
+    degRight:'-135deg', //控制打卡时间进度
+    degLeft: '-135deg', //控制打卡时间进度
   },
   // 页面加载
   onLoad: function (options) {
@@ -58,7 +60,18 @@ Page({
     // 时钟初始化
     var date = new Date();
     let clock = formatTime(date).split(' ')[1].split(':');
-    clock = clock[0] + ':' + clock[1];
+    // 模拟代码
+    let percent = parseInt(clock[1])*10 / 60;
+    let deg = percent*36;
+    
+    if(deg>180){
+      let deg2 = 45-deg; 
+      this.setData({
+        degRight:'45deg',
+        degLeft:deg2
+      })
+    }
+    clock = clock[0] + ':' + clock[1] + ':' + clock[2];
     this.setData({
       clock: clock
     });
@@ -66,11 +79,22 @@ Page({
       // 设置时钟
       var date = new Date();
       let clock = formatTime(date).split(' ')[1].split(':');
-      clock = clock[0] + ':' + clock[1];
+      // 模拟代码
+      let percent = parseInt(clock[1]) * 10 / 60;
+      let deg = percent * 36;
+      if (deg > 180) {
+        let deg2 = 45 - deg;
+        this.setData({
+          degRight: '45deg',
+          degLeft: deg2
+        })
+      }
+      clock = clock[0] + ':' + clock[1] + ':' + clock[2];
       this.setData({
         clock:clock
       })
-    },1000)
+    },1000);
+   
   },
   //点击切换选项卡
   tabClick: function (e) {
@@ -101,10 +125,23 @@ Page({
   }
   // 打卡
   ,toPunch:function(){
-      if(this.data.status === 'on'){
-        
+    let date = formatTime(new Date());
+    let x= parseInt(date.split(' ')[0].split('-')[1]) -1;
+    let y = parseInt(date.split(' ')[0].split('-')[2]) -1;
+     let pages = getCurrentPages();
+     let currPage = pages[pages.length-1]; //当前页面
+     let prevPage = pages[pages.length-2]; //上一个页面
+      if(this.data.ontime === ''){
+        // 获取当前月份，日期
+        this.setData({
+          ontime: this.data.clock,
+          barHeight: '225rpx'
+        })
       }else{
-
+        // 获取当前月份，日期
+        this.setData({
+          offtime: this.data.clock
+        })
       }
   },
   // 根据上下班打卡状态设置样式
@@ -143,7 +180,6 @@ Page({
             longitude: this.data.longitude
           },
           success: res => {//成功后的回调
-            console.log(res);
             this.setData({
               outLoca: res.result.address_reference.landmark_l2.title
             })

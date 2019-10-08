@@ -1,6 +1,7 @@
 <!--index.wxml-->
 <import src="../../template/msglist/msglist.wxml" />
 <view class="container">
+<canvas  canvas-id="myCanvas" bindtouchend="touchend" bindlongtap="touchmove" bindtouchmove="touchmove">
   <view class="weui-search-bar">
     <view class="weui-search-bar__form" bindtap="searchMation">
       <view class="weui-search-bar__box">
@@ -31,5 +32,5 @@
       <template is="msgitem"  data="{{item:item,idx:idx}}"></template>
     </block>
   </view>
-
+</canvas>
 </view>

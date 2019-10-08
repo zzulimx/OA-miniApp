@@ -45,8 +45,6 @@ const getRandomArray = (arr, count) => {
 const getRandomArrayElement = arr => {
   return arr[Math.floor(Math.random() * arr.length)];
 }
-
-
 module.exports = {
   formatTime: formatTime,
   getRandomArray: getRandomArray,

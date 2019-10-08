@@ -55,9 +55,10 @@ page{
 }
 .item-content .day{
   line-height: 70rpx;
+  font-size: 30rpx;
 }
 #currymd{
- font-size: 40rpx;
+ font-size: 38rpx;
  font-weight: normal;
  color: #000;
  width: 255rpx;

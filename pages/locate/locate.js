@@ -34,7 +34,6 @@ Page({
             longitude: this.data.longitude
           },
           success:res=>{//成功后的回调
-            console.log(res);
              this.setData({
                nearLoca:res.result.pois,
                currLoca:res.result.pois[0].title

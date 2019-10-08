@@ -5,6 +5,7 @@ Page({
   data: {
     title:'',//导航栏标题
     type:'',//当前添加类型
+    time:'',  //当前时间
     data:{
       fontSize0: '38rpx', //文本框字体大小
       fontSize1: '38rpx',
@@ -73,14 +74,54 @@ Page({
   },
   // 获取表单内容
   getContent:function(event){
+    var pages = getCurrentPages();
+    var currPage = pages[pages.length - 1];   //当前页面
+    var prevPage = pages[pages.length - 2];  //上一个页面
+    let currData= event.detail.value;
     switch(this.data.type.toString()){
       case '0':
+        prevPage.data.sendList[prevPage.data.sendList.length] = {
+          type: this.data.type,
+          content: { //内容
+            todayDone: currData.todayDone, //今日完成工作
+            todayUndone: currData.todayUndone, //今日未完成工作
+            todayCoor: currData.todayCoor, //今日需协调工作
+          },
+          time: this.data.time, //时间
+        };
       break;
       case '1':
+        prevPage.data.sendList[prevPage.data.sendList.length] = {
+          type: this.data.type,
+          content: { //内容
+            weekDone: currData.weekDone, //本周完成工作
+            weekPlan: currData.weekPlan, //下周工作计划
+            weekSummary: currData.weekSummary, //本周工作总结
+            weekCoor: currData.weekCoor, //需协调帮助
+          },
+          time: this.data.time, //时间
+        };
       break;
       case '2':
+        prevPage.data.sendList[prevPage.data.sendList.length] = {
+          type: this.data.type,
+          content: { //内容
+            monthDone:currData.monthDone, //本月完成工作
+            monthPlan: currData.monthPlan, //下月工作计划
+            monthSummary: currData.monthSummary, //本月工作总结
+            monthCoor: currData.monthCoor, //需协调帮助
+          },
+          time: this.data.time, //时间
+        };
       break;
     }
+    prevPage.setData({
+      sendList: prevPage.data.sendList,
+      activeIndex:1
+    });
+    console.log(event)
+    // 返回
+    wx.navigateBack();
   },
   // textarea获取焦点时设置样式
   styleSet:function(event){
@@ -121,6 +162,17 @@ Page({
         // tempFilePath可以作为img标签的src属性显示图片
         const tempFilePaths = res.tempFilePaths
       }
+    })
+  },
+  // 日志转聊天
+  toSwitchChat:function(){
+    if (this.data.data.checkIcon ==='icon-unchecked'){
+      this.data.data.checkIcon ='icon-checked';
+    }else{
+      this.data.data.checkIcon = 'icon-unchecked';
+    }
+    this.setData({
+      data:this.data.data
     })
   }
 })

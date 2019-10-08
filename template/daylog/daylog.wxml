@@ -1,9 +1,9 @@
 <template name="daylog">
   <view class="contentWrapper">
     <view class="done">
-      <text 
+      <view 
       style="font-size:{{data.fontSize0}};color:{{data.color0}}">
-      今日完成工作</text>
+      今日完成工作</view>
       <textarea 
       data-idx="0"
       auto-height
@@ -14,9 +14,9 @@
       ></textarea>
     </view>
     <view class="undone">
-    <text 
+    <view 
     style="font-size:{{data.fontSize1}};color:{{data.color1}}">
-    今日未完成工作</text>
+    今日未完成工作</view>
       <textarea
       data-idx="1" 
       auto-height 
@@ -27,9 +27,9 @@
       ></textarea>
     </view>
     <view class="coordination">
-      <text 
+      <view 
       style="font-size:{{data.fontSize2}};color:{{data.color2}}">
-      需协调工作</text>
+      需协调工作</view>
       <textarea
       data-idx="2" 
       auto-height 
@@ -60,7 +60,7 @@
       <view class="icon iconfont icon-add"></view>
     </view>
   </view>
-  <view class="sendPrompt">
+  <view class="sendPrompt" catchtap="toSwitchChat">
     <view>
       <view class="icon iconfont {{data.checkIcon}}"></view>
       <text>日志转聊天 不勾选时，日志通过工作通知发送给对方</text>

@@ -1,14 +1,15 @@
-page, .page, .page__bd {
+page{
+ height: calc(100% - 51px);
+}
+.page, .page__bd {
   height: 100%;
 }
-
 .weui-navbar {
   position: fixed;
   background-color: #fff;
 }
 
 .weui-tab__panel {
-  height: calc(100% - 51px);
   margin-top: 51px;
   padding-top: 0px;
 }
@@ -22,11 +23,6 @@ page {
   font-size: 16px;
   font-family: -apple-system-font, Helvetica Neue, Helvetica, sans-serif;
 }
-
-.page__bd {
-  padding-bottom: 40px;
-}
-
 .weui-navbar__item.weui-bar__item_on {
   color: #62c9f8;
 }
@@ -35,7 +31,7 @@ page {
   background-color: #62c9f8;
 }
 
-.page .lay-add {
+/* .page .lay-add {
   width: 100vw;
   position: fixed;
   z-index: 999;
@@ -105,14 +101,16 @@ page {
   font-size: 110rpx;
   float: right;
   transition: transform 0.3s ease;
-}
+} */
 
 .logBox {
   width: 100%;
   padding: 25rpx;
   box-sizing: border-box;
-  max-height: 350rpx;
+  max-height: 390rpx;
   overflow: hidden;
+  background-color: #fff;
+  border-bottom: 1px solid #eee;
 }
 
 .logBox .info {
@@ -127,28 +125,162 @@ page {
 }
 
 .avatar image {
-  width: 90rpx;
-  height: 90rpx;
+  width: 85rpx;
+  height: 85rpx;
   border-radius: 50%;
-  margin-top: 15rpx;
+  margin-top: 20rpx;
 }
-.sendDeta{
+
+.sendDeta {
   display: inline-block;
-   float: left;
-   padding: 0 20rpx;
+  float: left;
+  padding: 0 20rpx;
+  height: 120rpx;
 }
-.logBox .content{
- 
+
+.logBox .content {
+  width: 100%;
+  height: auto;
+  max-height: 210rpx;
+  overflow: hidden;
+  text-align: left;
+  padding-top: 20rpx;
+  padding-bottom: 10rpx;
+  box-sizing: border-box;
+  white-space: normal;
+  text-overflow:ellipsis;
 }
-.sender{
-  font-size: 38rpx;
-font-weight: normal;
-height: 60rpx;
-line-height: 85rpx;
+
+.sender {
+  font-size: 36rpx;
+  font-weight: normal;
+  height: 75rpx;
+  display:table-cell; 
+  vertical-align:bottom;
+  text-align: left;
 }
-.time{
+
+.time {
   font-size: 28rpx;
-color: gray;
-height: 60rpx;
-line-height: 85rpx;
+  color: gray;
+  height: 60rpx;
+  text-align: left;
+}
+
+.info .more {
+  display: inline-block;
+  float: right;
+  width: 80rpx;
+  height: 80rpx;
+}
+
+.info .more .icon {
+  font-size: 40rpx;
+  color: gray;
+}
+
+.content view {
+  width: 100%;
+  text-align: left;
+  font-size: 28rpx;
+  color: #333; 
+}
+.addBg{
+  position: fixed;
+  z-index: 999;
+  background-color: rgba(0, 0, 0,0.03);
+  width: 100%;
+  bottom:0;
+  top: auto;
+  transition: height 0.2s ease-out;
+}
+.addWrapper{
+  position: fixed;
+  z-index: 9999;
+}
+.addWrapper .add_group{
+  overflow: hidden;
+  transition: height 0.2s ease-out;
+}
+.addWrapper view{
+  padding: 10px 0;
+  overflow: hidden;
+  line-height: 40px;
+  vertical-align: middle;
+}
+.addWrapper view text{
+  line-height: 40px;
+  display: inline-block;
+  width: 60px;
+  padding-right: 20px;
+  text-align: right;
+  font-size: 14px;
+  color: #333;
+}
+.addWrapper .new_file image{
+  float: right;
+  vertical-align: middle;
+  margin-right: 2px;
+  width:43px;
+  height: 43px;
+}
+.addWrapper .upload_file image{
+  float: right;
+  vertical-align: middle;
+  margin-right: 5px;
+  width: 40px;
+  height: 40px;
+}
+.addWrapper .add_btn image{
+    float: right;
+    vertical-align: middle;
+    width: 50px;
+    height: 50px;
+    transition: transform .2s;
+}
+.layOpen{
+  position: absolute;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  height: 100%;
+  padding-top: 50px;
+  background-color: rgba(0, 0, 0, 0.2);
+  z-index: 9999;
+}
+.layOpen .layInner{
+  position: fixed;
+  background-color: #fff;
+  width: 80%;
+  margin-top: 60%;
+  margin-left: 50%;
+  transform: translate(-50%,-50%);
+  border-radius: 5px;
+}
+.layOpen .layInner .file_title{
+  text-align: center;
+  padding: 13px;
+  font-weight: 600;
+}
+.layOpen .layInner input{
+  width: 80%;
+  background-color: rgba(0,0,0,0.05);
+  border-radius: 5px;
+  height: 40px;
+  line-height: 40px;
+  margin-left: 50%;
+  transform: translate(-50%);
+  padding-left: 10px;
+}
+.layOpen .layInner .file_operate{
+  padding: 12px;
+}
+.layOpen .layInner .file_operate text{
+  display: inline-block;
+  width: 50%;
+  text-align: center;
+}
+.layOpen .layInner .file_operate .file_create{
+  color: #62c9f8;
 }

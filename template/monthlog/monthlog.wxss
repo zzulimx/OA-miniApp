@@ -65,6 +65,9 @@
   display: inline-block;
   font-size: 34rpx;
 }
+.sendPrompt .icon-checked{
+  color: #1E9FFF;
+}
 .shareSet{
   margin-top: 25rpx;
 }

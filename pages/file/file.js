@@ -1,6 +1,7 @@
 // pages/file/file.js
 const util = require('../../utils/util.js');
 const formatTime = util.formatTime;
+let startPoint='';
 //获取应用实例
 const app = getApp();
 var sliderWidth = 96; // 需要设置slider的宽度，用于计算中间位置
@@ -25,6 +26,10 @@ Page({
     isreName:false,
     currName:'',
     newName:'',
+    top:'',
+    left:'',
+    right:'30px',
+    bottom:'30px',
     filelist:[      //文件管理 文件列表
       {
         fileSize:'0KB',
@@ -380,6 +385,8 @@ Page({
   // 添加文件工具栏
   addFile:function(){
     if (this.data.addbgHeight==='100%'){
+      // 手动滑动按钮 允许
+      this.lock=true;
       this.setData({
         addbgHeight: 0,
         addwrapper: 0,
@@ -392,6 +399,8 @@ Page({
         })
       }, 200)
     }else{
+      // 手动滑动按钮 禁止
+      this.lock=false;
       this.setData({
         addbgHeight: '100%',
         addwrapper: '115px',
@@ -489,6 +498,8 @@ Page({
     }) 
   },
   onLoad: function (options) {
+    // 手动滑动按钮 允许
+    this.lock=true;
     //如果上一个页面传递有参数，则根据参数展示
     if (options.type) {
       this.setData({
@@ -662,5 +673,25 @@ Page({
       wx.hideLoading();
     }, 3000);
   },
-
+  tapMove(e){
+    if(this.lock){
+      let clientX = e.touches[0].clientX;
+      let clienty = e.touches[0].clientY;
+      this.setData({
+        left: clientX - 25 + 'px',
+        top: clienty - 35 + 'px',
+        bottom: '',
+        right: ''
+      });
+    }
+  },
+  tapEnd(e){
+      this.setData({
+        left: '',
+        top: '',
+        bottom: '30px',
+        right: '30px'
+      })
+      this.addFile();
+  }
 })

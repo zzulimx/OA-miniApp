@@ -73,7 +73,7 @@
       <view class="icon iconfont icon-add"></view>
     </view>
   </view>
-  <view class="sendPrompt">
+  <view class="sendPrompt"  catchtap="toSwitchChat">
     <view>
       <view class="icon iconfont {{data.checkIcon}}"></view>
       <text>日志转聊天 不勾选时，日志通过工作通知发送给对方</text>
