@@ -68,7 +68,180 @@ Page({
               html: "<p wx:nodeid="/77/"><strong>测试文本</strong></p>",
               text: "测试文本"
                }
-          }
+          },
+      {
+        fileSize: '0KB',
+        fileType: 'md',
+        title: '边城',
+        createTime: '2019-06-13 17:48',
+        tag: '',
+        isShow: true,
+        url: ' ',
+        content: '## 图文排列 '
+      }
+      , {
+        fileSize: '0KB',
+        fileType: 'text',
+        title: '富文本笔记',
+        createTime: '2019-06-13 17:48',
+        tag: '',
+        isShow: true,
+        url: ' ',
+        content: {
+          delta: {
+            ops: [{
+              attributes: { bold: "strong" },
+              insert: "测试文本"
+            }]
+          },
+          html: "<p wx:nodeid=" / 77 / "><strong>测试文本</strong></p>",
+          text: "测试文本"
+        }
+      },
+      {
+        fileSize: '0KB',
+        fileType: 'md',
+        title: '边城',
+        createTime: '2019-06-13 17:48',
+        tag: '',
+        isShow: true,
+        url: ' ',
+        content: '## 图文排列 '
+      }
+      , {
+        fileSize: '0KB',
+        fileType: 'text',
+        title: '富文本笔记',
+        createTime: '2019-06-13 17:48',
+        tag: '',
+        isShow: true,
+        url: ' ',
+        content: {
+          delta: {
+            ops: [{
+              attributes: { bold: "strong" },
+              insert: "测试文本"
+            }]
+          },
+          html: "<p wx:nodeid=" / 77 / "><strong>测试文本</strong></p>",
+          text: "测试文本"
+        }
+      },
+      {
+        fileSize: '0KB',
+        fileType: 'md',
+        title: '边城',
+        createTime: '2019-06-13 17:48',
+        tag: '',
+        isShow: true,
+        url: ' ',
+        content: '## 图文排列 '
+      }
+      , {
+        fileSize: '0KB',
+        fileType: 'text',
+        title: '富文本笔记',
+        createTime: '2019-06-13 17:48',
+        tag: '',
+        isShow: true,
+        url: ' ',
+        content: {
+          delta: {
+            ops: [{
+              attributes: { bold: "strong" },
+              insert: "测试文本"
+            }]
+          },
+          html: "<p wx:nodeid=" / 77 / "><strong>测试文本</strong></p>",
+          text: "测试文本"
+        }
+      },
+      {
+        fileSize: '0KB',
+        fileType: 'md',
+        title: '边城',
+        createTime: '2019-06-13 17:48',
+        tag: '',
+        isShow: true,
+        url: ' ',
+        content: '## 图文排列 '
+      }
+      , {
+        fileSize: '0KB',
+        fileType: 'text',
+        title: '富文本笔记',
+        createTime: '2019-06-13 17:48',
+        tag: '',
+        isShow: true,
+        url: ' ',
+        content: {
+          delta: {
+            ops: [{
+              attributes: { bold: "strong" },
+              insert: "测试文本"
+            }]
+          },
+          html: "<p wx:nodeid=" / 77 / "><strong>测试文本</strong></p>",
+          text: "测试文本"
+        }
+      }, {
+        fileSize: '0KB',
+        fileType: 'md',
+        title: '边城',
+        createTime: '2019-06-13 17:48',
+        tag: '',
+        isShow: true,
+        url: ' ',
+        content: '## 图文排列 '
+      }
+      , {
+        fileSize: '0KB',
+        fileType: 'text',
+        title: '富文本笔记',
+        createTime: '2019-06-13 17:48',
+        tag: '',
+        isShow: true,
+        url: ' ',
+        content: {
+          delta: {
+            ops: [{
+              attributes: { bold: "strong" },
+              insert: "测试文本"
+            }]
+          },
+          html: "<p wx:nodeid=" / 77 / "><strong>测试文本</strong></p>",
+          text: "测试文本"
+        }
+      },
+      {
+        fileSize: '0KB',
+        fileType: 'md',
+        title: '边城',
+        createTime: '2019-06-13 17:48',
+        tag: '',
+        isShow: true,
+        url: ' ',
+        content: '## 图文排列 '
+      }
+      , {
+        fileSize: '0KB',
+        fileType: 'text',
+        title: '富文本笔记',
+        createTime: '2019-06-13 17:48',
+        tag: '',
+        isShow: true,
+        url: ' ',
+        content: {
+          delta: {
+            ops: [{
+              attributes: { bold: "strong" },
+              insert: "测试文本"
+            }]
+          },
+          html: "<p wx:nodeid=" / 77 / "><strong>测试文本</strong></p>",
+          text: "测试文本"
+        }
+      }
     ]
   },
   // 打开文件重命名弹出层
@@ -547,6 +720,8 @@ Page({
       // 隐藏加载框  
       wx.hideLoading();
     }, 3000);
+  },
+  onPageScroll: function (e) {
+    console.log(e.scrollTop) //这个就是滚动到的位置,可以用这个位置来写判断
   }
-
 })

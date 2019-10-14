@@ -1,6 +1,6 @@
 /* pages/notes/notes.wxss */
 page{
- height: calc(100% - 51px);
+ height:100%;
  width: 100%;
 }
 .container {
@@ -17,16 +17,15 @@ page{
 }
 
 .weui-navbar {
-  position: fixed;
+  position: absolute;
   background-color: #fff;
 }
 .weui-navbar__slider{
   width: 30%;
-  transition: left .3s ease;
+  transition: left .3s;
 }
-.weui-tab__panel {
+  .weui-tab__panel {
   height:100%;
-  margin-top: 51px;
   padding-top: 0px;
 }
 

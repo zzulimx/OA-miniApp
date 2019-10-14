@@ -44,6 +44,7 @@ textarea{
   bottom: 0;
   z-index: 99;
   color: #fff;
+  box-sizing: border-box;
 }
 .imgWrapper .icon{
   font-size: 65rpx;

@@ -44,16 +44,16 @@
                   <block wx:if="{{!ontime}}">
                     <view class="detail">
                       <view class="btnPunch">
-                      <view class="btnWrapper" catchtap="toPunch">
+                      <view class="btnWrapper" catchtap="toOnpunch" style=" background-color:{{clockBg}};">
                        <view class="circle_process">
                           <view class="wrapper right">
                             <view class="circle rightcircle" style="transform:rotate({{degRight}})"></view>
                           </view>
                           <view class="wrapper left">
-                            <view class="circle leftcircle" id="leftcircle" style="transform:rotate({{degLeft}})"></view>
+                            <view class="circle leftcircle" id="leftcircle"  style="transform:rotate({{degLeft}})"></view>
                           </view>
                       </view>
-                        <view class="timeBtn" hover-class="punchClick">
+                        <view class="timeBtn" hover-class="punchClick{{clockStatus}}">
                           <view class="clock">{{clock}}</view>
                           <view class="towork">上班打卡</view>
                         </view>
@@ -61,12 +61,23 @@
                     </view>
                     <view class="locaWrapper">
                       <view class="locaDetal">
-                        <view class="ranStatus">
-                          <view class="icon iconfont icon-checked1"></view>
-                          已经入考勤范围:未来科技公司(科学大道136号)
+                      <block wx:if="{{!isPunch}}">
+ <view class="ranStatus">
+                          <view class="icon iconfont icon-cancel"></view>
+                          不在考勤范围:{{currLoca}}
                         </view>
                         <view class="reLocate" hover-class="locaClick" catchtap="toLocate">去重新定位
                         </view>
+                      </block>
+                      <block wx:else>
+ <view class="ranStatus">
+                          <view class="icon iconfont icon-checked1"></view>
+                          已经入考勤范围:{{currLoca}}
+                        </view>
+                        <view class="reLocate" hover-class="locaClick" catchtap="toLocate">去重新定位
+                        </view>
+                      </block>
+                       
                       </view>
                     </view>
                 </view>
@@ -76,7 +87,7 @@
                     <view class="punchTime">打卡时间{{ontime}}</view>
                     <view class="punchLoca">
                       <view class="icon iconfont icon-lbs"></view>
-                      <view class="workPlace">未来科技公司</view>
+                      <view class="workPlace">{{onLoca}}</view>
                     </view>
                   </view>
                 </block>
@@ -96,7 +107,7 @@
                 <block wx:if="{{ontime?(!offtime):''}}">
                   <view class="detail">
                     <view class="btnPunch">
-                      <view class="btnWrapper" catchtap="toPunch">
+                      <view class="btnWrapper" catchtap="toOffpunch"  style="background-color:#b2e0f5">
                         <view class="timeBtn" hover-class="punchClick">
                           <view class="clock">{{clock}}</view>
                           <view class="towork">下班打卡</view>
@@ -105,12 +116,22 @@
                     </view>
                     <view class="locaWrapper">
                       <view class="locaDetal">
-                        <view class="ranStatus">
-                          <view class="icon iconfont icon-checked1"></view>
-                          已经入考勤范围:未来科技公司(科学大道136号)
+                       <block wx:if="{{!isPunch}}">
+ <view class="ranStatus">
+                          <view class="icon iconfont icon-cancel"></view>
+                          不在考勤范围:{{currLoca}}
                         </view>
                         <view class="reLocate" hover-class="locaClick" catchtap="toLocate">去重新定位
                         </view>
+                        </block>
+                        <block wx:else>
+ <view class="ranStatus">
+                          <view class="icon iconfont icon-checked1"></view>
+                          已进入考勤范围:{{currLoca}}
+                        </view>
+                        <view class="reLocate" hover-class="locaClick" catchtap="toLocate">去重新定位
+                        </view>
+                        </block> 
                       </view>
                     </view>
                   </view>
@@ -120,7 +141,7 @@
                     <view class="punchTime">打卡时间{{offtime}}</view>
                     <view class="punchLoca">
                       <view class="icon iconfont icon-lbs"></view>
-                      <view class="workPlace">未来科技公司</view>
+                      <view class="workPlace">{{offLoca}}</view>
                     </view>
                   </view>
                 </block>
@@ -146,7 +167,7 @@
         </view>
         <view class="outPunch">
           <view class="btnPunch">
-            <view class="btnWrapper" catchtap="toOutPunch">
+            <view class="btnWrapper" catchtap="toOutPunch" style="background-color:#b2e0f5">
               <view class="timeBtn" hover-class="punchClick">
                 <view class="clock">{{clock}}</view>
                 <view class="towork">外出打卡</view>

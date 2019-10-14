@@ -1,63 +1,89 @@
 <!--pages/attendance/attendance.wxml-->
 <view class="container">
-<!-- 打卡日历 -->
-<view class="gradient">
-  <view class="box">
-    <view class="yearmonth">
-      <view class="preMonth">
-        <view class="item-content" bindtap="doDay" data-key='left'>
-          <view class="icon iconfont icon-previous"></view>
+  <!-- 打卡日历 -->
+  <view class="gradient">
+    <view class="box">
+      <view class="yearmonth">
+        <view class="preMonth">
+          <view class="item-content" bindtap="doDay" data-key='left'>
+            <view class="icon iconfont icon-previous"></view>
+          </view>
+        </view>
+        <view class="currMonth">
+          <view class="item-content" id="currymd">{{currentDate}}</view>
+        </view>
+        <view class="nextMonth">
+          <view class="item-content" bindtap="doDay" data-key="right">
+            <view class="icon iconfont icon-next"></view>
+          </view>
         </view>
       </view>
-      <view class="currMonth">
-        <view class="item-content" id="currymd">{{currentDate}}</view>
+      <view class="spaceAroundCenter week">
+        <view>一</view>
+        <view>二</view>
+        <view>三</view>
+        <view>四</view>
+        <view>五</view>
+        <view>六</view>
+        <view>日</view>
       </view>
-      <view class="nextMonth">
-        <view class="item-content" bindtap="doDay" data-key="right">
-          <view class="icon iconfont icon-next"></view>
-        </view>
-      </view>
-    </view>
-    <view class="spaceAroundCenter week">
-      <view>一</view>
-      <view>二</view>
-      <view>三</view>
-      <view>四</view>
-      <view>五</view>
-      <view>六</view>
-      <view>日</view>
-    </view>
-    <view class="spaceAroundCenter">
-      <view class="flex-item {{vo.data.status}}" wx:for="{{currentDayList}}" wx:for-index='key' wx:for-item="vo" wx:key="{{key}}">
+      <view class="spaceAroundCenter">
+        <view class="flex-item {{vo.data.status}}" wx:for="{{currentDayList}}" wx:for-index='key' wx:for-item="vo" wx:key="{{key}}">
 
-        <view id='{{key}}' class="item-content bk-color-day"  bindtap='onClickItem' wx:if="{{vo.day == currentDay}}"><view class="day">{{vo.day}}</view></view>
-        <view id='{{key}}' class="item-content bk-color-dayClick" wx:elif="{{key == currentClickKey && currentClickKey != '' && vo.day != ''}}"><view class="day">{{vo.day}}</view></view>
-        <view id='{{key}}' class="item-content" bindtap='onClickItem' wx:else><view class="day">{{vo.day}}</view></view>
+          <view id='{{key}}' class="item-content bk-color-day" bindtap='onClickItem' wx:if="{{vo.day == currentDay}}">
+            <view class="day">{{vo.day}}</view>
+          </view>
+          <view id='{{key}}' class="item-content bk-color-dayClick" wx:elif="{{key == currentClickKey && currentClickKey != '' && vo.day != ''}}">
+            <view class="day">{{vo.day}}</view>
+          </view>
+          <view id='{{key}}' class="item-content" bindtap='onClickItem' wx:else>
+            <view class="day">{{vo.day}}</view>
+          </view>
+        </view>
       </view>
     </view>
   </view>
-</view>
-<!-- 上下班打卡 -->
- <view class="detalBar">
+  <view class="punchTitle">上下班打卡</view>
+  <!-- 上下班打卡 -->
+  <view class="detalBar">
     <view class="barLeft">
-       <view class="ontime">09:00</view>
-       <view class="timebar"></view>
-       <view class="offtime">18:00</view>
+      <view class="ontime">09:00</view>
+      <view class="timebar"></view>
+      <view class="offtime">18:00</view>
     </view>
     <view class="barRight">
-       <view class="top" hover-class="click" catchtap="topunch">
-          <view class="onwork" >上班</view>
-          <view class="status">{{onstatus?onstatus : '今日未打卡'}}{{ontime? '('+ontime+')' : ''}}</view>
-       </view>
-       <view class="bottom"  hover-class="click" catchtap="topunch">
-          <view class="offwork" >下班</view>
-          <view class="status">{{offstatus? offstatus : '今日未打卡'}}{{offtime? '('+offtime+')' : ''}}</view>
-       </view>
+      <view class="top" hover-class="click" data-index="0" catchtap="topunch">
+        <view class="onwork">上班</view>
+        <view class="status">{{ontime?(ontime<=companyOntime?'正常打卡':'迟到打卡'):'今日未打卡'}}{{ontime? '('+ontime+')' : ''}}</view>
+      </view>
+      <view class="bottom" hover-class="click" data-index="0" catchtap="topunch">
+        <view class="offwork">下班</view>
+        <view class="status">{{offtime?(offtime>=companyOfftime?'正常打卡':'提前打卡'):'今日未打卡'}}{{offtime? '('+offtime+')' : ''}}</view>
+      </view>
     </view>
- </view>
- <!-- 外出打卡 -->
- <view class="punchTitle">外出打卡</view>
-  <view class="outPunchList">
-    
+  </view>
+  <!-- 外出打卡 -->
+  <view class="punchTitle">外出打卡</view>
+  <view class="outPunch">
+    <view class="weui-cells weui-cells_after-title">
+      <view class="weui-cell weui-cell_example ">
+        <view class="weui-cell__hd">
+          {{onoutTime?onoutTime:'00:00'}}
+        </view>
+        <view class="weui-cell__bd"  hover-class="click" data-index="1"  catchtap="topunch">
+          <view>上班</view>
+          <view>{{onoutLoca?onoutLoca:'外出未打卡'}}</view>
+        </view>
+      </view>
+      <view class="weui-cell weui-cell_example " >
+        <view class="weui-cell__hd">
+          {{offoutTime?offoutTime:'00:00'}}
+        </view>
+        <view class="weui-cell__bd"  hover-class="click"  data-index="1" catchtap="topunch">
+          <view>下班</view>
+          <view>{{offoutLoca?offoutLoca:'外出未打卡'}}</view>
+        </view>
+      </view>
+    </view>
   </view>
 </view>

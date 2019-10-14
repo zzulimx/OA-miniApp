@@ -12,10 +12,10 @@
       <!-- 我收到的 -->
       <swiper class="weui-tab__panel" duration="300" bindchange="swiperTab" current="{{activeIndex}}">
         <swiper-item hidden="{{activeIndex != 0}}">
-          <scroll-view scroll-y="true" style="height:calc(100vh - 51px)">
+          <view style="height:calc(100vh - 51px);margin-top:51px;overflow:scroll">
             <view class="weui-tab__content">
-              <block wx:for="{{receiveList}}">
-                <view class="logBox">
+              <block wx:for="{{receiveList}}" wx:for-index="index" wx:for-item="item">
+                <view class="logBox" data-idx="{{index}}" catchtap="toDeta">
                   <view class="info">
                     <view class="avatar">
                       <image src="{{item.avatarUrl}}"></image>
@@ -28,7 +28,7 @@
                         {{item.time}}
                       </view>
                     </view>
-                    <view class="more">
+                    <view class="more" hover-class="moreClick" data-idx="{{index}}" catchtap="toOperate">
                       <view class="icon iconfont icon-more"></view>
                     </view>
                   </view>
@@ -54,11 +54,11 @@
                 </view>
               </block>
             </view>
-          </scroll-view>
+          </view>
         </swiper-item>
         <!-- 我发出的 -->
         <swiper-item hidden="{{activeIndex != 1}}">
-          <scroll-view scroll-y="true" style="height:calc(100vh - 51px)">
+          <view  style="height:calc(100vh - 51px);margin-top:51px;overflow:scroll">
             <view class="weui-tab__content">
               <block wx:for="{{sendList}}">
                 <view class="logBox">
@@ -74,7 +74,7 @@
                         {{item.time}}
                       </view>
                     </view>
-                    <view class="more">
+                    <view class="more" hover-class="moreClick" data-idx="{{index}}" catchtap="toOperate">
                       <view class="icon iconfont icon-more"></view>
                     </view>
                   </view>
@@ -100,39 +100,63 @@
                 </view>
               </block>
             </view>
-          </scroll-view>
+          </view>
         </swiper-item>
         <!-- 日志统计 -->
         <swiper-item hidden="{{activeIndex != 2}}">
           <view class="weui-tab__content">
-            <scroll-view scroll-y="true" style="height:calc(100vh - 51px)">
+            <scroll-view scroll-y="true" style="height:calc(100vh - 51px);margin-top:51px">
+              <view class="pieWrapper">
+              <view class="pieTime">{{}}</view>
+              <view class="chartsTitle">
+                <view>日志类型分布</view>
+                <view>个人日志</view>
+              </view>
+                <canvas canvas-id="pieCanvas" class="canvas" style="height:360px" catchtap="toRefresh"><cover-view class="title">日志分类</cover-view></canvas>
+              </view>
             </scroll-view>
           </view>
         </swiper-item>
       </swiper>
     </view>
   </view>
-<!-- 添加日志弹出层背景-->
-<view class="addBg" style="height:{{addbgHeight}}" catchtap="hideadd" catchtouchmove="true">
-</view>
-<!-- 新建操作栏按钮-->
-<view class="addWrapper" wx:if="{{isaddFile}}" catchtouchmove="tapMove" catchtouchend="tapEnd" style="left:{{left}};top:{{top}};bottom:{{bottom}};right:{{right}}">
-  <view class="add_group" style="height:{{addwrapper}};display:{{overflow}}">
-    <view class="new_file" catchtap="toaddDay">
-      <text>日报</text>
-      <image src="../../images/logs/day(1).png"></image>
+  <!-- 添加日志弹出层背景-->
+  <view class="addBg" style="height:{{addbgHeight}}" catchtap="hideadd" catchtouchmove="true">
+  </view>
+  <!-- 新建操作栏按钮-->
+  <view class="addWrapper" wx:if="{{isaddFile}}" catchtouchmove="tapMove" catchtouchend="tapEnd" style="left:{{left}};top:{{top}};bottom:{{bottom}};right:{{right}}">
+    <view class="add_group" style="height:{{addwrapper}};display:{{overflow}}">
+      <view class="new_file" catchtap="toaddDay">
+        <text>日报</text>
+        <image src="../../images/logs/day(1).png"></image>
+      </view>
+      <view class="upload_file" catchtap="toaddWeek">
+        <text>周报</text>
+        <image src="../../images/logs/week.png"></image>
+      </view>
+      <view class="upload_file" catchtap="toaddMonth">
+        <text>月报</text>
+        <image src="../../images/logs/month.png"></image>
+      </view>
     </view>
-    <view class="upload_file" catchtap="toaddWeek">
-      <text>周报</text>
-      <image src="../../images/logs/week.png"></image>
-    </view>
-    <view class="upload_file" catchtap="toaddMonth">
-      <text>月报</text>
-      <image src="../../images/logs/month.png"></image>
+    <view class="add_btn" wx:if="{{isaddFile}}">
+      <image style="transform:rotate({{transdeg}})" src="../../images/file/add.png"></image>
     </view>
   </view>
-  <view class="add_btn"  wx:if="{{isaddFile}}">
-    <image style="transform:rotate({{transdeg}})" src="../../images/file/add.png"></image>
-  </view>
 </view>
+
+<view class="layOpen" wx:if="{{isOperate}}" catchtap="toCancel">
+  <view class="inner">
+
+    <block wx:if="{{activeIndex===0}}">
+      <view class="viewMore" catchtap="toViewAll">查看{{userInfo.nickName}}的所有日志</view>
+      <view class="deleteBtn" catchtap="toDelte">删除</view>
+      <view class="cancelBtn" catchtap="toCancel">取消</view>
+    </block>
+    <block wx:elif="{{activeIndex===1}}">
+      <view class="withDraw" catchtap="toWithDrow">撤回(两小时内可撤回)</view>
+      <view class="deleteBtn" catchtap="toDelte">删除</view>
+      <view class="cancelBtn" catchtap="toCancel">取消</view>
+    </block>
+  </view>
 </view>

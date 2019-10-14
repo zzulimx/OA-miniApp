@@ -7,7 +7,7 @@ page {
 
 .container {
   height: 100%;
-  background-color: #fcfbfb;
+  background-color: #fcfcfb;
 }
 
 page, .page, .page__bd {
@@ -19,7 +19,7 @@ page, .page, .page__bd {
 }
 
 .weui-navbar {
-  position: fixed;
+  position: absolute;
   background-color: #fff;
 }
 
@@ -101,7 +101,9 @@ page, .page, .page__bd {
 .punch .punchInner .icon {
   display: inline-block;
 }
-
+.punch .punchInner .icon-cancel{
+  color: red;
+}
 .punch .punchInner .icon-circle {
   font-size: 10px;
   font-weight: bold;
@@ -140,8 +142,8 @@ page, .page, .page__bd {
 }
 
 .timeBtn {
-  width: 210rpx;
-  height: 210rpx;
+  width: 200rpx;
+  height: 200rpx;
   border-radius: 50%;
   border: 2px solid #eee;
   position: absolute;
@@ -193,6 +195,7 @@ page, .page, .page__bd {
 
 .locaWrapper .locaDetal {
   display: inline-block;
+  height: 60rpx;
 }
 
 .locaDetal .ranStatus {
@@ -202,6 +205,8 @@ page, .page, .page__bd {
   white-space: nowrap;
   max-width: 420rpx;
   overflow: hidden;
+  height: 100%;
+  line-height: 60rpx;
 }
 
 .locaDetal .reLocate {
@@ -209,8 +214,10 @@ page, .page, .page__bd {
   font-size: 27rpx;
   color: #ff5722;
   min-width: 45rpx;
-  vertical-align: super;
   font-weight: bold;
+  vertical-align: top;
+  height: 100%;
+  line-height: 60rpx;
 }
 
 .locaDetal .locaClick {
@@ -254,11 +261,12 @@ page, .page, .page__bd {
   font-size: 28rpx;
   padding-top: 20rpx;
 }
-
-.punchClick{
+.punchClickn,.punchClick {
   background-color: #b2e0f5;
 }
-
+.punchClicka{
+   background-color: red;
+}
 .circle_process {
   position: relative;
   width: 240rpx;
@@ -289,17 +297,14 @@ page, .page, .page__bd {
   position: absolute;
   top: 0;
 }
-
 .circle_process .rightcircle {
-  border-top: 20rpx solid #62c9f8;
-  border-right: 20rpx solid #62c9f8;
+  border-top: 20rpx solid #FF5722;
+  border-right: 20rpx solid #FF5722;
   right: 0;
 }
 
 .circle_process .leftcircle {
-  border-bottom: 20rpx solid #62c9f8;
-  border-left: 20rpx solid #62c9f8;
+  border-bottom: 20rpx solid #FF5722;
+  border-left: 20rpx solid #FF5722;
   left: 0;
 }
-
-

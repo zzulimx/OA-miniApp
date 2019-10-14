@@ -1,6 +1,8 @@
 // pages/outPunch/outPunch.js
+// 获取时间
+const util = require('../../utils/util.js');
+const formatTime = util.formatTime;
 Page({
-
   /**
    * 页面的初始数据
    */
@@ -19,7 +21,13 @@ Page({
     this.setData({
       punchTime:outData.punchTime,
       punchLoca:outData.punchLoca
-    })
+    });
+    setInterval(()=>{
+      let clock = formatTime(new Date()).split(' ')[1];
+      this.setData({
+        punchTime: clock
+      })
+    },1000)
   },
   // 获取描述
   getContent:function(res){

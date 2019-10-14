@@ -45,7 +45,7 @@
 }
 
 .msg-list .msg-item .msg-right .msg-right-bottom text {
-  width: 90%;
+  width: 80%;
   height: 25px;
   color: gray;
   font-size: 26rpx;

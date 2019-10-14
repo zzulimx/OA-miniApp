@@ -6,6 +6,8 @@
       style="width: 100%; height: 400rpx;"
       latitude="{{latitude}}"
       longitude="{{longitude}}"
+      markers="{{markers}}"
+      circles="{{circles}}"
       show-location
     >
     <cover-view class="controls" catchtap="tolocate"><cover-image src="../../images/locate/md-locate.png" class="locateIcon"></cover-image></cover-view>

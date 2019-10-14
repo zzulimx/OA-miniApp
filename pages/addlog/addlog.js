@@ -87,7 +87,7 @@ Page({
             todayUndone: currData.todayUndone, //今日未完成工作
             todayCoor: currData.todayCoor, //今日需协调工作
           },
-          time: this.data.time, //时间
+          time: formatTime(new Date()).replace(/\-/g,'/').split(' ')[0]+' '+this.data.time, //时间
         };
       break;
       case '1':
@@ -99,7 +99,7 @@ Page({
             weekSummary: currData.weekSummary, //本周工作总结
             weekCoor: currData.weekCoor, //需协调帮助
           },
-          time: this.data.time, //时间
+          time: formatTime(new Date()).replace(/\-/g, '/').split(' ')[0] + ' ' + this.data.time, //时间
         };
       break;
       case '2':
@@ -111,7 +111,7 @@ Page({
             monthSummary: currData.monthSummary, //本月工作总结
             monthCoor: currData.monthCoor, //需协调帮助
           },
-          time: this.data.time, //时间
+          time: formatTime(new Date()).replace(/\-/g, '/').split(' ')[0] + ' ' + this.data.time, //时间
         };
       break;
     }
@@ -119,7 +119,6 @@ Page({
       sendList: prevPage.data.sendList,
       activeIndex:1
     });
-    console.log(event)
     // 返回
     wx.navigateBack();
   },

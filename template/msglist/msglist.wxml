@@ -10,7 +10,7 @@
         </view>
         <view class="msg-right-bottom">
           <text class="msg_content">{{item.msgContent}} </text>
-        <text class="msg_num weui-badge"  data-id="{{idx}}" catchtouchstart="tobazier"  wx:if="{{item.isMsgNum}}">{{item.msgNum}}</text>
+        <text class="msg_num weui-badge"  data-id="{{idx}}" bindtouchmove="tobazier"   wx:if="{{item.isMsgNum}}">{{item.msgNum>99?'99+':item.msgNum}}</text>
         </view>
       </view>
     </view>

@@ -12,7 +12,7 @@
       </view>
       <swiper class="weui-tab__panel" duration="300" bindchange="swiperTab" current="{{activeIndex}}">
         <swiper-item class="weui-tab__content" hidden="{{activeIndex != 0}}">
-          <scroll-view scroll-y="true" style="height:calc(100vh - 51px)">
+          <scroll-view scroll-y="true" style="height:calc(100vh - 51px);margin-top:51px">
             <view class="weui-tab__content">
               <!-- 选项一的内容 -->
               <view class="weui-cells weui-cells_after-title">
@@ -43,7 +43,7 @@
           </scroll-view>
         </swiper-item>
         <swiper-item class="weui-tab__content" hidden="{{activeIndex != 1}}">
-          <scroll-view scroll-y="true" style="height:calc(100vh - 51px)">
+          <scroll-view scroll-y="true" style="height:calc(100vh - 51px);margin-top:51px">
             <view class="weui-tab__content">
               <!-- 选项二的内容 -->
               <!-- 选项一的内容 -->
@@ -75,10 +75,9 @@
             </scroll-view>
         </swiper-item>
         <swiper-item class="weui-tab__content" hidden="{{activeIndex != 2}}">
-          <scroll-view scroll-y="true" style="height:calc(100vh - 51px)">
+          <scroll-view scroll-y="true" style="height:calc(100vh - 51px);margin-top:51px">
             <view class="weui-tab__content">
               <!-- 选项三的内容 -->
-              <!-- 选项一的内容 -->
               <view class="weui-cells weui-cells_after-title">
                 <block wx:for="{{filelist}}">
                   <view data-idx="{{index}}" data-type="{{item.fileType}}" class="weui-cell weui-cell_access" hover-class="weui-cell_active" bindtap="tofileitem" catchlongpress="fileOperate" bindtouchstart="bindTouchStart" bindtouchend="bindTouchEnd">
