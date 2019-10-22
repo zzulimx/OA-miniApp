@@ -14,44 +14,39 @@
         <swiper-item hidden="{{activeIndex != 0}}">
           <view style="height:calc(100vh - 51px);margin-top:51px;overflow:scroll">
             <view class="weui-tab__content">
-              <block wx:for="{{receiveList}}" wx:for-index="index" wx:for-item="item">
-                <view class="logBox" data-idx="{{index}}" catchtap="toDeta">
+              <block wx:for="{{receiveList}}" wx:for-index="parent" wx:for-item="item">
+                  <view class="date">{{item.receiveDate}}</view>
+                  <block wx:for="{{item.data}}"  wx:for-item="log" wx:for-index="child">
+ <view class="logBox" data-parent="{{parent}}" data-child="{{child}}" catchtap="toDeta">
                   <view class="info">
                     <view class="avatar">
-                      <image src="{{item.avatarUrl}}"></image>
+                      <image src="{{log.avatarUrl}}"></image>
                     </view>
                     <view class="sendDeta">
-                      <view class="sender">
-                        {{item.sender}}{{item.type===0?'的日报':(item.type===1?' 的周报':'的月报')}}
+                      <view class="sender sender{{log.type}}">
+                        {{log.sender}}{{log.type===0?'的日报':(log.type===1?' 的周报':'的月报')}}
                       </view>
                       <view class="time">
-                        {{item.time}}
+                        {{log.time}}
                       </view>
                     </view>
-                    <view class="more" hover-class="moreClick" data-idx="{{index}}" catchtap="toOperate">
+                    <view class="more" hover-class="moreClick"  data-parent="{{parent}}" data-child="{{child}}" catchtap="toOperate">
                       <view class="icon iconfont icon-more"></view>
                     </view>
                   </view>
                   <view class="content">
-                    <block wx:if="{{item.type===0}}">
-                      <view>今日完成工作:{{item.content.todayDone}}</view>
-                      <view>今日未完成工作:{{item.content.todayUndone}}</view>
-                      <view>需协调工作:{{item.content.todayCoor}}</view>
+                    <block wx:if="{{log.type===0}}">
+                      <view><view class="complete">今日完成工作:</view>{{log.content.todayDone}}</view>
                     </block>
-                    <block wx:elif="{{item.type===1}}">
-                      <view>本周完成工作:{{item.content.weekDone}}</view>
-                      <view>下周工作计划:{{item.content.weekPlan}}</view>
-                      <view>本周工作总结:{{item.content.weekSummary}}</view>
-                      <view>需协调帮助:{{item.content.weekCoor}}</view>
+                    <block wx:elif="{{log.type===1}}">
+                      <view><view class="complete">本周完成工作:</view>{{log.content.weekDone}}</view>
                     </block>
                     <block wx:else>
-                      <view>本月完成工作:{{item.content.monthDone}}</view>
-                      <view>下月工作计划:{{item.content.monthPlan}}</view>
-                      <view>本月工作总结:{{item.content.monthSummary}}</view>
-                      <view>需协调帮助:{{item.content.monthCoor}}</view>
+                      <view><view class="complete">本月完成工作:</view>{{log.content.monthDone}}</view>
                     </block>
                   </view>
                 </view>
+                  </block>
               </block>
             </view>
           </view>
@@ -60,44 +55,39 @@
         <swiper-item hidden="{{activeIndex != 1}}">
           <view  style="height:calc(100vh - 51px);margin-top:51px;overflow:scroll">
             <view class="weui-tab__content">
-              <block wx:for="{{sendList}}">
-                <view class="logBox">
+              <block wx:for="{{sendList.data}}" wx:for-index="parent">
+                <view class="date">{{item.sendDate}}</view>
+                <block wx:for="{{item.data}}" wx:for-item="log" wx:for-index="child">
+                   <view class="logBox" data-parent="{{parent}}" data-child="{{child}}"  catchtap="toDeta">
                   <view class="info">
                     <view class="avatar">
                       <image src="{{userInfo.avatarUrl}}"></image>
                     </view>
                     <view class="sendDeta">
-                      <view class="sender">
-                        {{userInfo.nickName}}{{item.type===0?'的日报':(item.type===1?' 的周报':'的月报')}}
+                      <view class="sender sender{{log.type}}">
+                        {{userInfo.nickName}}{{log.type===0?'的日报':(log.type===1?' 的周报':'的月报')}}
                       </view>
                       <view class="time">
-                        {{item.time}}
+                        {{log.time}}
                       </view>
                     </view>
-                    <view class="more" hover-class="moreClick" data-idx="{{index}}" catchtap="toOperate">
+                    <view class="more" hover-class="moreClick"  data-parent="{{parent}}" data-child="{{child}}" catchtap="toOperate">
                       <view class="icon iconfont icon-more"></view>
                     </view>
                   </view>
                   <view class="content">
-                    <block wx:if="{{item.type===0}}">
-                      <view>今日完成工作:{{item.content.todayDone}}</view>
-                      <view>今日未完成工作:{{item.content.todayUndone}}</view>
-                      <view>需协调工作:{{item.content.todayCoor}}</view>
+                    <block wx:if="{{log.type===0}}">
+                      <view><view class="complete">今日完成工作:</view>{{log.content.todayDone}}</view>
                     </block>
-                    <block wx:elif="{{item.type===1}}">
-                      <view>本周完成工作:{{item.content.weekDone}}</view>
-                      <view>下周工作计划:{{item.content.weekPlan}}</view>
-                      <view>本周工作总结:{{item.content.weekSummary}}</view>
-                      <view>需协调帮助:{{item.content.weekCoor}}</view>
+                    <block wx:elif="{{log.type===1}}">
+                      <view><view class="complete">本周完成工作:</view>{{log.content.weekDone}}</view>
                     </block>
                     <block wx:else>
-                      <view>本月完成工作:{{item.content.monthDone}}</view>
-                      <view>下月工作计划:{{item.content.monthPlan}}</view>
-                      <view>本月工作总结:{{item.content.monthSummary}}</view>
-                      <view>需协调帮助:{{item.content.monthCoor}}</view>
+                      <view><view class="complete">本月完成工作:</view>{{log.content.monthDone}}</view>
                     </block>
                   </view>
                 </view>
+                </block>
               </block>
             </view>
           </view>
@@ -105,16 +95,20 @@
         <!-- 日志统计 -->
         <swiper-item hidden="{{activeIndex != 2}}">
           <view class="weui-tab__content">
-            <scroll-view scroll-y="true" style="height:calc(100vh - 51px);margin-top:51px">
+            <view scroll-y="true" style="height:calc(100vh - 51px);margin-top:51px;overflow:scroll">
               <view class="pieWrapper">
-              <view class="pieTime">{{}}</view>
               <view class="chartsTitle">
-                <view>日志类型分布</view>
-                <view>个人日志</view>
+              <picker mode="date" value="{{date}}" fields="year" start="2018" end="{{date}}" bindchange="toSelectDate">
+              <view class="selectByDate">
+                {{selectDate}}
+                <view class="icon iconfont icon-sanjiao_xia"></view>
               </view>
-                <canvas canvas-id="pieCanvas" class="canvas" style="height:360px" catchtap="toRefresh"><cover-view class="title">日志分类</cover-view></canvas>
+               </picker>
+                <view class="tag">个人日志</view>
               </view>
-            </scroll-view>
+                <canvas  disable-scroll="true"  canvas-id="pieCanvas" class="canvas" style="height:330px" catchtap="toRefresh"><cover-view class="title">日志分类</cover-view></canvas>
+              </view>
+            </view>
           </view>
         </swiper-item>
       </swiper>

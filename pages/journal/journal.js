@@ -6,10 +6,13 @@ const formatTime = util.formatTime;
 // 路径是wxCharts文件相对于本文件的相对路径
 var wxCharts = require('../../utils/wxcharts.js');
 var pieChart = null;
+var lineChart = null;
 //工作日志
 Page({
   data: {
     tabs: ["我收到的", "我发出的", "日志统计"],
+    date: '2019',
+    selectDate:'2019年',
     isaddFile: true, //添加文件按钮显示/隐藏
     addbgHeight: 0, //添加文件时背景显示
     addwrapper: 0, //添加文件操作框高度
@@ -24,300 +27,335 @@ Page({
     sliderLeft: 0,
     userInfo: '',
     isOperate:false, //操作日志
-    receiveList: [
+    receiveList:[
       {
-      type: 0, //日志类型 0日报 1周报 2月报
-      sender: '张三', //发送者
-      avatarUrl: '../../images/avatar/avatar.jpg', //头像
-      content: { //内容
-        todayDone: '测试', //今日完成工作
-        todayUndone: '测试', //今日未完成工作
-        todayCoor: '测试', //今日需协调工作
-      },
-      time: '2019/10/3 15:37', //时间
-    }, {
-      type: 1,
-      sender: '张三',
-      avatarUrl: '../../images/avatar/avatar.jpg',
-      content: { //内容
-        weekDone: '测试', //本周完成工作
-        weekPlan: '测试', //下周工作计划
-        weekSummary: '测试', //本周工作总结
-        weekCoor: '测试', //需协调帮助
-      },
-      time: '2019/10/3 15:37', //时间
-    }, {
-      type: 2,
-      sender: '张三',
-      avatarUrl: '../../images/avatar/avatar.jpg',
-      content: { //内容
-        monthDone: '测试', //本月完成工作
-        monthPlan: '测试', //下月工作计划
-        monthSummary: '测试', //本月工作总结
-        monthCoor: '测试', //需协调帮助
-      },
-      time: '2019/10/3 15:37', //时间
-    }, {
-      type: 2,
-      sender: '张三',
-      avatarUrl: '../../images/avatar/avatar.jpg',
-      content: { //内容
-        monthDone: '测试', //本月完成工作
-        monthPlan: '测试', //下月工作计划
-        monthSummary: '测试', //本月工作总结
-        monthCoor: '测试', //需协调帮助
-      },
-      time: '2019/10/3 15:37', //时间
-    }],
-    sendList: [
-      {
-      type: 2, //0日报 1周报 2月报
-      content: { //内容
-        monthDone: '测试', //本月完成工作
-        monthPlan: '测试', //下月工作计划
-        monthSummary: '测试', //本月工作总结
-        monthCoor: '测试', //需协调帮助
-      },
-      time: '2019/10/3 15:37', //时间
-    },
-      {
-        type: 2,
-        content: { //内容
-          monthDone: '测试', //本月完成工作
-          monthPlan: '测试', //下月工作计划
-          monthSummary: '测试', //本月工作总结
-          monthCoor: '测试', //需协调帮助
-        },
-        time: '2019/10/3 15:37', //时间
-      },
-      {
-        type: 2,
-        content: { //内容
-          monthDone: '测试', //本月完成工作
-          monthPlan: '测试', //下月工作计划
-          monthSummary: '测试', //本月工作总结
-          monthCoor: '测试', //需协调帮助
-        },
-        time: '2019/10/3 15:37', //时间
-      },
+        receiveDate:'2019年10月',
+        data:[
+          {
+            type: 0,
+            sender: '张三',
+            avatarUrl: '../../images/avatar/avatar.jpg',
+            content: { //内容
+              todayDone: '1,完成对资产领用申请列表进行条件搜索，搜索条件有状态和申请时间；2，完成资产领用申请保存为草稿状态,领用资产申请可保存为草稿状态和直接提交审批状态，资产领用申请处于草稿状态时该申请在工作中', //今日完成工作
+              todayUndone: '', //今日未完成工作
+              todayCoor: '测试', //需协调帮助
+            },
+            time: '2019/10/3 15:37', //时间
+          },{
+            type: 1,
+            sender: '张三',
+            avatarUrl: '../../images/avatar/avatar.jpg',
+            content: { //内容
+              weekDone: '1,完成对资产领用申请列表进行条件搜索，搜索条件有状态和申请时间；2，完成资产领用申请保存为草稿状态,领用资产申请可保存为草稿状态和直接提', //本周完成工作
+              weekPlan: '测试', //下周工作计划
+              weekSummary: '测试', //本周工作总结
+              weekCoor: '测试', //需协调帮助
+            },
+            time: '2019/10/3 15:37', //时间
+          },
+          {
+            type: 2,
+            sender: '张三',
+            avatarUrl: '../../images/avatar/avatar.jpg',
+            content: { //内容
+              monthDone: '1,完成对资产领用申请列表进行条件搜索，搜索条件有状态和申请时间；2，完成资', //本周完成工作
+              monthPlan: '测试', //下周工作计划
+              monthSummary: '测试', //本周工作总结
+              monthCoor: '测试', //需协调帮助
+            },
+            time: '2019/10/3 15:37', //时间
+          }
+        ]
 
-      {
-        type: 2,
-        content: { //内容
-          monthDone: '测试', //本月完成工作
-          monthPlan: '测试', //下月工作计划
-          monthSummary: '测试', //本月工作总结
-          monthCoor: '测试', //需协调帮助
-        },
-        time: '2019/10/3 15:37', //时间
-      },
-
-      {
-        type: 2,
-        content: { //内容
-          monthDone: '测试', //本月完成工作
-          monthPlan: '测试', //下月工作计划
-          monthSummary: '测试', //本月工作总结
-          monthCoor: '测试', //需协调帮助
-        },
-        time: '2019/10/3 15:37', //时间
       },
       {
-        type: 0,
-        content: { //内容
-          monthDone: '测试', //本月完成工作
-          monthPlan: '测试', //下月工作计划
-          monthSummary: '测试', //本月工作总结
-          monthCoor: '测试', //需协调帮助
-        },
-        time: '2019/10/3 15:37', //时间
+        receiveDate: '2019年9月',
+        data: [
+          {
+            type: 0,
+            sender: '张三',
+            avatarUrl: '../../images/avatar/avatar.jpg',
+            content: { //内容
+              todayDone: '测试', 
+              todayUndone: '测试', 
+              todayCoor: '测试', 
+            },
+            time: '2019/10/3 15:37', 
+          }, {
+            type: 1,
+            sender: '张三',
+            avatarUrl: '../../images/avatar/avatar.jpg',
+            content: { //内容
+              weekDone: '测试', //本周完成工作
+              weekPlan: '测试', //下周工作计划
+              weekSummary: '测试', //本周工作总结
+              weekCoor: '测试', //需协调帮助
+            },
+            time: '2019/10/3 15:37', //时间
+          },
+          {
+            type: 2,
+            sender: '张三',
+            avatarUrl: '../../images/avatar/avatar.jpg',
+            content: { //内容
+              monthDone: '测试', 
+              monthPlan: '测试', 
+              monthSummary: '测试', 
+              monthCoor: '测试', 
+            },
+            time: '2019/10/3 15:37', //时间
+          }
+        ]
       },
       {
-        type: 0,
-        content: { //内容
-          monthDone: '测试', //本月完成工作
-          monthPlan: '测试', //下月工作计划
-          monthSummary: '测试', //本月工作总结
-          monthCoor: '测试', //需协调帮助
-        },
-        time: '2019/10/3 15:37', //时间
-      }, {
-        type: 0,
-        content: { //内容
-          monthDone: '测试', //本月完成工作
-          monthPlan: '测试', //下月工作计划
-          monthSummary: '测试', //本月工作总结
-          monthCoor: '测试', //需协调帮助
-        },
-        time: '2019/10/3 15:37', //时间
-      }, {
-        type: 0,
-        content: { //内容
-          monthDone: '测试', //本月完成工作
-          monthPlan: '测试', //下月工作计划
-          monthSummary: '测试', //本月工作总结
-          monthCoor: '测试', //需协调帮助
-        },
-        time: '2019/10/3 15:37', //时间
-      }, {
-        type: 0,
-        content: { //内容
-          monthDone: '测试', //本月完成工作
-          monthPlan: '测试', //下月工作计划
-          monthSummary: '测试', //本月工作总结
-          monthCoor: '测试', //需协调帮助
-        },
-        time: '2019/10/3 15:37', //时间
-      }, {
-        type: 0,
-        content: { //内容
-          monthDone: '测试', //本月完成工作
-          monthPlan: '测试', //下月工作计划
-          monthSummary: '测试', //本月工作总结
-          monthCoor: '测试', //需协调帮助
-        },
-        time: '2019/10/3 15:37', //时间
-      }, {
-        type: 0,
-        content: { //内容
-          monthDone: '测试', //本月完成工作
-          monthPlan: '测试', //下月工作计划
-          monthSummary: '测试', //本月工作总结
-          monthCoor: '测试', //需协调帮助
-        },
-        time: '2019/10/3 15:37', //时间
-      }, {
-        type: 0,
-        content: { //内容
-          monthDone: '测试', //本月完成工作
-          monthPlan: '测试', //下月工作计划
-          monthSummary: '测试', //本月工作总结
-          monthCoor: '测试', //需协调帮助
-        },
-        time: '2019/10/3 15:37', //时间
-      }, {
-        type: 0,
-        content: { //内容
-          monthDone: '测试', //本月完成工作
-          monthPlan: '测试', //下月工作计划
-          monthSummary: '测试', //本月工作总结
-          monthCoor: '测试', //需协调帮助
-        },
-        time: '2019/10/3 15:37', //时间
-      }, {
-        type: 1,
-        content: { //内容
-          monthDone: '测试', //本月完成工作
-          monthPlan: '测试', //下月工作计划
-          monthSummary: '测试', //本月工作总结
-          monthCoor: '测试', //需协调帮助
-        },
-        time: '2019/10/3 15:37', //时间
-      },
-      {
-        type: 1,
-        content: { //内容
-          monthDone: '测试', //本月完成工作
-          monthPlan: '测试', //下月工作计划
-          monthSummary: '测试', //本月工作总结
-          monthCoor: '测试', //需协调帮助
-        },
-        time: '2019/10/3 15:37', //时间
-      }, {
-        type: 1,
-        content: { //内容
-          monthDone: '测试', //本月完成工作
-          monthPlan: '测试', //下月工作计划
-          monthSummary: '测试', //本月工作总结
-          monthCoor: '测试', //需协调帮助
-        },
-        time: '2019/10/3 15:37', //时间
-      }, {
-        type: 1,
-        content: { //内容
-          monthDone: '测试', //本月完成工作
-          monthPlan: '测试', //下月工作计划
-          monthSummary: '测试', //本月工作总结
-          monthCoor: '测试', //需协调帮助
-        },
-        time: '2019/10/3 15:37', //时间
-      }, {
-        type: 1,
-        content: { //内容
-          monthDone: '测试', //本月完成工作
-          monthPlan: '测试', //下月工作计划
-          monthSummary: '测试', //本月工作总结
-          monthCoor: '测试', //需协调帮助
-        },
-        time: '2019/10/3 15:37', //时间
-      }, {
-        type: 1,
-        content: { //内容
-          monthDone: '测试', //本月完成工作
-          monthPlan: '测试', //下月工作计划
-          monthSummary: '测试', //本月工作总结
-          monthCoor: '测试', //需协调帮助
-        },
-        time: '2019/10/3 15:37', //时间
-      }, {
-        type: 1,
-        content: { //内容
-          monthDone: '测试', //本月完成工作
-          monthPlan: '测试', //下月工作计划
-          monthSummary: '测试', //本月工作总结
-          monthCoor: '测试', //需协调帮助
-        },
-        time: '2019/10/3 15:37', //时间
-      }, {
-        type: 1,
-        content: { //内容
-          monthDone: '测试', //本月完成工作
-          monthPlan: '测试', //下月工作计划
-          monthSummary: '测试', //本月工作总结
-          monthCoor: '测试', //需协调帮助
-        },
-        time: '2019/10/3 15:37', //时间
-      }, {
-        type: 1,
-        content: { //内容
-          monthDone: '测试', //本月完成工作
-          monthPlan: '测试', //下月工作计划
-          monthSummary: '测试', //本月工作总结
-          monthCoor: '测试', //需协调帮助
-        },
-        time: '2019/10/3 15:37', //时间
-      }, {
-        type: 1,
-        content: { //内容
-          monthDone: '测试', //本月完成工作
-          monthPlan: '测试', //下月工作计划
-          monthSummary: '测试', //本月工作总结
-          monthCoor: '测试', //需协调帮助
-        },
-        time: '2019/10/3 15:37', //时间
-      }, {
-        type: 1,
-        content: { //内容
-          monthDone: '测试', //本月完成工作
-          monthPlan: '测试', //下月工作计划
-          monthSummary: '测试', //本月工作总结
-          monthCoor: '测试', //需协调帮助
-        },
-        time: '2019/10/3 15:37', //时间
-      }, {
-        type: 1,
-        content: { //内容
-          monthDone: '测试', //本月完成工作
-          monthPlan: '测试', //下月工作计划
-          monthSummary: '测试', //本月工作总结
-          monthCoor: '测试', //需协调帮助
-        },
-        time: '2019/10/3 15:37', //时间
+        receiveDate: '2019年8月',
+        data: [
+          {
+            type: 0,
+            sender: '张三',
+            avatarUrl: '../../images/avatar/avatar.jpg',
+            content: { //内容
+              todayDone: '测试', 
+              todayUndone: '测试', 
+              todayCoor: '测试', 
+            },
+            time: '2019/10/3 15:37', //时间
+          }, {
+            type: 1,
+            sender: '张三',
+            avatarUrl: '../../images/avatar/avatar.jpg',
+            content: { //内容
+              weekDone: '测试', //本周完成工作
+              weekPlan: '测试', //下周工作计划
+              weekSummary: '测试', //本周工作总结
+              weekCoor: '测试', //需协调帮助
+            },
+            time: '2019/10/3 15:37', //时间
+          },
+          {
+            type: 2,
+            sender: '张三',
+            avatarUrl: '../../images/avatar/avatar.jpg',
+            content: { //内容
+              monthDone: '测试', 
+              monthPlan: '测试', 
+              monthSummary: '测试', 
+              monthCoor: '测试', 
+            },
+            time: '2019/10/3 15:37', 
+          }
+        ]
       }
-    ]
+    ],
+    sendList: {
+      total: {
+        data:[
+          {
+            year:'2019年',
+            daily: 8,
+            weekly: 6,
+            monthly: 3
+          },
+          {
+            year:'2018年',
+            daily: 12,
+            weekly: 5,
+            monthly: 7
+          }
+        ]
+      },
+     data:[
+      {
+        sendDate:'2019年10月',
+        data:[
+          {
+            type: 2, //0日报 1周报 2月报
+            content: { //内容
+              monthDone: '测试', //本月完成工作
+              monthPlan: '测试', //下月工作计划
+              monthSummary: '测试', //本月工作总结
+              monthCoor: '测试', //需协调帮助
+            },
+            time: '2019/10/3 15:37', //时间
+          },
+          {
+            type: 0, //0日报 1周报 2月报
+            content: { //内容
+              todayDone: '测试', 
+              todaySummary: '测试', 
+              todayCoor: '测试', 
+            },
+            time: '2019/10/3 15:37', //时间
+          },
+          {
+            type: 1, //0日报 1周报 2月报
+            content: { //内容
+              weekDone: '测试', 
+              weekPlan: '测试', 
+              weekSummary: '测试', 
+              weekCoor: '测试', 
+            },
+            time: '2019/10/3 15:37', //时间
+          },
+          {
+            type: 0, //0日报 1周报 2月报
+            content: { //内容
+              todayDone: '测试', 
+              todayUndone: '测试', 
+              todayCoor: '测试', 
+            },
+            time: '2019/10/3 15:37', 
+          },
+          ,
+          {
+            type: 0, //0日报 1周报 2月报
+            content: { //内容
+              todayDone: '测试', 
+              todayUndone: '测试', 
+              todayCoor: '测试', 
+            },
+            time: '2019/10/3 15:37', //时间
+          },
+          ,
+          {
+            type: 0, //0日报 1周报 2月报
+            content: { //内容
+              todayDone: '测试', 
+              todayUndone: '测试', 
+              todayCoor: '测试', 
+            },
+            time: '2019/10/3 15:37', //时间
+          },
+          ,
+          {
+            type: 0, //0日报 1周报 2月报
+            content: { //内容
+              todayDone: '测试',
+              todayUndone: '测试',
+              todayCoor: '测试',
+            },
+            time: '2019/10/3 15:37', //时间
+          }, ,
+          {
+            type: 0, //0日报 1周报 2月报
+            content: { //内容
+              todayDone: '测试',
+              todayUndone: '测试',
+              todayCoor: '测试',
+            },
+            time: '2019/10/3 15:37', //时间
+          },
+          {
+            type: 1, //0日报 1周报 2月报
+            content: { //内容
+              weekDone: '测试',
+              weekPlan: '测试',
+              weekSummary: '测试',
+              weekCoor: '测试',
+            },
+            time: '2019/10/3 15:37', //时间
+          },
+          {
+            type: 1, //0日报 1周报 2月报
+            content: { //内容
+              weekDone: '测试',
+              weekPlan: '测试',
+              weekSummary: '测试',
+              weekCoor: '测试',
+            },
+            time: '2019/10/3 15:37', //时间
+          },
+          {
+            type: 1, //0日报 1周报 2月报
+            content: { //内容
+              weekDone: '测试', 
+              weekPlan: '测试', 
+              weekSummary: '测试', 
+              weekCoor: '测试', 
+            },
+            time: '2019/10/3 15:37', //时间
+          },
+        ]
+      }, 
+      {
+        sendDate: '2019年9月',
+        data: [
+          {
+            type: 2, //0日报 1周报 2月报
+            content: { //内容
+              monthDone: '测试', //本月完成工作
+              monthPlan: '测试', //下月工作计划
+              monthSummary: '测试', //本月工作总结
+              monthCoor: '测试', //需协调帮助
+            },
+            time: '2019/10/3 15:37', //时间
+          },
+          {
+            type: 0, //0日报 1周报 2月报
+            content: { //内容
+              todayDone: '测试',
+              todayUndone: '测试',
+              todayCoor: '测试',
+            },
+            time: '2019/10/3 15:37', //时间
+          },
+          {
+            type: 1, //0日报 1周报 2月报
+            content: { //内容
+              weekDone: '测试', 
+              weekPlan: '测试', 
+              weekSummary: '测试', 
+              weekCoor: '测试', 
+            },
+            time: '2019/10/3 15:37', //时间
+          }
+        ]
+      },
+      {
+        sendDate: '2019年8月',
+        data: [
+          {
+            type: 2, //0日报 1周报 2月报
+            content: { //内容
+              monthDone: '测试', //本月完成工作
+              monthPlan: '测试', //下月工作计划
+              monthSummary: '测试', //本月工作总结
+              monthCoor: '测试', //需协调帮助
+            },
+            time: '2019/10/3 15:37', //时间
+          },
+          {
+            type: 0, //0日报 1周报 2月报
+            content: { //内容
+              todayDone: '测试',
+              todayUndone: '测试',
+              todayCoor: '测试',
+            },
+            time: '2019/10/3 15:37', //时间
+          },
+          {
+            type: 1, //0日报 1周报 2月报
+            content: { //内容
+              weekDone: '测试', 
+              weekPlan: '测试',
+              weekSummary: '测试', 
+              weekCoor: '测试', 
+            },
+            time: '2019/10/3 15:37', //时间
+          }
+        ]
+      }
+     ]
+  }
   },
   // 加载
   onLoad: function() {
+    // 获取当前年份
+      let year = (new Date()).getFullYear();
+      this.setData({
+        date:year,
+        selectDate:year+'年'
+      });
     // 手动滑动按钮 允许
     this.lock = true;
     // 获取用户信息
@@ -350,8 +388,15 @@ Page({
         activeIndex: e.currentTarget.id
       });
     }
-    if(this.data.activeIndex===2){
+    if (this.data.activeIndex === 2) {
       this.chartSet();
+      this.setData({
+        isaddFile: false
+      })
+    } else {
+      this.setData({
+        isaddFile: true
+      })
     }
   },
   //滑动切换
@@ -368,6 +413,13 @@ Page({
     });
     if (this.data.activeIndex === 2) {
       this.chartSet();
+      this.setData({
+        isaddFile: false
+      })
+    }else{
+      this.setData({
+        isaddFile: true
+      })
     }
   },
   // 下拉刷新
@@ -492,7 +544,10 @@ Page({
     this.setData({
       isOperate:true
     });
-    this.index = e.currentTarget.dataset.idx;
+    // 当前日志索引
+    this.parent = e.currentTarget.dataset.parent;
+    this.child = e.currentTarget.dataset.child;
+    // console.log(this.parent+'  '+this.child)
   },
   // 关闭操作日志栏
   toCancel(){
@@ -516,12 +571,12 @@ Page({
       success: res => {
         if (res.confirm) {
           if (this.data.activeIndex === 0) {
-            this.data.receiveList.splice(this.index, 1);
+            this.data.receiveList[this.parent].data.splice(this.child, 1);
             this.setData({
               receiveList: this.data.receiveList
             })
           } else {
-            this.data.sendList.splice(this.index, 1);
+            this.data.sendList.data[this.parent].data.splice(this.child, 1);
             this.setData({
               sendList: this.data.sendList
             });
@@ -570,20 +625,30 @@ Page({
       }
     })
   },
+  createSimulationData: function () {
+    var categories = [];
+    var data = [];
+    for (var i = 0; i < 10; i++) {
+      categories.push('2016-' + (i + 1));
+      data.push(Math.random() * (20 - 10) + 10);
+    }
+    // data[4] = null;
+    return {
+      categories: categories,
+      data: data
+    }
+  },
   // 图表显示
   chartSet(){
-    var daily=0;
-    var weekly=0;
-    var monthly=0;
-    this.data.sendList.forEach((item,index)=>{
-       if(item.type==0){
-         daily+=1;
-       }else if(item.type==1){
-        weekly+=1;
-       }else{
-         monthly+=1;
+    var select='';
+    this.data.sendList.total.data.forEach((item,index)=>{
+       if(item.year === this.data.selectDate){
+         select=item;
        }
     })
+    var daily=select.daily;
+    var weekly = select.weekly;
+    var monthly = select.monthly;
     // 扇形图
     var windowWidth = 320;
     try {
@@ -630,5 +695,28 @@ Page({
         }
       })
     },800)
+  },
+  // 选择日期
+  toSelectDate(e){
+     let selectDate = e.detail.value;
+         selectDate = selectDate+ '年';
+    this.setData({
+      selectDate: selectDate
+    });
+    this.chartSet();
+  },
+  // 查看日志
+  toDeta(e){
+     let parent = e.currentTarget.dataset.parent;
+     let child = e.currentTarget.dataset.child;
+     let currData = {
+       parent:parent,
+       child:child,
+       activeIndex:this.data.activeIndex
+     }
+     currData = JSON.stringify(currData);
+     wx.navigateTo({
+       url: '../logshow/logshow?currData='+currData,
+     })
   }
 })

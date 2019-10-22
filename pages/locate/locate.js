@@ -64,8 +64,8 @@ Page({
           }
           , fail: function (res) {
             wx.showToast({
-              title: '位置信息获取失败，请刷新重试',
-              image: '../../images/toast/prompt.png'
+              title: '位置获取失败!',
+              image: '../../images/toast/warning.png'
             })
           }
         })
@@ -73,8 +73,8 @@ Page({
       fail(res) {
         console.log(res);
         wx.showToast({
-          title: '位置信息获取失败，请刷新重试',
-          image: '../../images/toast/prompt.png'
+          title: '位置获取失败!',
+          image: '../../images/toast/warning.png'
         });
       }
     })

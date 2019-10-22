@@ -1,7 +1,7 @@
 .msg-list .msg-item {
   width: calc(100% - 20px);
   margin: 0px 10px;
-  min-height: 55px;
+  height: 61px;
   border-bottom: 1px solid #1235;
   float: left;
 }

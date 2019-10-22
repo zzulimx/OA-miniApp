@@ -1,5 +1,6 @@
 page{
  height: 100%;
+ background-color: rgba(0,0,0,0.05);
 }
 .page, .page__bd {
   height: 100%;
@@ -7,6 +8,7 @@ page{
 .weui-navbar {
   position: absolute;
   background-color: #fff;
+  border-bottom: 1rpx solid rgba(0, 0, 0,0.03);
 }
 
 .weui-tab__panel {
@@ -18,7 +20,6 @@ page{
 }
 
 page {
-  background-color: #f8f8f8;
   font-size: 16px;
   font-family: -apple-system-font, Helvetica Neue, Helvetica, sans-serif;
 }
@@ -30,15 +31,19 @@ page {
   background-color: #62c9f8;
 }
 .logBox {
-  width: 100%;
+  width: 95%;
   padding: 25rpx;
   box-sizing: border-box;
   max-height: 390rpx;
   overflow: hidden;
   background-color: #fff;
-  border-bottom: 1px solid #eee;
+  margin: 20rpx auto;
+  border-radius:15rpx;
+  box-shadow: 4px 4px 3px #ddd;
 }
-
+.logBox:nth-child(2){
+  margin-top: 15rpx;
+}
 .logBox .info {
   height: 120rpx;
   width: 100%;
@@ -51,9 +56,9 @@ page {
 }
 
 .avatar image {
-  width: 85rpx;
-  height: 85rpx;
-  border-radius: 50%;
+  width: 75rpx;
+  height: 75rpx;
+  /* border-radius: 50%; */
   margin-top: 20rpx;
 }
 
@@ -80,16 +85,28 @@ page {
 .sender {
   font-size: 36rpx;
   font-weight: normal;
-  height: 75rpx;
+  height: 70rpx;
   display:table-cell; 
   vertical-align:bottom;
   text-align: left;
 }
+.sender0{
+  color:#01AAED; 
+}
+/* 周报 */
+.sender1{
+ color: #FF5722;
+}
+/* 月报 */
+.sender2{
+  color: #009688
+}
+
 
 .time {
   font-size: 28rpx;
   color: gray;
-  height: 60rpx;
+  height: 50rpx;
   text-align: left;
 }
 
@@ -105,12 +122,26 @@ page {
   font-size: 40rpx;
   color: gray;
 }
-
-.content view {
+.content view{
   width: 100%;
   text-align: left;
+  color: #555;
   font-size: 28rpx;
-  color: #333; 
+  white-space: normal;
+  text-overflow:ellipsis;
+  overflow: hidden;
+display: -webkit-box;
+word-break: break-all;
+-webkit-box-orient: vertical;
+-webkit-line-clamp: 3; 
+}
+.content .complete{
+  width: 100%;
+  text-align: left;
+  font-size: 32rpx;
+  color: #000; 
+  padding: 5rpx 0;
+
 }
 .addBg{
   position: fixed;
@@ -241,7 +272,6 @@ page {
   color: #01AAED;
 }
 .pieWrapper {
-    height: 100%;
     display: flex;
     flex-direction: column;
     box-sizing: border-box;
@@ -266,22 +296,60 @@ margin-top: 10px;
   padding: 20rpx;
   box-sizing: border-box;
 background-color: #fff;
-
+position: relative;
+overflow-x: hidden;
 }
-.chartsTitle view:first-child{
-  font-size: 38rpx;
-color: #333;
-}
-.chartsTitle view:last-child{
+.chartsTitle .tag{
   font-size: 32rpx;
-color: #aaa;
-
+ color: #aaa;
+ padding-top: 10rpx;
 }
 .pieWrapper .canvas .title{
   text-align: left;
 padding: 30rpx;
 color: #333;
 font-size: 35rpx;
-
-
 } 
+.date{
+  font-size: 28rpx;
+  text-align: center;
+  width: 100%;
+  margin-top: 10rpx;
+  color:#333;
+}
+.date:nth-child(1){
+  margin-top: 15rpx;
+}
+.selectByDate{
+  width: 235rpx;
+text-align: center;
+height: 64rpx;
+line-height: 64rpx;
+margin-left: 50%;
+transform: translateX(-50%);
+font-size: 36rpx;
+font-weight: bold;
+background-color: rgba(0,0,0,0.08);
+border-radius: 60rpx;
+}
+.selectByDate .icon{
+  font-size: 32rpx;
+  color: #aaa;
+  display: inline;
+}
+.selectByDate::before{
+   content: '';
+   position:absolute;
+   width:200rpx;
+   border-bottom: 1px solid rgba(0, 0, 0, 0.15); 
+   left: -260rpx; 
+   top: 40rpx;
+}
+.selectByDate::after{
+   content: '';
+   position:absolute;
+   width:200rpx;
+   border-bottom: 1px solid rgba(0, 0, 0, 0.15); 
+   right: -260rpx; 
+   top: 40rpx;
+}

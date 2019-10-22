@@ -1,8 +1,7 @@
 <!--index.wxml-->
 <import src="../../template/msglist/msglist.wxml" />
 <view class="container">
-<canvas  canvas-id="myCanvas" bindtouchend="touchend" bindlongtap="touchmove" bindtouchmove="touchmove">
-<scroll-view scroll-y="true" style="height: 100%;">
+<!-- <canvas  canvas-id="myCanvas" bindtouchend="touchend" bindtouchmove="touchmove" style="min-height:100vh"> -->
   <view class="weui-search-bar">
     <view class="weui-search-bar__form" bindtap="searchMation">
       <view class="weui-search-bar__box">
@@ -27,12 +26,11 @@
       </view>
     </view>
   </view>
-
   <view class="msg-list">
     <block wx:for="{{msglist}}" wx:for-index="idx" >
       <template is="msgitem"  data="{{item:item,idx:idx}}"></template>
     </block>
   </view>
-  </scroll-view> 
-</canvas>
+<!-- </canvas> -->
 </view>
+

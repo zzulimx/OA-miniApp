@@ -229,18 +229,19 @@ Page({
     this.ctx.draw();
   },
   touchmove: function(e) {
-    if (this.lock) {
-      console.log('move2' + e.changedTouches[0].x);
-      this.x = e.changedTouches[0].x;
-      this.y = e.changedTouches[0].y;
-      // 控制点
-      this.anchorX = (e.changedTouches[0].x + this.startX) / 2;
-      this.anchorY = (e.changedTouches[0].y + this.startY) / 2;
-      this.onDrow();
-    }
+      //隐藏动画
+      // wx.stopPullDownRefresh();
+      // wx.hideNavigationBarLoading();
+      if(this.data.lock){
+        this.x = e.changedTouches[0].x;
+        this.y = e.changedTouches[0].y;
+        // 控制点
+        this.anchorX = (e.changedTouches[0].x + this.startX) / 2;
+        this.anchorY = (e.changedTouches[0].y + this.startY) / 2;
+        this.onDrow();
+      }
   },
   touchend: function(e) {
-    console.log('end')
     if(this.lock){
       this.ctx.setFillStyle('transparent');
       this.ctx.draw();
@@ -256,22 +257,18 @@ Page({
   },
   // 贝塞尔曲线
   tobazier(e) {
-    console.log(e.changedTouches[0].clientX+ 'ba')
     this.lock = true;
     this.startX = e.changedTouches[0].clientX;
     this.startY = e.changedTouches[0].clientY;
-    // 获取idx
-    let idx = e.currentTarget.dataset.id;
-    // 获取索引
-    this.id = idx;
-    // 获取内容
-    this.content = this.data.msglist[idx].msgNum > 99 ? '99+' : this.data.msglist[idx].msgNum;
-    this.data.msglist[idx].isMsgNum = false;
-    this.setData({
-      msglist: this.data.msglist
-    });
-  },
-  con(){
-    console.log(1)
+    // // 获取idx
+    // let idx = e.currentTarget.dataset.id;
+    // // 获取索引
+    // this.id = idx;
+    // // 获取内容
+    // this.content = this.data.msglist[idx].msgNum > 99 ? '99+' : this.data.msglist[idx].msgNum;
+    // this.data.msglist[idx].isMsgNum = false;
+    // this.setData({
+    //   msglist: this.data.msglist
+    // });
   }
 })

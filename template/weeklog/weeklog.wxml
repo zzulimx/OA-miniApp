@@ -16,7 +16,7 @@
     <view class="plan">
       <text 
       style="font-size:{{data.fontSize1}};color:{{data.color1}}"
-      >本周工作计划</text>
+      >下周工作计划</text>
       <textarea
       data-idx="1" 
       auto-height 

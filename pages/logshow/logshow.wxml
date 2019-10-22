@@ -1,0 +1,41 @@
+<view class="container">
+  <view class="senderInfo">
+     <view class="infoLeft">
+     <image src="{{senderAvatar}}"></image>
+    </view>
+    <view class="infoRight">
+    <view class="sender">{{senderName}}的{{logType}}</view>
+    <view class="sendTime">{{sendTime}}</view>
+    </view>
+  </view>
+  <view class="contentWrapper">
+   <block wx:if="{{logType==='日报'}}">
+   <view class="title">今日完成工作</view>
+   <view class="content">{{todayDone}}</view>
+   <view class="title">今日未完成工作</view>
+   <view class="content">{{todayUndone}}</view>
+   <view class="title">需协调工作</view>
+   <view class="content">{{todayCoor}}</view>
+  </block>
+  <block wx:elif="{{logType==='周报'}}">
+   <view class="title">本周完成工作</view>
+   <view class="content">{{weekDone}}</view>
+   <view class="title">下周工作计划</view>
+   <view class="content">{{weekPlan}}</view>
+   <view class="title">本周工作总结</view>
+   <view class="content">{{weekSummary}}</view>
+   <view class="title">需协调工作</view>
+   <view class="content">{{weekCoor}}</view>
+  </block>
+  <block wx:else>
+<view class="title">本月完成工作</view>
+   <view class="content">{{monthDone}}</view>
+   <view class="title">下月工作计划</view>
+   <view class="content">{{monthPlan}}</view>
+   <view class="title">本月工作总结</view>
+   <view class="content">{{monthSummary}}</view>
+   <view class="title">需协调工作</view>
+   <view class="content">{{monthCoor}}</view>
+  </block>
+  </view>
+</view>

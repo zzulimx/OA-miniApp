@@ -80,7 +80,7 @@ Page({
     let currData= event.detail.value;
     switch(this.data.type.toString()){
       case '0':
-        prevPage.data.sendList[prevPage.data.sendList.length] = {
+        prevPage.data.sendList.data[0].data[prevPage.data.sendList.data[0].data.length] = {
           type: this.data.type,
           content: { //内容
             todayDone: currData.todayDone, //今日完成工作
@@ -89,9 +89,10 @@ Page({
           },
           time: formatTime(new Date()).replace(/\-/g,'/').split(' ')[0]+' '+this.data.time, //时间
         };
+        prevPage.data.sendList.total.data[0].daily +=1;
       break;
       case '1':
-        prevPage.data.sendList[prevPage.data.sendList.length] = {
+        prevPage.data.sendList.data[0].data[prevPage.data.sendList.data[0].data.length] = {
           type: this.data.type,
           content: { //内容
             weekDone: currData.weekDone, //本周完成工作
@@ -101,9 +102,10 @@ Page({
           },
           time: formatTime(new Date()).replace(/\-/g, '/').split(' ')[0] + ' ' + this.data.time, //时间
         };
+        prevPage.data.sendList.total.data[0].weekly += 1;
       break;
       case '2':
-        prevPage.data.sendList[prevPage.data.sendList.length] = {
+        prevPage.data.sendList.data[0].data[prevPage.data.sendList.data[0].data.length] = {
           type: this.data.type,
           content: { //内容
             monthDone:currData.monthDone, //本月完成工作
@@ -113,6 +115,7 @@ Page({
           },
           time: formatTime(new Date()).replace(/\-/g, '/').split(' ')[0] + ' ' + this.data.time, //时间
         };
+        prevPage.data.sendList.total.data[0].monthly += 1;
       break;
     }
     prevPage.setData({

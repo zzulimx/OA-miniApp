@@ -31,8 +31,8 @@
     "pages/punch/punch",
     "pages/locate/locate",
     "pages/outPunch/outPunch",
-    "pages/addlog/addlog"
-
+    "pages/addlog/addlog",
+    "pages/logshow/logshow"
   ],
   "permission": {
     "scope.userLocation": {
