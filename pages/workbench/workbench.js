@@ -24,7 +24,7 @@ Page({
           {
             img: '../../images/icon_note.png',
             title: '便签',
-            url: ''
+            url: '../../pages/memo/memo'
           },
           {
             img: '../../images/icon_holiday.png',

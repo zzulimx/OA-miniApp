@@ -1,0 +1,67 @@
+<!--pages/memo/memo.wxml-->
+<view class="container">
+  <view class="page__bd">
+    <view class="weui-tab">
+      <view class="weui-navbar">
+        <block wx:for="{{tabs}}" wx:key="*this">
+          <view id="{{index}}" class="weui-navbar__item {{activeIndex == index ? 'weui-bar__item_on' : ''}}" bindtap="tabClick">
+            <view class="weui-navbar__title">{{item}}</view>
+          </view>
+        </block>
+        <view class="weui-navbar__slider" style="left:{{sliderLeft}}"></view>
+      </view>
+      <swiper class="weui-tab__panel" duration="300" bindchange="swiperTab" current="{{activeIndex}}">
+        <swiper-item class="weui-tab__content" hidden="{{activeIndex != 0}}">
+          <view style="height:calc(100vh - 51px);margin-top:51px;overflow:scroll">
+            <view class="weui-tab__content">
+              <!-- 选项一的内容 -->
+             <block wx:if="{{isNull}}">
+               <view class="empty">
+               <image src="../../images/memo/empty.png"></image>
+                 <view>点击右下角按钮新建便签</view>
+               </view>
+             </block>
+            </view>
+          </view>
+        </swiper-item>
+        <swiper-item class="weui-tab__content" hidden="{{activeIndex != 1}}">
+          <view  style="height:calc(100vh - 51px);margin-top:51px;overflow:scroll">
+            <view class="weui-tab__content">
+              <!-- 选项二的内容 -->
+              <!-- <view class="recycle">
+                <view class="itemLeft">
+                  <view class="icon iconfont icon-huishouzhan1"></view>
+                </view>
+                <view class="itemRight">
+                  <view class="title">回收站</view>
+                </view>
+              </view> -->
+             <view class="newGroup">
+                <view class="itemLeft">
+                  <view class="icon iconfont icon-1"></view>
+                </view>
+                <view class="itemRight">
+                  <view class="title">新建分组</view>
+                </view>
+             </view>
+             <view class="groupWrapper">
+               <view class="groupitem">
+                 <view class="itemLeft">
+                  <view class="icon iconfont icon-file-yellow"></view>
+                </view>
+                <view class="itemRight">
+                  <view class="title">新建分组</view>
+                </view>
+               </view>
+             </view>
+            </view>
+          </view>
+        </swiper-item>
+      </swiper>
+    </view>
+  </view>
+</view>
+<!-- 添加便签图标 -->
+<view class="btnWrapper" style="left:{{Mleft}};right:{{Mright}};top:{{Mtop}};bottom:{{Mbottom}}" catchtouchstart="startMove" catchtouchmove="moving" catchtouchend="endMove">
+  <view class="btnIcon"><view class="icon iconfont icon-penleather"></view></view>
+</view>
