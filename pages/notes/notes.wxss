@@ -176,7 +176,7 @@ page{
 .layOpen .layInner .file_title{
   text-align: center;
   padding: 13px;
-  font-weight: 600;
+ color: #000;
 }
 .layOpen .layInner input{
   width: 80%;
@@ -195,6 +195,7 @@ page{
   display: inline-block;
   width: 50%;
   text-align: center;
+  color: #333;
 }
 .layOpen .layInner .file_operate .file_create{
   color: #62c9f8;

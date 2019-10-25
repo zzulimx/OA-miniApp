@@ -33,7 +33,8 @@
     "pages/outPunch/outPunch",
     "pages/addlog/addlog",
     "pages/logshow/logshow",
-    "pages/memo/memo"
+    "pages/memo/memo",
+    "pages/addmemo/addmemo"
   ],
   "permission": {
     "scope.userLocation": {

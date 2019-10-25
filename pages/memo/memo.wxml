@@ -15,17 +15,20 @@
           <view style="height:calc(100vh - 51px);margin-top:51px;overflow:scroll">
             <view class="weui-tab__content">
               <!-- 选项一的内容 -->
-             <block wx:if="{{isNull}}">
-               <view class="empty">
-               <image src="../../images/memo/empty.png"></image>
-                 <view>点击右下角按钮新建便签</view>
-               </view>
-             </block>
+              <block wx:if="{{isNull}}">
+                <view class="empty">
+                  <image src="../../images/memo/empty.png"></image>
+                  <view>点击右下角按钮新建便签</view>
+                </view>
+              </block>
+              <block wx:else>
+
+              </block>
             </view>
           </view>
         </swiper-item>
         <swiper-item class="weui-tab__content" hidden="{{activeIndex != 1}}">
-          <view  style="height:calc(100vh - 51px);margin-top:51px;overflow:scroll">
+          <view style="height:calc(100vh - 51px);margin-top:51px;overflow:scroll">
             <view class="weui-tab__content">
               <!-- 选项二的内容 -->
               <!-- <view class="recycle">
@@ -36,24 +39,28 @@
                   <view class="title">回收站</view>
                 </view>
               </view> -->
-             <view class="newGroup">
+              <view class="newGroup" catchtap="newGroup">
                 <view class="itemLeft">
                   <view class="icon iconfont icon-1"></view>
                 </view>
                 <view class="itemRight">
                   <view class="title">新建分组</view>
                 </view>
-             </view>
-             <view class="groupWrapper">
-               <view class="groupitem">
-                 <view class="itemLeft">
-                  <view class="icon iconfont icon-file-yellow"></view>
+              </view>
+              <block wx:for="{{group.data}}">
+                <view class="groupWrapper">
+                  <view class="groupitem">
+                    <view class="itemLeft">
+                      <view class="icon iconfont icon-bianqian1" style="color:{{item.bgColor}}"></view>
+                    </view>
+                    <view class="itemRight">
+                      <view class="title">{{item.title}}</view>
+                      <view class="icon iconfont icon-fanhui" ></view>
+                    </view>
+                  </view>
                 </view>
-                <view class="itemRight">
-                  <view class="title">新建分组</view>
-                </view>
-               </view>
-             </view>
+              </block>
+
             </view>
           </view>
         </swiper-item>
@@ -62,6 +69,40 @@
   </view>
 </view>
 <!-- 添加便签图标 -->
-<view class="btnWrapper" style="left:{{Mleft}};right:{{Mright}};top:{{Mtop}};bottom:{{Mbottom}}" catchtouchstart="startMove" catchtouchmove="moving" catchtouchend="endMove">
-  <view class="btnIcon"><view class="icon iconfont icon-penleather"></view></view>
+<view class="btnWrapper" style="left:{{Mleft}};right:{{Mright}};top:{{Mtop}};bottom:{{Mbottom}}" catchtouchstart="startMove" catchtouchmove="moving" catchtouchend="endMove" wx:if="{{isBtn}}">
+  <view class="btnIcon">
+    <view class="icon iconfont icon-penleather"></view>
+  </view>
+</view>
+<!-- 新建分组 -->
+<view class="layOpen" wx:if="{{isLayOpen}}" catchtouchmove="true">
+  <view class="layInner">
+    <view class="file_title">新建分组</view>
+    <view class="file_content">
+      <input placeholder="新建分组" bindinput="getGroupName"></input>
+    </view>
+    <view class="colorSelect">
+        <view class="colorTitle">颜色选择：</view>
+      <scroll-view scroll-x="true" class="colorBox">
+      <view class="boxContent">
+         <view class="color color1" data-color="#ff0202" catchtap="getColor" data-idx="1" style="background-color:{{background1}}"></view>
+         <view class="color color2" data-color="#09b9ff" catchtap="getColor" data-idx="2" style="background-color:{{background2}}"></view>
+         <view class="color color3" data-color="#ffb64a" catchtap="getColor" data-idx="3"
+style="background-color:{{background3}}"></view>
+         <view class="color color4" data-color="#a69cff" catchtap="getColor" data-idx="4" style="background-color:{{background4}}"></view>
+         <view class="color color5" data-color="#8fee71" catchtap="getColor" data-idx="5" style="background-color:{{background5}}"></view>
+         <view class="color color6" data-color="#ff9898" catchtap="getColor" data-idx="6" style="background-color:{{background6}}"></view>
+         <view class="color color7" data-color="#0bddba" catchtap="getColor" data-idx="7" style="background-color:{{background7}}"></view>
+         <view class="color color8" data-color="#fff34a" catchtap="getColor" data-idx="8" style="background-color:{{background8}}"></view>
+         <view class="color color9" data-color="#eb41eb" catchtap="getColor" data-idx="9" style="background-color:{{background9}}"></view>
+         <view class="color color10" data-color="#2f9949" catchtap="getColor" data-idx="10" style="background-color:{{background10}}"></view>
+      </view>
+      </scroll-view>
+    </view>
+    <view class="hr"></view>
+    <view class="file_operate">
+      <text class="file_cancel" catchtap="cancelNew">取消</text>
+      <text class="file_create" catchtap="createNew">创建</text>
+    </view>
+  </view>
 </view>
