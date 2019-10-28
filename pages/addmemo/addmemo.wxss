@@ -3,11 +3,58 @@
 page{
   width: 100%;
   height: 100%;
-  background: #eee;
+  background: #efefef;
 }
 .container{
   width: 100%;
   height: 100%;
+}
+.container .nav{
+  height: 80rpx;
+  padding:10rpx 20rpx;
+  box-sizing: border-box;
+  background: #62c9f8;
+}
+
+.nav .save,.nav .createTime{
+  display: inline-block;
+  float: right;
+  color: #fff;
+  vertical-align: top;
+  line-height: 60rpx;
+}
+.nav .title{
+  display: inline-block;
+  vertical-align: top;
+  line-height: 60rpx;
+  font-size: 30rpx;
+  color: #fff;
+  letter-spacing: 2rpx;
+}
+.nav .createTime{
+  display: inline-block;
+  float: left;
+  color: #fff;
+  vertical-align: top;
+  line-height: 70rpx;
+  font-size: 30rpx;
+}
+.nav .save .icon{
+ font-size: 60rpx;
+}
+.nav .edit{
+  display: inline-block;
+float: right;
+vertical-align: top;
+line-height: 70rpx;
+margin-right: 10rpx;
+}
+.nav .edit .icon{
+  color: #fff;
+font-size: 45rpx;
+}
+.displayNav.nav{
+  height: 90rpx;
 }
 .container .head{
   width: 100%;
@@ -15,43 +62,47 @@ page{
   border-bottom: 1px solid #cdcdcd;
   padding: 0 10rpx;
 box-sizing: border-box;
-height: 120rpx;
+height: 110rpx;
 }
 .head .icon{
   display: inline-block;
   vertical-align: top;
-  line-height: 120rpx;
+  line-height: 110rpx;
   color: #464646;
   font-size: 60rpx;
 }
-.head .icon-zhuomian-{
-  width: 70rpx;
-}
-.line{
-  vertical-align: top;
-line-height: 115rpx;
-color: #ddd;
-display: inline;
-padding: 0 10rpx;
+.head .icon-left3{
+ font-size: 50rpx;
+width: 70rpx;
+height: 70rpx;
+margin-top: 20rpx;
+line-height: 70rpx;
+box-shadow: 8px 0 8px -8px #aaa;
+text-align: right;
 }
 .head .icon-up{
   float: right;
 width: 70rpx;
 box-shadow: -8px 0px 8px -8px #aaa;
 height: 70rpx;
-margin: 25rpx 0;
+margin: 20rpx 0;
 line-height: 70rpx;
-font-size: 50rpx;
+font-size: 65rpx;
 }
 .editorWrapper{
-  height: calc( 100% - 120rpx );
+  height: 680rpx;
 }
 #editor{
   background: #fff;
   padding: 20rpx;
   height: 100% ;
 }
-
+#editorDis{
+  width: 100%;
+  height: calc(100% - 80rpx);
+  background: #fff;
+  padding: 20rpx;
+}
 .ql-editor.ql-blank::before{
   color: #888;
   font-size: 30rpx;
@@ -62,13 +113,13 @@ font-size: 50rpx;
   letter-spacing: 2rpx;
 }
 .container .toolWrapper{
-  height: 120rpx;
-  width: 75%;
+  height: 110rpx;
+  width: 80%;
   overflow-x: scroll;
   display: inline-block;
 }
 .toolWrapper .toolbar{
-  height: 120rpx;
+  height: 110rpx;
   display: inline-block;
 }
 
@@ -76,8 +127,75 @@ font-size: 50rpx;
   font-size: 40rpx;
   color: #444;
   margin: 0 20rpx;
-  line-height: 120rpx;
+  line-height: 110rpx;
 }
 .toolWrapper .toolbar .ql-active {
   color: #62c9f8;
+}
+.colorSelect{
+  height: 100rpx;
+  padding: 10rpx 20rpx;
+  margin-top: 10rpx;
+  box-sizing: border-box;
+  border-bottom: 1px solid #eee;
+  background: #fff;
+}
+.colorSelect .title{
+   display: inline-block;
+   float: left;
+   line-height: 80rpx;
+   vertical-align: top;
+}
+.colorSelect .colorBox{
+  display: inline-block;
+  float: right;
+  line-height: 80rpx;
+  vertical-align: top;
+}
+.colorBox .color{
+  display: inline-block;
+  width: 30rpx;
+  height: 30rpx;
+  background-color: #fff;
+  border-radius: 50%;
+  margin: 0 18rpx;
+  line-height: 80rpx;
+}
+.colorBox .color1{
+  border:1px solid rgb(255, 2, 2);
+}
+.colorBox .color2{
+border:1px solid rgb(9, 185, 255);
+}
+.colorBox .color3{
+border:1px solid rgb(255, 182, 74);
+}
+.colorBox .color4{
+border:1px solid rgb(166, 156, 255);
+}
+.colorBox .color5{
+border:1px solid rgb(143, 238, 113);
+}
+.topSet{
+  width: 100%;
+  padding: 10rpx 20rpx;
+  vertical-align: top;
+  line-height: 80rpx;
+  box-sizing: border-box;
+  box-shadow: 0 2px 4px -4px #aaa;
+  background: #fff;
+  height: 100rpx;
+}
+.topSet .title{
+  display: inline-block;
+  vertical-align: top;
+  line-height: 80rpx;
+  float: left;
+  font-size: 35rpx;
+}
+.topSet switch{
+  display: inline-block;
+  vertical-align: top;
+  line-height: 80rpx;
+  float: right;
 }

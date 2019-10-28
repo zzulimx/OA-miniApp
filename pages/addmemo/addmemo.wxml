@@ -1,59 +1,84 @@
 <!--pages/addmemo/addmemo.wxml-->
 <view class="container">
-<!-- 文本操作框 -->
-<view class="head">
-<view class="icon iconfont icon-zhuomian-"></view><view class="line">|</view>
-<view class="toolWrapper">
- <view class='toolbar' bindtap="format">
-        <i class="iconfont icon-zitijiacu {{formats.bold ? 'ql-active' : ''}}" data-name="bold"></i>
-        <i class="iconfont icon-zitixieti {{formats.italic ? 'ql-active' : ''}}" data-name="italic"></i>
-        <i class="iconfont icon-zitixiahuaxian {{formats.underline ? 'ql-active' : ''}}" data-name="underline"></i>
-        <i class="iconfont icon-zitishanchuxian {{formats.strike ? 'ql-active' : ''}}" data-name="strike"></i>
-        <i class="iconfont icon-undo" bindtap="undo"></i>
-        <i class="iconfont icon-redo" bindtap="redo"></i>
-        <i class="iconfont icon-zuoduiqi {{formats.align === 'left' ? 'ql-active' : ''}}" data-name="align" data-value="left"></i>
-        <i class="iconfont icon-juzhongduiqi {{formats.align === 'center' ? 'ql-active' : ''}}" data-name="align" data-value="center"></i>
-        <i class="iconfont icon-youduiqi {{formats.align === 'right' ? 'ql-active' : ''}}" data-name="align" data-value="right"></i>
-        <i class="iconfont icon-zuoyouduiqi {{formats.align === 'justify' ? 'ql-active' : ''}}" data-name="align" data-value="justify"></i>
-        <i class="iconfont icon-line-height {{formats.lineHeight ? 'ql-active' : ''}}" data-name="lineHeight" data-value="2"></i>
-        <i class="iconfont icon-Character-Spacing {{formats.letterSpacing ? 'ql-active' : ''}}" data-name="letterSpacing" data-value="2em"></i>
-        <i class="iconfont icon-722bianjiqi_duanqianju {{formats.marginTop ? 'ql-active' : ''}}" data-name="marginTop" data-value="20px"></i>
-        <i class="iconfont icon-723bianjiqi_duanhouju {{formats.micon-previewarginBottom ? 'ql-active' : ''}}" data-name="marginBottom" data-value="20px"></i>
-        <i class="iconfont icon-clearedformat" bindtap="removeFormat"></i>
-        <i class="iconfont icon-font {{formats.fontFamily ? 'ql-active' : ''}}" data-name="fontFamily" data-value="Pacifico"></i>
-        <i class="iconfont icon-fontsize {{formats.fontSize === '24px' ? 'ql-active' : ''}}" data-name="fontSize" data-value="24px"></i>
-
-        <i class="iconfont icon-text_color {{formats.color === '#0000ff' ? 'ql-active' : ''}}" data-name="color" data-value="#0000ff"></i>
-        <i class="iconfont icon-fontbgcolor {{formats.backgroundColor === '#00ff00' ? 'ql-active' : ''}}" data-name="backgroundColor" data-value="#00ff00"></i>
-
-        <i class="iconfont icon-date" bindtap="insertDate"></i>
-        <i class="iconfont icon--checklist" data-name="list" data-value="check"></i>
-        <i class="iconfont icon-youxupailie {{formats.list === 'ordered' ? 'ql-active' : ''}}" data-name="list" data-value="ordered"></i>
-        <i class="iconfont icon-wuxupailie {{formats.list === 'bullet' ? 'ql-active' : ''}}" data-name="list" data-value="bullet"></i>
-        <i class="iconfont icon-outdent" data-name="indent" data-value="-1"></i>
-        <i class="iconfont icon-indent" data-name="indent" data-value="+1"></i>
-        <i class="iconfont icon-fengexian" bindtap="insertDivider"></i>
-        <i class="iconfont icon-charutupian" bindtap="insertImage"></i>
-        <i class="iconfont icon-format-header-1 {{formats.header === 1 ? 'ql-active' : ''}}" data-name="header" data-value="{{1}}"></i>
-        <i class="iconfont icon-zitixiabiao {{formats.script === 'sub' ? 'ql-active' : ''}}" data-name="script" data-value="sub"></i>
-        <i class="iconfont icon-zitishangbiao {{formats.script === 'super' ? 'ql-active' : ''}}" data-name="script" data-value="super"></i>
-        <!-- <i class="iconfont icon-quanping"></i> -->
-        <i class="iconfont icon-shanchu" bindtap="clear"></i>
-        <i class="iconfont icon-direction-rtl {{formats.direction === 'rtl' ? 'ql-active' : ''}}" data-name="direction" data-value="rtl"></i>
-
+  <block wx:if="{{status==='edit'}}">
+    <!-- 文本操作框 -->
+    <view class="nav">
+      <view class="title">新建便签</view>
+      <view class="save" catchtap="saveMemo">
+        <view class="icon iconfont icon-duihao4"></view>
       </view>
-</view>
-<view class="icon iconfont icon-up"></view>
-</view>
-    <view class='editorWrapper'>  
-      <editor id="editor"
-      placeholder-class="place-holder"
-       class="ql-container" 
-       placeholder="此时此刻的你想写点什么..." 
-       bindstatuschange="onStatusChange" 
-       read-only="{{readOnly}}"
-       bindready="onEditorReady"
-       bindinput="getContent">
+    </view>
+    <view class="head">
+      <view class="icon iconfont icon-left3" catchtap="toLeft"></view>
+      <scroll-view scroll-x="true" scroll-with-animation="true" bindscrolltoupper="getLeft" bindscrolltolower="getRight" scroll-left="{{scrollLeft}}" bindscroll="scrollBar" class="toolWrapper">
+        <view class='toolbar' bindtap="format">
+          <i class="iconfont icon-zitijiacu {{formats.bold ? 'ql-active' : ''}}" data-name="bold"></i>
+          <i class="iconfont icon-zitixieti {{formats.italic ? 'ql-active' : ''}}" data-name="italic"></i>
+          <i class="iconfont icon-zitixiahuaxian {{formats.underline ? 'ql-active' : ''}}" data-name="underline"></i>
+          <i class="iconfont icon-charutupian" bindtap="insertImage"></i>
+          <i class="iconfont icon-undo" bindtap="undo"></i>
+          <i class="iconfont icon-redo" bindtap="redo"></i>
+          <i class="iconfont icon-zitishanchuxian {{formats.strike ? 'ql-active' : ''}}" data-name="strike"></i>
+          <i class="iconfont icon-zuoduiqi {{formats.align === 'left' ? 'ql-active' : ''}}" data-name="align" data-value="left"></i>
+          <i class="iconfont icon-juzhongduiqi {{formats.align === 'center' ? 'ql-active' : ''}}" data-name="align" data-value="center"></i>
+          <i class="iconfont icon-youduiqi {{formats.align === 'right' ? 'ql-active' : ''}}" data-name="align" data-value="right"></i>
+          <i class="iconfont icon-zuoyouduiqi {{formats.align === 'justify' ? 'ql-active' : ''}}" data-name="align" data-value="justify"></i>
+          <i class="iconfont icon-line-height {{formats.lineHeight ? 'ql-active' : ''}}" data-name="lineHeight" data-value="2"></i>
+          <i class="iconfont icon-Character-Spacing {{formats.letterSpacing ? 'ql-active' : ''}}" data-name="letterSpacing" data-value="2em"></i>
+          <i class="iconfont icon-722bianjiqi_duanqianju {{formats.marginTop ? 'ql-active' : ''}}" data-name="marginTop" data-value="20px"></i>
+          <i class="iconfont icon-723bianjiqi_duanhouju {{formats.micon-previewarginBottom ? 'ql-active' : ''}}" data-name="marginBottom" data-value="20px"></i>
+          <i class="iconfont icon-clearedformat" bindtap="removeFormat"></i>
+          <i class="iconfont icon-font {{formats.fontFamily ? 'ql-active' : ''}}" data-name="fontFamily" data-value="Pacifico"></i>
+          <i class="iconfont icon-fontsize {{formats.fontSize === '24px' ? 'ql-active' : ''}}" data-name="fontSize" data-value="24px"></i>
+          <i class="iconfont icon-text_color {{formats.color === '#0000ff' ? 'ql-active' : ''}}" data-name="color" data-value="#0000ff"></i>
+          <i class="iconfont icon-fontbgcolor {{formats.backgroundColor === '#00ff00' ? 'ql-active' : ''}}" data-name="backgroundColor" data-value="#00ff00"></i>
+
+          <i class="iconfont icon-date" bindtap="insertDate"></i>
+          <i class="iconfont icon--checklist" data-name="list" data-value="check"></i>
+          <i class="iconfont icon-youxupailie {{formats.list === 'ordered' ? 'ql-active' : ''}}" data-name="list" data-value="ordered"></i>
+          <i class="iconfont icon-wuxupailie {{formats.list === 'bullet' ? 'ql-active' : ''}}" data-name="list" data-value="bullet"></i>
+          <i class="iconfont icon-outdent" data-name="indent" data-value="-1"></i>
+          <i class="iconfont icon-indent" data-name="indent" data-value="+1"></i>
+          <i class="iconfont icon-fengexian" bindtap="insertDivider"></i>
+          <i class="iconfont icon-format-header-1 {{formats.header === 1 ? 'ql-active' : ''}}" data-name="header" data-value="{{1}}"></i>
+          <i class="iconfont icon-zitixiabiao {{formats.script === 'sub' ? 'ql-active' : ''}}" data-name="script" data-value="sub"></i>
+          <i class="iconfont icon-zitishangbiao {{formats.script === 'super' ? 'ql-active' : ''}}" data-name="script" data-value="super"></i>
+          <!-- <i class="iconfont icon-quanping"></i> -->
+          <i class="iconfont icon-shanchu" bindtap="clear"></i>
+          <i class="iconfont icon-direction-rtl {{formats.direction === 'rtl' ? 'ql-active' : ''}}" data-name="direction" data-value="rtl"></i>
+
+        </view>
+      </scroll-view>
+      <view class="icon iconfont icon-up" catchtap="toRight"></view>
+    </view>
+    <view class='editorWrapper'>
+      <editor id="editor" placeholder-class="place-holder" class="ql-container" placeholder="此时此刻的你想写点什么..." bindstatuschange="onStatusChange"  bindready="onEditorReady" bindinput="getContent">
       </editor>
     </view>
+    <view class="colorSelect">
+      <view class="title">便签颜色</view>
+      <view class="colorBox">
+        <view class="color color1" data-color="rgba(255, 2, 2,0.06)" catchtap="getColor" data-idx="1" style="background-color:{{background1}}"></view>
+        <view class="color color2" data-color="rgba(9, 185, 255,0.08)" catchtap="getColor" data-idx="2" style="background-color:{{background2}}"></view>
+        <view class="color color3" data-color="rgba(255, 182, 74,0.08)" catchtap="getColor" data-idx="3" style="background-color:{{background3}}"></view>
+        <view class="color color4" data-color="rgba(166, 156, 255,0.08)" catchtap="getColor" data-idx="4" style="background-color:{{background4}}"></view>
+        <view class="color color5" data-color="rgba(143, 238, 113,0.08)" catchtap="getColor" data-idx="5" style="background-color:{{background5}}"></view>
+      </view>
+    </view>
+    <!--置顶-->
+    <view class="topSet">
+      <view class="title">置顶</view>
+      <switch checked="{{isTop}}" color="#62c9f8" bindchange="topSet" />
+    </view>
+  </block>
+  <block wx:elif="{{status==='display'}}">
+    <view class="nav displayNav">
+       <view class="createTime">今天傍晚 08:50</view>
+       <view class="edit" catchtap="toEdit">
+        <view class="icon iconfont icon-edit"></view>
+      </view>
+    </view>
+     <editor id="editorDis"   bindready="onDisplayReady"  class="ql-container" read-only="true">
+      </editor>
+  </block>
 </view>

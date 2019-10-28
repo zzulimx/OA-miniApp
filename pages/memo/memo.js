@@ -8,11 +8,45 @@ Page({
     Mright:'40px',
     Mtop:'',
     Mbottom:'40px',
-    isNull:true,
+    isNull:true, //随笔是否为空
     isBtn:true,
     isLayOpen:false,
+    btnColor:'#ccc',
+    selectIcon:'icon-weixuanzhong', //选择图标
+    isOperate:false,  //是否为文件操作状态
+    memoWidth:'100%',  //便签默认宽度
     recently:{  //最近
+        topData:[
+          {
+            content: {
+              delta: {
+                ops: [
+                  { insert: "测试\r一下\r" }
+                ]
+              },
+              html: ' < p wx: nodeid = "58" > 测试</p > <p wx: nodeid="94">一下</p>',
+              text: "测试一下"
+            },
+            date: '10/26',
+            bgColor: '#fff'
+          },
+        ],
+        data:[
+           {
+             content:{
+               delta:{
+                 ops:[
+                   { insert: "测试\r一下\r"}
+                 ]
+                 },
+               html:' < p wx: nodeid = "58" > 测试</p > <p wx: nodeid="94">一下</p>',
+               text: "测试一下"
+             },
+             date:'10/26',
+            bgColor:'rgba(9, 185, 255,0.08)'
+           },
 
+        ]
     },
     group:{
       data:[
@@ -21,11 +55,11 @@ Page({
           createDate:'',
           bgColor:'#ffb64a'
         },
-        {
-          title: '个人',
-          createDate: '',
-          bgColor: '#09b9ff'
-        },
+        // {
+        //   title: '个人',
+        //   createDate: '',
+        //   bgColor: '#09b9ff'
+        // },
         {
           title: '生活',
           createDate: '',
@@ -42,10 +76,10 @@ Page({
           bgColor: '#a69cff'
         }
       ]
-    }
+    },
   },
   onLoad: function (options) {
-    if(Object.keys(this.data.recently).length>0){
+    if(this.data.recently.data.length>0 || this.data.recently.topData.length>0){
       this.setData({
         isNull:false
       })
@@ -53,7 +87,7 @@ Page({
   },
   //点击切换
   tabClick: function (e) {
-    let currIndex = parseInt(e.detail.current);
+    let currIndex = parseInt(e.currentTarget.id);
     var isBtn='';
     if(currIndex === 0){
       isBtn = true;
@@ -65,6 +99,7 @@ Page({
       activeIndex: e.currentTarget.id,
       isBtn:isBtn
     });
+    // console.log('isBtn    '+isBtn+ '\n'+ 'currenIndex  '+currIndex)
   },
   // //滑动切换
   swiperTab: function (e) {
@@ -107,7 +142,7 @@ Page({
       Mbottom: '40px',
     });
     wx.navigateTo({
-      url: '../../pages/addmemo/addmemo?title=随笔',
+      url: '../../pages/addmemo/addmemo?title=随笔&status=edit',
     })
   },
   // 新建分组
@@ -119,6 +154,15 @@ Page({
   //获取文件名 
   getGroupName(e){
     this.groupName = e.detail.value;
+    if(!this.groupName){
+      this.setData({
+        btnColor: '#ccc'
+      })
+    }else{
+      this.setData({
+        btnColor: '#62c9f8'
+      })
+    }
   },
   // 获取选择的颜色
   getColor(e){
@@ -149,6 +193,9 @@ Page({
   },
   //创建分组
   createNew(){
+    if(!this.groupName){
+      return;
+    }
     let newGroup={
       title: this.groupName,
       createDate: '',
@@ -166,4 +213,41 @@ Page({
   onPullDownRefresh: function () {
 
   },
+  // 查看便签
+  toDisplay(e){
+    if (this.endTime - this.startTime < 350) {
+      let type = e.currentTarget.dataset.type;
+      let idx = e.currentTarget.dataset.idx;
+      wx.navigateTo({
+        url: '../../pages/addmemo/addmemo?title=随笔&status=display&type=' + type + '&idx=' + idx,
+      });
+    }
+  },
+  // 显示页面时调用
+  onShow(){
+    if (this.data.recently.data.length > 0 || this.data.recently.topData.length > 0) {
+      this.setData({
+        isNull: false
+      })
+    }
+  },
+  // 根据点击时间长短判断长按或短按
+  getStartTime(e){
+    this.startTime = e.timeStamp;
+  },
+  getEndTime(e){
+    // this.endTime = e.timeStamp;
+    console.log('end');
+    console.log(e)
+  },
+  toOperate(){
+    console.log(this.endTime+'    ' +this.startTime)
+    if (this.endTime - this.startTime>350){
+      this.setData({
+        isOperate: true,
+        isBtn: false,
+        memoWidth: '86%'
+      })
+    }
+  }
 })
