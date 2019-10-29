@@ -3,12 +3,12 @@
 #### 介绍
 skyeye系列-OA系统小程序端,win10风格的一套系统，前端采用layui作为前端框架，后端采用SpringBoot作为服务框架，采用自封装的xml对所有请求进行参数校验，以保证接口安全性。
 
-|项目|地址|文档|
-|-------|-------|-------|
-|主项目地址|https://gitee.com/doc_wei01_admin/skyeye|https://gitee.com/doc_wei01_admin/skyeye/blob/master/README.md|
-|APP端接口微服务地址|https://gitee.com/doc_wei01_admin/app-oaserver||
-|APP端地址|https://gitee.com/doc_wei01_admin/oa-app||
-|小程序端地址|https://gitee.com/doc_wei01_admin/small-pro||
+|项目|地址|
+|-------|-------|
+|主项目地址|https://gitee.com/doc_wei01/skyeye|
+|APP端接口微服务地址|https://gitee.com/doc_wei01/app-oaserver|
+|APP端地址|https://gitee.com/doc_wei01/oa-app|
+|小程序端地址|https://gitee.com/doc_wei01/small-pro|
 
 #### 软件架构
 
