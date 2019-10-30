@@ -12,13 +12,29 @@ Page({
     lockRight: true, //滚动条右侧按钮控制
     content:'', //当前便签内容
     isTop:false, //是否置顶
+    isGroup:false,
+    groupId:'',
   },
 
   /**
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
+    // 判断当前页是否来自分组 / 随笔
+   if(options.isGroup){
+     this.setData({
+       isGroup:true
+     })
+   };
+  //  获取当前分组id
+   if(options.groupId){
+     this.setData({
+       groupId: options.groupId
+     })
+   }
+  //  获取当前导航栏标题
     let title = options.title;
+    // 获取标签状态 置顶/普通便签
     let status = options.status;
       wx.setNavigationBarTitle({
         title: title
@@ -28,20 +44,32 @@ Page({
     });
     let pages = getCurrentPages();
     let prePage = pages[pages.length - 2];
+    // 跟据状态设置标签来源
     if(options.status === 'display'){
+      // 获取标签id
       let idx = options.idx;
       let type = options.type;
       var currData = '';
       var isTop='';
-      if (type === 'normal') {
-        currData = prePage.data.recently.data[idx];
-        isTop=false;
-      } else {
-        currData = prePage.data.recently.topData[idx];
-        isTop=true;
-      };
-      // console.log(type);
-      // console.log(currData);
+      // 如果来自分组下的便签
+      if (!options.groupDis){
+        if (type === 'normal') {
+          currData = prePage.data.recently.data[idx];
+          isTop = false;
+        } else {
+          currData = prePage.data.recently.topData[idx];
+          isTop = true;
+        };
+      }else{  //来自随笔
+        if (type === 'normal') {
+          currData = prePage.data.normalData[idx];
+          isTop = false;
+        } else {
+          currData = prePage.data.topData[idx];
+          isTop = true;
+        };
+      }
+     
       this.setData({
         content:currData.content,
         isTop:isTop
@@ -224,6 +252,7 @@ Page({
     // 获取上一个页面
     let pages = getCurrentPages();
     let prePage = pages[pages.length - 2];
+    let preAgin = pages[pages.length - 3];
     this.setData({
       status:'display'
     });
@@ -231,23 +260,57 @@ Page({
     if (!this.color){
       this.color = '#fff';
     }
-    // 添加到上层页面数据中
-    if(this.data.isTop){
-      prePage.data.recently.topData.unshift( {
-        content:this.data.content,
-        date:createTime,
-        bgColor: this.color
-      })
+    // 添加到上层页面数据中    //页面来自随笔
+    if(!this.data.isGroup){
+      if (this.data.isTop) {
+        prePage.data.recently.topData.unshift({
+          content: this.data.content,
+          date: createTime,
+          bgColor: this.color,
+          isCheck: false
+        })
+      } else {
+        prePage.data.recently.data.unshift({
+          content: this.data.content,
+          date: createTime,
+          bgColor: this.color,
+          isCheck: false
+        })
+      }
+      prePage.setData({
+        recently: prePage.data.recently
+      });
     }else{
-      prePage.data.recently.data.unshift({
-        content: this.data.content,
-        date: createTime,
-        bgColor: this.color
-      })
+      if (this.data.isTop) {
+        preAgin.data.group.data[parseInt(this.data.groupId)].childData.topData.unshift({
+          content: this.data.content,
+          date: createTime,
+          bgColor: this.color,
+          isCheck: false
+        })
+      } else {
+        // prePage.data.normalData.unshift({
+        //   content: this.data.content,
+        //   date: createTime,
+        //   bgColor: this.color,
+        //   isCheck: false
+        // })
+        preAgin.data.group.data[parseInt(this.data.groupId)].childData.normalData.unshift({
+          content: this.data.content,
+          date: createTime,
+          bgColor: this.color,
+          isCheck: false
+        })
     }
-    prePage.setData({
-      recently: prePage.data.recently
-    });
+      prePage.setData({
+        normalData: prePage.data.normalData,
+        topData:prePage.data.topData
+      });
+
+       preAgin.setData({
+         group:preAgin.data.group
+       })
+    }
   },
   // 编辑
   toEdit(){
@@ -262,6 +325,6 @@ Page({
         html:that.data.content.html
       })
     }).exec()
-   
-  }
+  },
+ 
 })

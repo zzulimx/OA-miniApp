@@ -199,3 +199,43 @@ border:1px solid rgb(143, 238, 113);
   line-height: 80rpx;
   float: right;
 }
+.operateGroup{
+  position: fixed;
+  width: 100%;
+  z-index: 999;
+  bottom: 0;
+  left: 0;
+  background-color: #f6f6f6;
+  padding-top: 15rpx;
+}
+.operateGroup .operateTool{
+display: inline-block;
+margin-left: 50%;
+transform: translateX(-50%);
+width: 560rpx;
+vertical-align: bottom;
+}
+.operateGroup .selectAll,.operateGroup .deleteSelect, .operateGroup .cancleOperate{
+  display: inline-block;
+padding: 0 64rpx;
+text-align: center;
+}
+.selectAll .icon{
+  font-size: 40rpx;
+color: #000;
+}
+.operateTool .title{
+  font-size: 28rpx;
+color: #000;
+}
+.deleteSelect .icon{
+  font-size: 40rpx;
+color: #000;
+}
+.cancleOperate .icon{
+  font-size: 38rpx;
+color: #000;
+}
+.groupContent{
+  padding-bottom: 200rpx;
+}

@@ -1,21 +1,7 @@
-<!--pages/memo/memo.wxml-->
+<!--pages/memoitem/memoitem.wxml-->
+<!-- 随笔 -->
 <view class="container">
-  <view class="page__bd">
-    <view class="weui-tab">
-      <view class="weui-navbar">
-        <block wx:for="{{tabs}}" wx:key="*this">
-          <view id="{{index}}" class="weui-navbar__item {{activeIndex == index ? 'weui-bar__item_on' : ''}}" bindtap="tabClick">
-            <view class="weui-navbar__title">{{item}}</view>
-          </view>
-        </block>
-        <view class="weui-navbar__slider" style="left:{{sliderLeft}}"></view>
-      </view>
-      <swiper class="weui-tab__panel" duration="300" bindchange="swiperTab" current="{{activeIndex}}">
-        <swiper-item class="weui-tab__content" hidden="{{activeIndex != 0}}">
-          <view style="height:calc(100vh - 51px);margin-top:51px;overflow:scroll">
-            <view class="weui-tab__content">
-              <!-- 随笔 -->
-              <block wx:if="{{isNull}}">
+ <block wx:if="{{isNull}}">
                 <view class="empty">
                   <image src="../../images/memo/empty.png"></image>
                   <view>点击右下角按钮新建便签</view>
@@ -23,7 +9,7 @@
               </block>
               <block wx:else>
               <view class="memoWrapper">
-                  <block wx:for="{{recently.topData}}">
+                  <block wx:for="{{topData}}">
                    <view class="memoItem isTop" bindtap="toDisplay"bindtouchend="getEndTime" bindtouchstart="getStartTime"    catchlongpress="toOperate" data-idx="{{index}}" data-type="isTop" style="background-color:{{item.bgColor}};width:{{memoWidth}}">
                        <view class="itemLeft">
                          <view class="leftTop">{{item.content.text}}</view>
@@ -33,12 +19,12 @@
                          <view class="icon iconfont icon-start1"></view>
                        </view>
                     </view>
-                  <view class="selectIcon" wx:if="{{isOperate}}"  catchtap="toDisplay" data-idx="{{index}}" data-type="isTop">
-                      <view class="icon iconfont {{item.isCheck?'icon-xuanzhong3':'icon-weixuanzhong'}}"></view>
+                  <view class="selectIcon" wx:if="{{isOperate}}">
+                      <view class="icon iconfont {{selectIcon}}"></view>
                   </view>
                   </block>
-                  <block wx:for="{{recently.data}}">
-                    <view class="memoItem" bindtap="toDisplay" catchlongpress="toOperate" data-idx="{{index}}" data-type="normal" style="background-color:{{item.bgColor}};width:{{memoWidth}}">
+                  <block wx:for="{{normalData}}">
+                    <view class="memoItem" catchtap="toDisplay" data-idx="{{index}}" data-type="normal" style="background-color:{{item.bgColor}};width:{{memoWidth}}">
                        <view class="itemLeft">
                          <view class="leftTop">{{item.content.text}}</view>
                          <view class="leftBottom">{{item.date}}</view>
@@ -47,50 +33,14 @@
                          <view class="icon iconfont icon-wujiaoxingxingxing1"></view>
                        </view>
                     </view>
-                    <view class="selectIcon" wx:if="{{isOperate}}"  catchtap="toDisplay" data-idx="{{index}}" data-type="normal">
-                      <view class="icon iconfont {{item.isCheck?'icon-xuanzhong3':'icon-weixuanzhong'}}"></view>
+                    <view class="selectIcon" wx:if="{{isOperate}}">
+                      <view class="icon iconfont {{selectIcon}}"></view>
                   </view>
                   </block>
                </view>   
               </block>
             </view>
-          </view>
-        </swiper-item>
-        <swiper-item class="weui-tab__content" hidden="{{activeIndex != 1}}">
-          <view style="height:calc(100vh - 51px);margin-top:51px;overflow:scroll">
-            <view class="weui-tab__content">
-             <view class="groupContent">
-              <view class="newGroup" catchtap="newGroup">
-                <view class="itemLeft">
-                  <view class="icon iconfont icon-1"></view>
-                </view>
-                <view class="itemRight">
-                  <view class="title">新建分组</view>
-                </view>
-              </view>
-              <block wx:for="{{group.data}}">
-                <view class="groupWrapper" data-idx="{{index}}" catchtap="toMemoItem" catchlongpress="operateGroup">
-                  <view class="groupitem">
-                    <view class="itemLeft">
-                      <view class="icon iconfont icon-bianqian1" style="color:{{item.bgColor}}"></view>
-                    </view>
-                    <view class="itemRight">
-                      <view class="title">{{item.title}}</view>
-                      <view class="icon iconfont {{isOperateGroup?(item.isCheck?'icon-checked1':'icon-unchecked1'):'icon-fanhui'}}" ></view>
-                    </view>
-                  </view>
-                </view>
-              </block>
-
-            </view>
-            </view>
-          </view>
-        </swiper-item>
-      </swiper>
-    </view>
-  </view>
-</view>
-<!-- 添加便签图标 -->
+  <!-- 添加便签图标 -->
 <view class="btnWrapper" style="left:{{Mleft}};right:{{Mright}};top:{{Mtop}};bottom:{{Mbottom}}" catchtouchstart="startMove" catchtouchmove="moving" catchtouchend="endMove" wx:if="{{isBtn}}">
   <view class="btnIcon">
     <view class="icon iconfont icon-penleather"></view>
@@ -129,13 +79,13 @@ style="background-color:{{background3}}"></view>
   </view>
 </view>
 <!-- 底部操作按钮 -->
-<view class="operateGroup" wx:if="{{isOperate?isOperate:isOperateGroup}}">
+<view class="operateGroup" wx:if="{{isOperate}}">
  <view class="operateTool">
-   <view class="selectAll" catchtap="toSelectAll">
+   <view class="selectAll">
     <view class="icon iconfont icon-quanxuan"></view>
     <view class="title">全选</view>
    </view>
-   <view class="deleteSelect" catchtap="toDelete">
+   <view class="deleteSelect">
    <view class="icon iconfont icon-delete2"></view>
    <view class="title">删除</view>
    </view>

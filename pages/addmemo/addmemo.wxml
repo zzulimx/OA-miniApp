@@ -82,3 +82,20 @@
       </editor>
   </block>
 </view>
+<!-- 底部操作按钮 -->
+<cover-view class="operateGroup" wx:if="{{status==='display'}}">
+ <cover-view  class="operateTool">
+   <cover-view  class="selectAll" catchtap="toSelectAll">
+    <cover-view  class="icon iconfont icon-arrow-up1"></cover-view >
+    <cover-view  class="title">置顶</cover-view >
+   </cover-view >
+   <cover-view  class="deleteSelect" catchtap="toDelete">
+   <cover-view  class="icon iconfont icon-delete2"></cover-view >
+   <cover-view  class="title">删除</cover-view >
+   </cover-view >
+  <cover-view  class="cancleOperate" catchtap="cancleOperate">
+   <cover-view  class="icon iconfont icon-share2"></cover-view >
+    <cover-view  class="title">分享</cover-view >
+  </cover-view >
+ </cover-view >
+</cover-view >
