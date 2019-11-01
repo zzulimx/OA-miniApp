@@ -35,7 +35,8 @@
     "pages/logshow/logshow",
     "pages/memo/memo",
     "pages/addmemo/addmemo",
-    "pages/memoitem/memoitem"
+    "pages/memoitem/memoitem",
+    "pages/addgroupmemo/addgroupmemo"
   ],
   "permission": {
     "scope.userLocation": {

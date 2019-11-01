@@ -1,0 +1,8 @@
+{
+  "usingComponents": {},
+  "navigationBarBackgroundColor": "#62c9f8",
+  "navigationBarTitleText": "新建便签",
+  "backgroundColor": "#fff",
+  "backgroundTextStyle": "dark",
+  "navigationBarTextStyle": "white"
+}

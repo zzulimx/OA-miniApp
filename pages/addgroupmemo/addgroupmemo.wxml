@@ -1,9 +1,9 @@
-<!--pages/addmemo/addmemo.wxml-->
+<!--pages/addgroupmemo/addgroupmemo.wxml-->
 <view class="container">
-  <block wx:if="{{status==='edit' || status === 'create'}}">
+  <block wx:if="{{status==='create'?true:status==='edit'}}">
     <!-- 文本操作框 -->
     <view class="nav">
-      <view class="title" wx:if="{{status === 'create'}}">新建随笔</view>
+       <view class="title" wx:if="{{status === 'create'}}">新建便签</view>
       <view class="title" wx:if="{{status === 'edit'}}">编辑</view>
       <view class="save" catchtap="saveMemo">
         <view class="icon iconfont icon-duihao4"></view>
@@ -72,6 +72,7 @@
       <switch checked="{{isTop}}" color="#62c9f8" bindchange="topSet" />
     </view>
   </block>
+  <!-- 便签展示 -->
   <block wx:elif="{{status==='display'}}">
     <view class="nav displayNav">
        <view class="createTime">今天傍晚 08:50</view>
@@ -85,18 +86,18 @@
 </view>
 <!-- 底部操作按钮 -->
 <view class="operateGroup" wx:if="{{status==='display'}}">
- <view class="operateTool">
-   <view class="selectAll">
-    <view class="icon iconfont icon-arrow-up1"></view>
-    <view class="title">置顶</view>
+ <view  class="operateTool">
+   <view  class="selectAll" catchtap="toSelectAll">
+    <view  class="icon iconfont icon-arrow-up1"></view>
+    <view  class="title">置顶</view>
    </view>
-   <view class="deleteSelect" catchtap="toDelete">
-   <view class="icon iconfont icon-delete2"></view>
-   <view class="title">删除</view>
+   <view  class="deleteSelect" catchtap="toDelete">
+   <view  class="icon iconfont icon-delete2"></view >
+   <view  class="title">删除</view>
    </view>
-  <view class="cancleOperate">
-   <view class="icon iconfont icon-share2"></view>
-    <view class="title">分享</view>
+  <view  class="cancleOperate" catchtap="cancleOperate">
+   <view  class="icon iconfont icon-share2"></view>
+    <view  class="title">分享</view>
   </view>
  </view>
 </view>

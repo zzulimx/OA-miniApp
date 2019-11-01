@@ -192,7 +192,7 @@ Page({
       Mbottom: '40px',
     });
     wx.navigateTo({
-      url: '../../pages/addmemo/addmemo?title=随笔&status=edit',
+      url: '../../pages/addmemo/addmemo?title=随笔&status=create',
     })
   },
   // 新建分组
@@ -268,23 +268,27 @@ Page({
   },
   // 查看便签
   toDisplay(e){
+    // type 区分随笔 置顶/普通
     let type = e.currentTarget.dataset.type;
     let idx = e.currentTarget.dataset.idx;
-    // 非文件操作状态
+    // 非文件操作状态 跳转到展示页面
       if(!this.data.isOperate){
         wx.navigateTo({
           url: '../../pages/addmemo/addmemo?title=随笔&status=display&type=' + type + '&idx=' + idx,
         });
-        // 文件操作状态
+        // 文件操作状态 
       }else{
         // 根据类型修改对应的选中状态
         if(type==='normal'){
+            // 文件选中或取消
           if (this.data.recently.data[idx].isCheck){
               this.data.recently.data[idx].isCheck=false 
           }else{
             this.data.recently.data[idx].isCheck = true 
           }
+
         }else{
+          // 文件文件选中或取消
           if (this.data.recently.topData[idx].isCheck) {
             this.data.recently.topData[idx].isCheck = false
           } else {
@@ -304,15 +308,6 @@ Page({
       })
     }
   },
-  // 根据点击时间长短判断长按或短按
-  getStartTime(e){
-    // this.startTime = e.timeStamp;
-  },
-  getEndTime(e){
-    // this.endTime = e.timeStamp;
-    // console.log('end');
-    // console.log(e.timeStamp)
-  },
   // 操作便签
   toOperate(){
     // 设置便签操作状态
@@ -324,8 +319,10 @@ Page({
   },
   // 取消操作
   cancleOperate(){
+    // 文件全选状态置空
     this.isAll = null;
-    // 取消便签操作状态
+    // 当前为随笔页
+    // 取消便签操作状态 恢复样式
     if(this.data.activeIndex===0){
       this.setData({
         isOperate: false,
@@ -342,7 +339,10 @@ Page({
       this.setData({
         recently: this.data.recently
       })
+
+      // 当前为分组页
     }else{
+      // 取消分组页 分组操作状态
       this.setData({
         isOperateGroup:false
       });
@@ -354,15 +354,18 @@ Page({
         group: this.data.group
       })
     }
-  //  判断当前是否便签个数是否为空
+  //  判断当前是否便签个数是否为空 展示空页样式效果
   if(this.data.recently.data.length<=0 && this.data.recently.topData.length<=0){
     this.setData({
       isNull:true
     })
   }
   },
+  // 全选或取消
   toSelectAll(){
+    // 随笔页
      if(this.data.activeIndex===0){
+      //  选中置顶和非置顶
        if(!this.isAll){
          this.data.recently.data.forEach(function (item, index) {
            item.isCheck = true;
@@ -371,6 +374,7 @@ Page({
           item.isCheck = true;
         })
          this.isAll = true;
+        //  取消选中置顶和非置顶
      }else{
        this.data.recently.data.forEach(function (item, index) {
          item.isCheck = false;
@@ -383,6 +387,7 @@ Page({
      this.setData({
        recently:this.data.recently
      });
+    //  分组页选中/取消
      }else{
        if (!this.isAll) {
          this.data.group.data.forEach(function (item, index) {
@@ -400,14 +405,18 @@ Page({
        });
      }
   },
-  // 去分组下的便签
+  // 点击 每个分组事件
   toMemoItem(e){
+    // 分组 索引
     let idx = e.currentTarget.dataset.idx;
+    // 当前分组标题
     let title = this.data.group.data[idx].title;
+    // 分组操作状态 跳转到分组下的便签列表
     if (!this.data.isOperateGroup){
       wx.navigateTo({
         url: '../../pages/memoitem/memoitem?idx='+idx +'&title='+title
       })
+      // 非分组操作状态 点击选中/取消
     }else{
       if (this.data.group.data[idx].isCheck){
         this.data.group.data[idx].isCheck = false;
@@ -419,7 +428,7 @@ Page({
       })
    }
   },
-  // 操作分组
+  // 长按转为操作分组状态
   operateGroup(e) {
     this.setData({
       isOperateGroup:true
@@ -427,7 +436,9 @@ Page({
   },
   // 删除分组
   toDelete(){
+    // 使用递归删除分组 创建两种类型的删除事件
     this.deleteMemo = {
+      // 删随笔页随笔
       deleteRecently:()=>{
         this.data.recently.data.forEach( (item, index,thisArr)=>{
           if(item.isCheck){
@@ -448,6 +459,7 @@ Page({
           }
         });
       },
+      // 删除分组页分组
       deleteGroup:()=>{
         this.data.group.data.forEach((item, index, thisArr)=>{
           if(item.isCheck){

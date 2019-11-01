@@ -1,4 +1,4 @@
-/* pages/addmemo/addmemo.wxss */
+/* pages/addgroupmemo/addgroupmemo.wxss */
 @import "../../template/richtext/iconfont.wxss";
 page{
   width: 100%;

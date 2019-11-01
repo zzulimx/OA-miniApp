@@ -6,75 +6,51 @@ Page({
    * 页面的初始数据
    */
   data: {
-    status:'', //edit编辑 | display预览  
-    scrollLeft:0,  //滚动条距离
+    status:'', //create新建 | display预览  |edit编辑
+    scrollLeft:0,  //编辑便签工具栏左侧滚动条距离
     lockLeft:false,  //滚动条左侧按钮控制
     lockRight: true, //滚动条右侧按钮控制
     content:'', //当前便签内容
     isTop:false, //是否置顶
-    isGroup:false,
-    groupId:'',
+    memoId:0 ,// 标签索引
+    isChange: false, //判断isTop最终是否改变
   },
-
-  /**
-   * 生命周期函数--监听页面加载
-   */
+// 页面加载
   onLoad: function (options) {
-    // 判断当前页是否来自分组 / 随笔
-   if(options.isGroup){
-     this.setData({
-       isGroup:true
-     })
-   };
-  //  获取当前分组id
-   if(options.groupId){
-     this.setData({
-       groupId: options.groupId
-     })
-   }
-  //  获取当前导航栏标题
-    let title = options.title;
-    // 获取标签状态 置顶/普通便签
-    let status = options.status;
+  //  设置当前导航栏标题
       wx.setNavigationBarTitle({
-        title: title
+        title: options.title
       });
+      // 获取当前状态
     this.setData({
-      status:status
+      status:options.status
     });
+    // 获取上一页
     let pages = getCurrentPages();
     let prePage = pages[pages.length - 2];
     // 跟据状态设置标签来源
     if(options.status === 'display'){
-      // 获取标签id
-      let idx = options.idx;
-      let type = options.type;
+      // 获取标签id 类型
+      this.setData({
+        memoId: parseInt(options.idx),
+        type: options.type
+      });
       var currData = '';
       var isTop='';
-      // 如果来自分组下的便签
-      if (!options.groupDis){
-        if (type === 'normal') {
-          currData = prePage.data.recently.data[idx];
+        if (options.type === 'normal') {
+          currData = prePage.data.recently.data[this.data.memoId];
           isTop = false;
         } else {
-          currData = prePage.data.recently.topData[idx];
+          currData = prePage.data.recently.topData[this.data.memoId];
           isTop = true;
         };
-      }else{  //来自随笔
-        if (type === 'normal') {
-          currData = prePage.data.normalData[idx];
-          isTop = false;
-        } else {
-          currData = prePage.data.topData[idx];
-          isTop = true;
-        };
-      }
-     
       this.setData({
-        content:currData.content,
-        isTop:isTop
+        content: currData.content,
+        isTop: isTop
       });
-    };
+    } else if (options.status === 'create'){
+
+    }
   },
   // 初始化editor
   onEditorReady() {
@@ -93,9 +69,6 @@ Page({
         delta: that.data.content.delta,
         fail(){
 
-        },
-        success(){
-          // console.log(that.data.content)
         }
       })
     }).exec();
@@ -157,7 +130,7 @@ Page({
       },
     });
   },
-  // 向左滑动
+  // 添加便签工具栏向左滑动按钮
   toLeft(){
     if(this.data.lockLeft){
       let dis = this.scrollDis ? this.scrollDis : parseInt(this.data.scrollLeft);
@@ -168,7 +141,7 @@ Page({
       })
     }
   },
-  // 向右滑动
+  // 便签工具栏向右滑动按钮
   toRight(){
     if(this.data.lockRight){
       let dis = this.scrollDis? this.scrollDis : parseInt(this.data.scrollLeft);
@@ -179,19 +152,19 @@ Page({
       });
     }
   },
-  // 滑动到左边
+  // 便签工具栏滑动到左边触发事件
   getLeft(){
     this.setData({
        lockLeft:false
     });
   },
-  // 滑动到右边
+  //  便签工具栏滑动到右边边触发事件
   getRight(){
     this.setData({
       lockRight: false,
     });
   },
-  // 滚动条滚动事件
+  // 滚动条滚动触发事件
   scrollBar(e){
     let scrollDis = e.detail.scrollLeft;
     this.scrollDis = scrollDis;
@@ -234,8 +207,12 @@ Page({
   // 设置置顶
   topSet(e){
     this.setData({
-      isTop:e.detail.value
+      isTop: e.detail.value
+    });
+    this.setData({
+      isChange: !this.data.isChange
     })
+    console.log(this.data.isChange)
   },
   // 获取输入内容
   getContent(e){
@@ -249,68 +226,72 @@ Page({
   },
   // 保存
   saveMemo(){
+    console.log(this.data.status);
+    console.log(this.data.memoId)
     // 获取上一个页面
     let pages = getCurrentPages();
     let prePage = pages[pages.length - 2];
-    let preAgin = pages[pages.length - 3];
-    this.setData({
-      status:'display'
-    });
     let createTime = formatTime(new Date()); 
     if (!this.color){
       this.color = '#fff';
     }
-    // 添加到上层页面数据中    //页面来自随笔
-    if(!this.data.isGroup){
-      if (this.data.isTop) {
-        prePage.data.recently.topData.unshift({
-          content: this.data.content,
-          date: createTime,
-          bgColor: this.color,
-          isCheck: false
-        })
-      } else {
-        prePage.data.recently.data.unshift({
-          content: this.data.content,
-          date: createTime,
-          bgColor: this.color,
-          isCheck: false
-        })
+    // 获取当前页面数据
+    let thisData = {
+      content: this.data.content,
+      date: createTime,
+      bgColor: this.color,
+      isCheck: false
+    }
+    // 根据不同的状态创建或更改便签  
+    // 当前为创建便签
+    if (this.data.status === 'create') {
+      // 保存后将页面设置为展示状态
+      this.setData({
+        status: 'display'
+      });
+      // 保存到上页数据
+      if(this.data.isTop){
+        prePage.data.recently.topData.unshift(thisData);
+      }else{
+        prePage.data.recently.data.unshift(thisData);
       }
-      prePage.setData({
-        recently: prePage.data.recently
+       this.setData({
+         memoId:0
+       });
+    } else if (this.data.status === 'edit') {
+      // 保存后将页面设置为展示状态
+      this.setData({
+        status: 'display'
       });
-    }else{
-      if (this.data.isTop) {
-        preAgin.data.group.data[parseInt(this.data.groupId)].childData.topData.unshift({
-          content: this.data.content,
-          date: createTime,
-          bgColor: this.color,
-          isCheck: false
-        })
-      } else {
-        // prePage.data.normalData.unshift({
-        //   content: this.data.content,
-        //   date: createTime,
-        //   bgColor: this.color,
-        //   isCheck: false
-        // })
-        preAgin.data.group.data[parseInt(this.data.groupId)].childData.normalData.unshift({
-          content: this.data.content,
-          date: createTime,
-          bgColor: this.color,
-          isCheck: false
-        })
-    }
-      prePage.setData({
-        normalData: prePage.data.normalData,
-        topData:prePage.data.topData
-      });
+      // 如果置顶改变
+      if (this.data.isChange) {
+        // 改变后为置顶便签
+        if (this.data.isTop) {
+          //  先添加到置顶便签 再删除原来
+          console.log(this.data.isTop)
+          prePage.data.recently.topData.unshift(thisData);
+          prePage.data.recently.data.splice(this.data.memoId,1);
 
-       preAgin.setData({
-         group:preAgin.data.group
-       })
+        } else {  //改变后为普通便签
+          console.log(this.data.isTop)
+          prePage.data.recently.data.unshift(thisData);
+          prePage.data.recently.topData.splice(this.data.memoId, 1);
+        }
+        // 如果置顶未改变
+      } else {
+
+        if (this.data.isTop) {  //置顶便签
+          prePage.data.recently.topData[this.data.memoId] = thisData;
+        } else {  //普通便签
+          prePage.data.recently.data[this.data.memoId] = thisData;
+        }
+
+      }
     }
+    // 保存
+    prePage.setData({
+      recently: prePage.data.recently
+    })
   },
   // 编辑
   toEdit(){

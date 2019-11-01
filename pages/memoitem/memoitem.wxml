@@ -1,5 +1,5 @@
 <!--pages/memoitem/memoitem.wxml-->
-<!-- 随笔 -->
+<!-- 分组下的便签列表 -->
 <view class="container">
  <block wx:if="{{isNull}}">
                 <view class="empty">
@@ -10,7 +10,7 @@
               <block wx:else>
               <view class="memoWrapper">
                   <block wx:for="{{topData}}">
-                   <view class="memoItem isTop" bindtap="toDisplay"bindtouchend="getEndTime" bindtouchstart="getStartTime"    catchlongpress="toOperate" data-idx="{{index}}" data-type="isTop" style="background-color:{{item.bgColor}};width:{{memoWidth}}">
+                   <view class="memoItem isTop" catchtap="toDisplay"  catchlongpress="toOperate" data-idx="{{index}}" data-type="isTop" style="background-color:{{item.bgColor}};width:{{memoWidth}}">
                        <view class="itemLeft">
                          <view class="leftTop">{{item.content.text}}</view>
                          <view class="leftBottom">{{item.date}}</view>
@@ -19,12 +19,12 @@
                          <view class="icon iconfont icon-start1"></view>
                        </view>
                     </view>
-                  <view class="selectIcon" wx:if="{{isOperate}}">
-                      <view class="icon iconfont {{selectIcon}}"></view>
+                   <view class="selectIcon" wx:if="{{isOperate}}"  catchtap="toDisplay" data-idx="{{index}}" data-type="isTop">
+                      <view class="icon iconfont {{item.isCheck?'icon-xuanzhong3':'icon-weixuanzhong'}}"></view>
                   </view>
                   </block>
                   <block wx:for="{{normalData}}">
-                    <view class="memoItem" catchtap="toDisplay" data-idx="{{index}}" data-type="normal" style="background-color:{{item.bgColor}};width:{{memoWidth}}">
+                    <view class="memoItem" catchtap="toDisplay"  catchlongpress="toOperate" data-idx="{{index}}" data-type="normal" style="background-color:{{item.bgColor}};width:{{memoWidth}}">
                        <view class="itemLeft">
                          <view class="leftTop">{{item.content.text}}</view>
                          <view class="leftBottom">{{item.date}}</view>
@@ -33,59 +33,27 @@
                          <view class="icon iconfont icon-wujiaoxingxingxing1"></view>
                        </view>
                     </view>
-                    <view class="selectIcon" wx:if="{{isOperate}}">
-                      <view class="icon iconfont {{selectIcon}}"></view>
+                     <view class="selectIcon" wx:if="{{isOperate}}"  catchtap="toDisplay" data-idx="{{index}}" data-type="normal">
+                      <view class="icon iconfont {{item.isCheck?'icon-xuanzhong3':'icon-weixuanzhong'}}"></view>
                   </view>
                   </block>
                </view>   
               </block>
             </view>
   <!-- 添加便签图标 -->
-<view class="btnWrapper" style="left:{{Mleft}};right:{{Mright}};top:{{Mtop}};bottom:{{Mbottom}}" catchtouchstart="startMove" catchtouchmove="moving" catchtouchend="endMove" wx:if="{{isBtn}}">
+<view wx:if="{{isBtn}}" class="btnWrapper"   style="left:{{Mleft}};right:{{Mright}};top:{{Mtop}};bottom:{{Mbottom}}" catchtouchstart="startMove" catchtouchmove="moving" catchtouchend="endMove">
   <view class="btnIcon">
     <view class="icon iconfont icon-penleather"></view>
-  </view>
-</view>
-<!-- 新建分组 -->
-<view class="layOpen" wx:if="{{isLayOpen}}" catchtouchmove="true">
-  <view class="layInner">
-    <view class="file_title">新建分组</view>
-    <view class="file_content">
-      <input placeholder="新建分组" bindinput="getGroupName"></input>
-    </view>
-    <view class="colorSelect">
-        <view class="colorTitle">颜色选择：</view>
-      <scroll-view scroll-x="true" class="colorBox">
-      <view class="boxContent">
-         <view class="color color1" data-color="#ff0202" catchtap="getColor" data-idx="1" style="background-color:{{background1}}"></view>
-         <view class="color color2" data-color="#09b9ff" catchtap="getColor" data-idx="2" style="background-color:{{background2}}"></view>
-         <view class="color color3" data-color="#ffb64a" catchtap="getColor" data-idx="3"
-style="background-color:{{background3}}"></view>
-         <view class="color color4" data-color="#a69cff" catchtap="getColor" data-idx="4" style="background-color:{{background4}}"></view>
-         <view class="color color5" data-color="#8fee71" catchtap="getColor" data-idx="5" style="background-color:{{background5}}"></view>
-         <view class="color color6" data-color="#ff9898" catchtap="getColor" data-idx="6" style="background-color:{{background6}}"></view>
-         <view class="color color7" data-color="#0bddba" catchtap="getColor" data-idx="7" style="background-color:{{background7}}"></view>
-         <view class="color color8" data-color="#fff34a" catchtap="getColor" data-idx="8" style="background-color:{{background8}}"></view>
-         <view class="color color9" data-color="#eb41eb" catchtap="getColor" data-idx="9" style="background-color:{{background9}}"></view>
-         <view class="color color10" data-color="#2f9949" catchtap="getColor" data-idx="10" style="background-color:{{background10}}"></view>
-      </view>
-      </scroll-view>
-    </view>
-    <view class="hr"></view>
-    <view class="file_operate">
-      <text class="file_cancel" catchtap="cancelNew">取消</text>
-      <text class="file_create" catchtap="createNew" style="color:{{btnColor}}">创建</text>
-    </view>
   </view>
 </view>
 <!-- 底部操作按钮 -->
 <view class="operateGroup" wx:if="{{isOperate}}">
  <view class="operateTool">
-   <view class="selectAll">
+   <view class="selectAll" catchtap="toSelectAll">
     <view class="icon iconfont icon-quanxuan"></view>
     <view class="title">全选</view>
    </view>
-   <view class="deleteSelect">
+   <view class="deleteSelect" catchtap="toDelete">
    <view class="icon iconfont icon-delete2"></view>
    <view class="title">删除</view>
    </view>
